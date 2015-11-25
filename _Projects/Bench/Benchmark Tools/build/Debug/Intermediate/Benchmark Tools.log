@@ -1,0 +1,13 @@
+﻿Build started 11/8/2015 6:16:00 PM.
+     1>Project "C:\src\Libraries\_Projects\Bench\Benchmark Tools\Benchmark Tools.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\bench.cpp
+         bench.cpp
+       Lib:
+         C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\Libraries\lib_files\bench.lib" /NOLOGO build\Debug\Intermediate\bench.obj
+         Benchmark Tools.vcxproj -> C:\src\Libraries\lib_files\bench.lib
+     1>Done Building Project "C:\src\Libraries\_Projects\Bench\Benchmark Tools\Benchmark Tools.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.08

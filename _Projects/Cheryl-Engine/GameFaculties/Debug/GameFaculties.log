@@ -1,0 +1,30 @@
+﻿Build started 11/6/2015 12:20:19 PM.
+     1>Project "C:\src\Libraries\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp
+         BasicTypes.cpp
+         Generating Code...
+         Compiling...
+         Sprite.cpp
+         SceneNodes.cpp
+         Mesh.cpp
+         Font.cpp
+         Generating Code...
+       Lib:
+         C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\Libraries\lib_files\GF\Game_Faculties\GameFaculties.lib" /NOLOGO Debug\BasicTypes.obj
+         Debug\Font.obj
+         Debug\Mesh.obj
+         Debug\SceneNodes.obj
+         Debug\Sprite.obj
+         Debug\AssetMgr.obj
+         Debug\File_Mgr.obj
+         Debug\InterAccess.obj
+         Debug\Loader.obj
+         Debug\Pool.obj
+         Debug\Storage.obj
+         GameFaculties.vcxproj -> C:\src\Libraries\lib_files\GF\Game_Faculties\GameFaculties.lib
+     1>Done Building Project "C:\src\Libraries\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.13

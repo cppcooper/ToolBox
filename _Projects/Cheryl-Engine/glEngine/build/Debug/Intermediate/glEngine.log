@@ -1,0 +1,13 @@
+﻿Build started 17/11/2015 16:58:10.
+     1>Project "D:\Source Files\Libraries\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\..\Libraries\GFX\GL_Engine\gl_engine.cpp
+         gl_engine.cpp
+       Lib:
+         C:\VS2013\VC\bin\Lib.exe /OUT:"C:/src/Libraries/lib_files/GFX/GL_Engine/glEngine.lib" /NOLOGO build\Debug\Intermediate\gl_engine.obj
+         glEngine.vcxproj -> C:/src/Libraries/lib_files/GFX/GL_Engine/glEngine.lib
+     1>Done Building Project "D:\Source Files\Libraries\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.51

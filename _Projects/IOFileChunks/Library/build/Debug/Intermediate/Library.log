@@ -1,0 +1,238 @@
+﻿Build started 11/6/2015 1:24:14 PM.
+     1>Project "C:\src\Libraries\_Projects\IOFileChunks\Library\Library.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\IOFileChunks\iof_chunk.cpp ..\..\..\src\IOFileChunks\iof_positions.cpp ..\..\..\src\IOFileChunks\iof_reader.cpp ..\..\..\src\IOFileChunks\iof_writer.cpp ..\..\..\src\IOFileChunks\smart_chunk.cpp
+         smart_chunk.cpp
+     1>c:\src\libraries\iof_chunk.h(89): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(105): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(117): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(141): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(8): error C2664: 'iof_chunk::iof_chunk(unsigned int,unsigned int,const iof_chunk *)' : cannot convert argument 1 from 'iof_chunk *const ' to 'const iof_chunk &'
+                 Reason: cannot convert from 'iof_chunk *const ' to 'const iof_chunk'
+                 No constructor could take the source type, or constructor overload resolution was ambiguous
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(50): error C2653: 'iof' : is not a class or namespace name
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(62): error C2653: 'iof' : is not a class or namespace name
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(90): error C2653: 'iof' : is not a class or namespace name
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(97): error C2653: 'iof' : is not a class or namespace name
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(103): error C2556: 'iof_chunk &smart_chunk::operator [](int)' : overloaded function differs only by return type from 'const iof_chunk &smart_chunk::operator [](int)'
+                 c:\src\libraries\iof_chunk.h(178) : see declaration of 'smart_chunk::operator []'
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(103): error C2373: 'smart_chunk::operator []' : redefinition; different type modifiers
+                 c:\src\libraries\iof_chunk.h(178) : see declaration of 'smart_chunk::operator []'
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(121): error C2039: 'get_Parent' : is not a member of 'smart_chunk'
+                 c:\src\libraries\iof_chunk.h(167) : see declaration of 'smart_chunk'
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(122): error C2270: 'get_Parent' : modifiers not allowed on nonmember functions
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(123): error C2065: 'Parent' : undeclared identifier
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(127): error C2511: 'void smart_chunk::copy_Children(std::list<const iof_chunk &,std::allocator<_Ty>> &)' : overloaded member function not found in 'smart_chunk'
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\src\libraries\iof_chunk.h(167) : see declaration of 'smart_chunk'
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(129): error C2228: left of '.begin' must have class/struct/union
+     1>c:\src\libraries\src\iofilechunks\smart_chunk.cpp(129): error C2228: left of '.end' must have class/struct/union
+     1>c:\vs2013\vc\include\xmemory0(516): error C2528: 'pointer' : pointer to reference is illegal
+                 c:\vs2013\vc\include\type_traits(572) : see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\list(812) : see reference to class template instantiation 'std::is_empty<_Alloc>' being compiled
+                 with
+                 [
+                     _Alloc=std::allocator<const iof_chunk &>
+                 ]
+                 c:\vs2013\vc\include\list(862) : see reference to class template instantiation 'std::_List_buy<_Ty,_Alloc>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+         ,            _Alloc=std::allocator<const iof_chunk &>
+                 ]
+                 c:\src\libraries\src\iofilechunks\smart_chunk.cpp(131) : see reference to class template instantiation 'std::list<const iof_chunk &,std::allocator<_Ty>>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+     1>c:\vs2013\vc\include\xmemory0(517): error C2528: 'const_pointer' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\xmemory0(548): error C2535: 'const iof_chunk &(*std::allocator<_Ty>::address(const iof_chunk &) throw() const)' : member function already defined or declared
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\xmemory0(542) : see declaration of 'std::allocator<_Ty>::address'
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+     1>c:\vs2013\vc\include\xmemory0(586): error C2528: '_Ptr' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\xmemory0(591): error C2528: '_Ptr' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\xmemory0(683): error C2528: 'pointer' : pointer to reference is illegal
+                 c:\vs2013\vc\include\xmemory0(755) : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+                 with
+                 [
+                     _Alloc=std::allocator<const iof_chunk &>
+                 ]
+                 c:\vs2013\vc\include\list(475) : see reference to class template instantiation 'std::_Wrap_alloc<std::allocator<_Ty>>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\list(690) : see reference to class template instantiation 'std::_List_base_types<_Ty,_Alloc>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+         ,            _Alloc=std::allocator<const iof_chunk &>
+                 ]
+                 c:\vs2013\vc\include\list(814) : see reference to class template instantiation 'std::_List_alloc<false,std::_List_base_types<_Ty,_Alloc>>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+         ,            _Alloc=std::allocator<const iof_chunk &>
+                 ]
+     1>c:\vs2013\vc\include\xmemory0(684): error C2528: 'const_pointer' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\xmemory0(795): error C2535: 'const iof_chunk &(*std::_Wrap_alloc<std::allocator<_Ty>>::address(const iof_chunk &) const)' : member function already defined or declared
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\xmemory0(789) : see declaration of 'std::_Wrap_alloc<std::allocator<_Ty>>::address'
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+     1>c:\vs2013\vc\include\xmemory0(861): error C2528: '_Ptr' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\xmemory0(105): error C2528: 'abstract declarator' : pointer to reference is illegal
+                 c:\vs2013\vc\include\list(487) : see reference to class template instantiation 'std::_Is_simple_alloc<std::_Wrap_alloc<std::allocator<_Ty>>>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+     1>c:\vs2013\vc\include\xmemory0(107): error C2528: 'abstract declarator' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\xmemory0(122): error C2528: 'pointer' : pointer to reference is illegal
+                 c:\vs2013\vc\include\list(462) : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\list(508) : see reference to class template instantiation 'std::_List_simple_types<const iof_chunk &>' being compiled
+                 c:\vs2013\vc\include\list(691) : see reference to class template instantiation 'std::_List_val<std::_List_simple_types<const iof_chunk &>>' being compiled
+     1>c:\vs2013\vc\include\xmemory0(123): error C2528: 'const_pointer' : pointer to reference is illegal
+     1>c:\vs2013\vc\include\list(1275): error C2535: 'void std::list<const iof_chunk &,std::allocator<_Ty>>::push_front(_Ty)' : member function already defined or declared
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\list(1016) : see declaration of 'std::list<const iof_chunk &,std::allocator<_Ty>>::push_front'
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+     1>c:\vs2013\vc\include\list(1285): error C2535: 'void std::list<const iof_chunk &,std::allocator<_Ty>>::push_back(_Ty)' : member function already defined or declared
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\list(1021) : see declaration of 'std::list<const iof_chunk &,std::allocator<_Ty>>::push_back'
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+     1>c:\vs2013\vc\include\list(1339): error C2535: 'std::_List_iterator<std::_List_val<std::_List_simple_types<const iof_chunk &>>> std::list<const iof_chunk &,std::allocator<_Ty>>::insert(std::_List_const_iterator<std::_List_val<std::_List_simple_types<_Ty>>>,_Ty)' : member function already defined or declared
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+                 c:\vs2013\vc\include\list(1026) : see declaration of 'std::list<const iof_chunk &,std::allocator<_Ty>>::insert'
+                 with
+                 [
+                     _Ty=const iof_chunk &
+                 ]
+         iof_writer.cpp
+     1>c:\src\libraries\iof_chunk.h(89): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(105): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(117): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(141): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+         iof_reader.cpp
+     1>c:\src\libraries\iof_chunk.h(89): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(105): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(117): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(141): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\src\iofilechunks\iof_reader.cpp(55): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\src\iofilechunks\iof_reader.cpp(66): error C2653: 'iof' : is not a class or namespace name
+     1>c:\src\libraries\src\iofilechunks\iof_reader.cpp(76): error C2653: 'iof' : is not a class or namespace name
+     1>c:\src\libraries\src\iofilechunks\iof_reader.cpp(90): error C2556: 'smart_chunk &iof_reader::operator [](int)' : overloaded function differs only by return type from 'const smart_chunk &iof_reader::operator [](int)'
+                 c:\src\libraries\iof_chunk.h(228) : see declaration of 'iof_reader::operator []'
+     1>c:\src\libraries\src\iofilechunks\iof_reader.cpp(90): error C2373: 'iof_reader::operator []' : redefinition; different type modifiers
+                 c:\src\libraries\iof_chunk.h(228) : see declaration of 'iof_reader::operator []'
+     1>c:\src\libraries\src\iofilechunks\iof_reader.cpp(91): warning C4018: '>' : signed/unsigned mismatch
+         iof_positions.cpp
+     1>c:\src\libraries\iof_chunk.h(89): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(105): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(117): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(141): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+         iof_chunk.cpp
+     1>c:\src\libraries\iof_chunk.h(89): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(105): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(117): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\iof_chunk.h(141): warning C4244: 'initializing' : conversion from 'const unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(30): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(52): error C2668: 'iof::check_header' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(36): could be 'bool iof::check_header(const iof_header *)'
+                 c:\src\libraries\iof_chunk.h(31): or       'bool check_header(const iof_header *)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(iof_header *)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(76): error C2039: 'c_str' : is not a member of 'iof_chunk'
+                 c:\src\libraries\iof_chunk.h(81) : see declaration of 'iof_chunk'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(92): error C2668: 'iof::check_header' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(36): could be 'bool iof::check_header(const iof_header *)'
+                 c:\src\libraries\iof_chunk.h(31): or       'bool check_header(const iof_header *)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(iof_header *)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(153): error C2668: 'iof::check_header' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(36): could be 'bool iof::check_header(const iof_header *)'
+                 c:\src\libraries\iof_chunk.h(31): or       'bool check_header(const iof_header *)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(iof_header *)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(204): warning C4244: 'initializing' : conversion from 'unsigned __int64' to 'unsigned int', possible loss of data
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(233): error C2668: 'iof::find_subChunks' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(131): could be 'iof_positions *iof::find_subChunks(const iof_chunk *,unsigned int)'
+                 c:\src\libraries\iof_chunk.h(35): or       'iof_positions *find_subChunks(const iof_chunk *,unsigned int)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(const iof_chunk *, unsigned int)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(245): error C2668: 'iof::get_subChunk' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(226): could be 'const iof_chunk *iof::get_subChunk(const iof_chunk *,unsigned __int64)'
+                 c:\src\libraries\iof_chunk.h(38): or       'const iof_chunk *get_subChunk(const iof_chunk *,unsigned __int64)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(const iof_chunk *, unsigned __int64)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(254): error C2668: 'iof::find_subChunks' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(66): could be 'iof_positions *iof::find_subChunks(const iof_chunk *)'
+                 c:\src\libraries\iof_chunk.h(34): or       'iof_positions *find_subChunks(const iof_chunk *)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(const iof_chunk *)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(266): error C2668: 'iof::get_subChunk' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(226): could be 'const iof_chunk *iof::get_subChunk(const iof_chunk *,unsigned __int64)'
+                 c:\src\libraries\iof_chunk.h(38): or       'const iof_chunk *get_subChunk(const iof_chunk *,unsigned __int64)' [found using argument-dependent lookup]
+                 while trying to match the argument list '(const iof_chunk *, unsigned __int64)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(275): error C2668: 'iof::get_subChunks' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(231): could be 'std::list<const iof_chunk *,std::allocator<_Ty>> iof::get_subChunks(const iof_chunk *,unsigned int)'
+                 with
+                 [
+                     _Ty=const iof_chunk *
+                 ]
+                 c:\src\libraries\iof_chunk.h(39): or       'std::list<const iof_chunk *,std::allocator<_Ty>> get_subChunks(const iof_chunk *,unsigned int)' [found using argument-dependent lookup]
+                 with
+                 [
+                     _Ty=const iof_chunk *
+                 ]
+                 while trying to match the argument list '(const iof_chunk *, unsigned int)'
+     1>c:\src\libraries\src\iofilechunks\iof_chunk.cpp(282): error C2668: 'iof::get_subChunks' : ambiguous call to overloaded function
+                 c:\src\libraries\src\iofilechunks\iof_chunk.cpp(252): could be 'std::list<const iof_chunk *,std::allocator<_Ty>> iof::get_subChunks(const iof_chunk *)'
+                 with
+                 [
+                     _Ty=const iof_chunk *
+                 ]
+                 c:\src\libraries\iof_chunk.h(40): or       'std::list<const iof_chunk *,std::allocator<_Ty>> get_subChunks(const iof_chunk *)' [found using argument-dependent lookup]
+                 with
+                 [
+                     _Ty=const iof_chunk *
+                 ]
+                 while trying to match the argument list '(const iof_chunk *)'
+         Generating Code...
+     1>Done Building Project "C:\src\Libraries\_Projects\IOFileChunks\Library\Library.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.72
