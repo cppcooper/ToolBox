@@ -1,6 +1,8 @@
 #ifndef _GAMEMODULE_H_
 #define _GAMEMODULE_H_
 
+#include "ViewPort.h"
+
 class GameModule
 {
 public:

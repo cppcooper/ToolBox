@@ -24,6 +24,7 @@ private:
 protected:
 	/*Update & Draw are not guaranteed to have a 1:1 execution ratio*/
 	void Update( double& seconds );
+	/*Draw & Update are not guaranteed to have a 1:1 execution ratio*/
 	void Draw();
 
 	void PressKey( int& key, int& scancode, int& action, int& mod );
