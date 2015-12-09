@@ -9,21 +9,21 @@ ControlModule& ControlModule::Instance()
 	return instance;
 }
 
-void ControlModule::Bind_Cursor( std::function<void( double x, double y )> &reader )
+void ControlModule::Bind_Cursor( std::function<void( double x, double y )> reader )
 {
 	m_ActionMutex.lock();
 	Cursor_Readers.push_back( reader );
 	m_ActionMutex.unlock();
 }
 
-void ControlModule::Bind_Button( int button, std::function<void( MState state )> &action )
+void ControlModule::Bind_Button( int button, std::function<void( MState state )> action )
 {
 	m_ActionMutex.lock();
 	Button_Action_Map.emplace( button, action );
 	m_ActionMutex.unlock();
 }
 
-void ControlModule::Bind_Key( int key, std::function<void()> &action )
+void ControlModule::Bind_Key( int key, std::function<void()> action )
 {
 	m_ActionMutex.lock();
 	Key_Action_Map.emplace( key, action );

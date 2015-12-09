@@ -34,9 +34,9 @@ private:
 
 public:
 	static ControlModule& Instance();
-	void Bind_Cursor( std::function<void( double x, double y )> &reader );
-	void Bind_Button( int button, std::function<void( MState state )> &action );
-	void Bind_Key( int key, std::function<void()> &action );
+	void Bind_Cursor( std::function<void( double x, double y )> reader );
+	void Bind_Button( int button, std::function<void( MState state )> action );
+	void Bind_Key( int key, std::function<void()> action );
 
 	void MoveCursor( double x, double y );
 	void QueueButton( int button );
