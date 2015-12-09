@@ -15,6 +15,7 @@ void Game::Init()
 	Attach( &Controls );
 
 	//Configure
+	Controls.Bind_Key( GLFW_KEY_ESCAPE, std::bind( &glEngine::Quit, m_glEngine ) );
 	Asset_Factory<Texture>::Instance().TypeExtensions() = "png";
 	Asset_Factory<GLSLProgram>::Instance().TypeExtensions() = "vert,frag,geom,tese,tesc";
 	Asset_Factory<GLSLProgram>::Instance().RecordExtension() = "glslp";
