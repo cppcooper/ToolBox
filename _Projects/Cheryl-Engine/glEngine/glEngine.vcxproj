@@ -11,11 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Libraries\GFX\gl_engine.h" />
+    <ClInclude Include="..\..\..\GFX\gl_engine.h" />
     <ClInclude Include="..\..\..\GFX\OpenGL_Headers.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Libraries\GFX\GL_Engine\gl_engine.cpp" />
+    <ClCompile Include="..\..\..\GFX\GL_Engine\gl_engine.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{67D579FB-B402-427B-8A73-4E5BDA1DEABE}</ProjectGuid>
@@ -47,7 +47,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.lib</TargetExt>
-    <OutDir>C:/src/Libraries/lib_files/GFX/GL_Engine/</OutDir>
+    <OutDir>C:\src\ToolBox\lib_files\GFX\GL_Engine\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

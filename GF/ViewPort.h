@@ -7,14 +7,18 @@ class ViewPort
 {
 protected:
 	float x1, y1, x2, y2;
-	int width, height;
+	float width, height;
 public:
-	void Set( float x, float y, int w, int h )
+	void Set( float x1, float y1, float x2, float y2 )
 	{
 		static glEngine& engine = glEngine::Instance();
+		float w = x2 - x1;
+		float h = y2 - y1;
 		assert( w <= engine.get_ScreenWidth() && h <= engine.get_ScreenHeight() );
-		x1 = x;
-		y1 = y;
+		this->x1 = x1;
+		this->y1 = y1;
+		this->x2 = x2;
+		this->y2 = y2;
 		width = w;
 		height = h;
 	}

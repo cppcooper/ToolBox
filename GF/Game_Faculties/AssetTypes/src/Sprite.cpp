@@ -33,7 +33,7 @@ void Sprite::Load( std::string file )
 		
 		ushort Frames = 0, width = 0, height = 0, x = 0, y = 0;
 
-		ushort cursor = Data.tellg();
+		std::ifstream::pos_type cursor = Data.tellg();
 		for ( int i = 0; i < Sections; ++i )
 		{
 			Data >> Frames;

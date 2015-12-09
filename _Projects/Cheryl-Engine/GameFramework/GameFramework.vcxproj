@@ -11,14 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Libraries\GF\ControlModule.h" />
-    <ClInclude Include="..\..\..\..\Libraries\GF\GameFramework.h" />
-    <ClInclude Include="..\..\..\..\Libraries\GF\GameModule.h" />
+    <ClInclude Include="..\..\..\GF\ControlModule.h" />
+    <ClInclude Include="..\..\..\GF\GameFramework.h" />
+    <ClInclude Include="..\..\..\GF\GameModule.h" />
     <ClInclude Include="..\..\..\GF\ViewPort.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Libraries\GF\src\ControlModule.cpp" />
-    <ClCompile Include="..\..\..\..\Libraries\GF\src\GameFramework.cpp" />
+    <ClCompile Include="..\..\..\GF\src\ControlModule.cpp" />
+    <ClCompile Include="..\..\..\GF\src\GameFramework.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6DE9AF2B-3350-4117-BE9F-A044BAD200DD}</ProjectGuid>
@@ -49,7 +49,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>C:\src\Libraries\lib_files\GF\</OutDir>
+    <OutDir>C:\src\ToolBox\lib_files\GF\</OutDir>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Libraries\GFX\gl_engine.h">
+    <ClInclude Include="..\..\..\GFX\OpenGL_Headers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\GFX\OpenGL_Headers.h">
+    <ClInclude Include="..\..\..\GFX\gl_engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Libraries\GFX\GL_Engine\gl_engine.cpp">
+    <ClCompile Include="..\..\..\GFX\GL_Engine\gl_engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
