@@ -25,6 +25,20 @@ inline T GetLowBits( T value, unsigned char MaskBits )
 	return value & LowBitMask<T>( MaskBits );
 }
 
+template<typename T>
+inline T IncrementAtBit( T Value, unsigned char bit )
+{
+	assert( bit != 0 );
+	return value + ( 1 << ( bit - 1 );
+}
+
+template<typename T>
+inline T DecrementAtBit( T Value, unsigned char bit )
+{
+	assert( bit != 0 );
+	return value - ( 1 << ( bit - 1 ) );
+}
+
 inline long long MergeIntegers( int A, int B )
 {
 	union
@@ -35,6 +49,22 @@ inline long long MergeIntegers( int A, int B )
 			int B;
 		};
 		long long value;
+	}ReturnVal;
+	ReturnVal.A = A;
+	ReturnVal.B = B;
+	return ReturnVal.value;
+}
+
+inline unsigned long long MergeIntegers( unsigned int A, unsigned int B )
+{
+	union
+	{
+		struct
+		{
+			unsigned int A;
+			unsigned int B;
+		};
+		unsigned long long value;
 	}ReturnVal;
 	ReturnVal.A = A;
 	ReturnVal.B = B;
