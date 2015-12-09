@@ -14,6 +14,7 @@
     <ClInclude Include="..\..\..\..\Libraries\GF\ControlModule.h" />
     <ClInclude Include="..\..\..\..\Libraries\GF\GameFramework.h" />
     <ClInclude Include="..\..\..\..\Libraries\GF\GameModule.h" />
+    <ClInclude Include="..\..\..\GF\ViewPort.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Libraries\GF\src\ControlModule.cpp" />
