@@ -13,6 +13,8 @@ namespace GameAssets
 	protected:
 		ushort m_Frames = 0;
 		ushort m_FrameIndex = 0;
+		ushort m_PixelWidth = 0;
+		ushort m_PixelHeight = 0;
 		float m_Scale = 1.0f;
 		float m_Alpha = 1.0f;
 
@@ -26,6 +28,8 @@ namespace GameAssets
 		void Draw( const glm::mat4& matrix );
 		void Scale( float scale );
 		void SetAlpha( float alpha );
+		ushort Width() const { return m_PixelWidth; }
+		ushort Height() const { return m_PixelHeight; }
 	};
 }
 

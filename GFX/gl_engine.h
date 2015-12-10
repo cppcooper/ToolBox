@@ -50,6 +50,29 @@ extern void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 extern void mouse_button_callback( GLFWwindow* window, int button, int action, int mods );
 extern void cursor_position_callback( GLFWwindow* window, double x, double y );
 
+class Screen
+{
+	friend class glEngine;
+private:
+	int m_Width = 0;
+	int m_Height = 0;
+	Screen(){}
+	void Resize( int width, int height ){
+		m_Width = width;
+		m_Height = height;
+	}
+public:
+	int Width() const{
+		return m_Width;
+	}
+	int Height() const{
+		return m_Height;
+	}
+	static Screen& Instance(){
+		static Screen instance;
+		return instance;
+	}
+};
 /* glEngine is a Game Model framework 
 * Input, State Updates, Output
 */
@@ -76,10 +99,10 @@ public:
 	glm::mat4 viewMatrix;
 
 private:
+	friend class Screen;
 	GL_Engine::graphics gMode;
 	GL_Engine::window wMode;
-	std::atomic<int> screenWidth;
-	std::atomic<int> screenHeight;
+	Screen& m_Screen = Screen::Instance();
 
 protected:
 	glEngine( GL_Engine::window wMode = GL_Engine::window::DECORATEDWINDOW, int width = 1920, int height = 1080 );
@@ -101,14 +124,6 @@ public:
 	{
 		static glEngine engine( GL_Engine::window::DECORATEDWINDOW, 1000, 600 );
 		return engine;
-	}
-	int get_ScreenWidth() const
-	{
-		return screenWidth;
-	}
-	int get_ScreenHeight() const
-	{
-		return screenHeight;
 	}
 };
 

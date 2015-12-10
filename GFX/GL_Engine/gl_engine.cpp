@@ -21,8 +21,8 @@ void mouse_button_callback( GLFWwindow* window, int button, int action, int mods
 glEngine::glEngine( GL_Engine::window windowMode, int width, int height )
 {
 	wMode = windowMode;
-	screenWidth = width;
-	screenHeight = height;
+	m_Screen.m_Width = width;
+	m_Screen.m_Height = height;
 
 	nearplane = 0.1f;
 	farplane = 10000.f;
@@ -98,7 +98,7 @@ void glEngine::SetMode( GL_Engine::graphics newMode )
 		glEnable( GL_DEPTH_TEST );
 
 		///3D perspective projection
-		projectionMatrix = glm::mat4( 1.f ) * glm::perspective( 45.0f, (GLfloat)( screenWidth ) / (GLfloat)( screenHeight ), nearplane, farplane );
+		projectionMatrix = glm::mat4( 1.f ) * glm::perspective( 45.0f, (GLfloat)( m_Screen.Width() ) / (GLfloat)( m_Screen.Height() ), nearplane, farplane );
 	}
 	else
 	{
@@ -106,7 +106,7 @@ void glEngine::SetMode( GL_Engine::graphics newMode )
 		glDisable( GL_DEPTH_TEST );
 
 		///2d orthographic projection
-		projectionMatrix = glm::mat4( 1.f ) * glm::ortho( 0.f, (float)screenWidth, 0.f, (float)screenHeight, 0.f, 1.f );
+		projectionMatrix = glm::mat4( 1.f ) * glm::ortho( 0.f, (float)m_Screen.Width(), 0.f, (float)m_Screen.Height(), 0.f, 1.f );
 	}
 
 }
@@ -145,6 +145,7 @@ bool glEngine::Init()
 	int count;
 
 	monitors = glfwGetMonitors( &count );
+	//TODO: Create Window Resizing method
 	const GLFWvidmode* mode = glfwGetVideoMode( glfwGetPrimaryMonitor() );
 
 	///Create a window of a particular type
@@ -153,15 +154,15 @@ bool glEngine::Init()
 		case GL_Engine::window::FULLSCREEN:
 		{
 			window = glfwCreateWindow( mode->width, mode->height, "Fullscreen", glfwGetPrimaryMonitor(), NULL );
-			screenHeight = mode->height;
-			screenWidth = mode->width;
+			m_Screen.m_Height = mode->height;
+			m_Screen.m_Width = mode->width;
 			break;
 		}
 
 		case GL_Engine::window::DECORATEDWINDOW:
 		{
 
-			window = glfwCreateWindow( screenWidth, screenHeight, "Decorated Window", NULL, NULL );
+			window = glfwCreateWindow( m_Screen.Width(), m_Screen.Height(), "Decorated Window", NULL, NULL );
 			break;
 		}
 
@@ -175,8 +176,8 @@ bool glEngine::Init()
 			glfwWindowHint( GLFW_REFRESH_RATE, mode->refreshRate );
 
 			window = glfwCreateWindow( mode->width, mode->height, "Borderless Fullscreen", NULL, NULL );
-			screenHeight = mode->height;
-			screenWidth = mode->width;
+			m_Screen.m_Height = mode->height;
+			m_Screen.m_Width = mode->width;
 			break;
 		}
 	}

@@ -31,15 +31,17 @@ void Sprite::Load( std::string file )
 		uint& Tex_height = m_Tex->height;
 
 		
-		ushort Frames = 0, width = 0, height = 0, x = 0, y = 0;
+		ushort Frames = 0, width = 0, height = 0, x = 0, y = 0, temp = 0;
 
 		std::ifstream::pos_type cursor = Data.tellg();
 		for ( int i = 0; i < Sections; ++i )
 		{
 			Data >> Frames;
-			m_Frames += Frames;
 			Data >> width;
 			Data >> height;
+			m_Frames += Frames;
+			m_PixelWidth = m_PixelWidth > width ? m_PixelWidth : width;
+			m_PixelHeight = m_PixelHeight > height ? m_PixelHeight : height;
 			for ( int f = 0; f < Frames; ++f )
 			{
 				Data >> x;
@@ -62,29 +64,29 @@ void Sprite::Load( std::string file )
 				Data >> y;
 
 				///Bottom Left
-				m_Vertices[( m_FrameIndex * 20 ) + 0] = 0.0f;															/// X
-				m_Vertices[( m_FrameIndex * 20 ) + 1] = 0.0f;															/// Y
-				m_Vertices[( m_FrameIndex * 20 ) + 2] = 0.0f;														/// Z
-				m_Vertices[( m_FrameIndex * 20 ) + 3] = (float)x / (float)Tex_width;										/// U - Texture mapping
+				m_Vertices[( m_FrameIndex * 20 ) + 0] = ( m_PixelWidth - width ) / 2.0f;											/// X
+				m_Vertices[( m_FrameIndex * 20 ) + 1] = ( m_PixelHeight - height ) / 2.0f;											/// Y
+				m_Vertices[( m_FrameIndex * 20 ) + 2] = 0.0f;																						/// Z
+				m_Vertices[( m_FrameIndex * 20 ) + 3] = (float)x / (float)Tex_width;													/// U - Texture mapping
 				m_Vertices[( m_FrameIndex * 20 ) + 4] = 1.0f - ( ( (float)y + (float)height ) / (float)Tex_height );		/// V - Texture mapping (Inverted Axis?)
 
 				///Bottom Right
-				m_Vertices[( m_FrameIndex * 20 ) + 5] = (float)width;
-				m_Vertices[( m_FrameIndex * 20 ) + 6] = 0.0f;
+				m_Vertices[( m_FrameIndex * 20 ) + 5] = (float)width - ( ( m_PixelWidth - width ) / 2.0f );
+				m_Vertices[( m_FrameIndex * 20 ) + 6] = ( m_PixelHeight - height ) / 2.0f;
 				m_Vertices[( m_FrameIndex * 20 ) + 7] = 0.0f;
 				m_Vertices[( m_FrameIndex * 20 ) + 8] = ( (float)x + (float)width ) / (float)Tex_width;
 				m_Vertices[( m_FrameIndex * 20 ) + 9] = 1.0f - ( ( (float)y + (float)height ) / (float)Tex_height );
 
 				///Top Right
-				m_Vertices[( m_FrameIndex * 20 ) + 10] = (float)width;
-				m_Vertices[( m_FrameIndex * 20 ) + 11] = (float)height;
+				m_Vertices[( m_FrameIndex * 20 ) + 10] = (float)width - ( ( m_PixelWidth - width ) / 2.0f );
+				m_Vertices[( m_FrameIndex * 20 ) + 11] = (float)height - ( ( m_PixelHeight - height ) / 2.0f );
 				m_Vertices[( m_FrameIndex * 20 ) + 12] = 0.0f;
 				m_Vertices[( m_FrameIndex * 20 ) + 13] = ( (float)x + (float)width ) / (float)Tex_width;
 				m_Vertices[( m_FrameIndex * 20 ) + 14] = 1.0f - ( (float)y / (float)Tex_height );
 
 				///Top Left
-				m_Vertices[( m_FrameIndex * 20 ) + 15] = 0.0f;
-				m_Vertices[( m_FrameIndex * 20 ) + 16] = (float)height;
+				m_Vertices[( m_FrameIndex * 20 ) + 15] = ( m_PixelWidth - width ) / 2.0f;
+				m_Vertices[( m_FrameIndex * 20 ) + 16] = (float)height - ( ( m_PixelHeight - height ) / 2.0f );
 				m_Vertices[( m_FrameIndex * 20 ) + 17] = 0.0f;
 				m_Vertices[( m_FrameIndex * 20 ) + 18] = (float)x / (float)Tex_width;
 				m_Vertices[( m_FrameIndex * 20 ) + 19] = 1.0f - ( (float)y / (float)Tex_height );

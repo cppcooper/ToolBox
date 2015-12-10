@@ -119,9 +119,10 @@ void Game::SetCursor( double& x, double& y )
 {
 	if ( x >= 0 && y >= 1 )
 	{
-		if ( x < m_glEngine.get_ScreenWidth() && y < m_glEngine.get_ScreenHeight() )
+		static Screen& screen = Screen::Instance();
+		if ( x < screen.Width() && y < screen.Height() )
 		{
-			Controls.MoveCursor( x, m_glEngine.get_ScreenHeight() - y );
+			Controls.MoveCursor( x, screen.Height() - y );
 		}
 	}
 }

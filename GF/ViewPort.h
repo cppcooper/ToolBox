@@ -9,25 +9,18 @@ protected:
 	float x1, y1, x2, y2;
 	float width, height;
 public:
-	void Set( float x1, float y1, float x2, float y2 )
+	void Set( float x1 = 0.0f, float y1 = 0.0f, float x2 = (float)Screen::Instance().Width(), float y2 = (float)Screen::Instance().Height() )
 	{
-		static glEngine& engine = glEngine::Instance();
+		static Screen& s = Screen::Instance();
 		float w = x2 - x1;
 		float h = y2 - y1;
-		assert( w <= engine.get_ScreenWidth() && h <= engine.get_ScreenHeight() );
+		assert( w <= s.Width() && h <= s.Height() );
 		this->x1 = x1;
 		this->y1 = y1;
 		this->x2 = x2;
 		this->y2 = y2;
 		width = w;
 		height = h;
-	}
-	void Scroll( const glm::vec2& dir )
-	{
-		x1 += dir.x;
-		x2 += dir.x;
-		y1 += dir.y;
-		y2 += dir.y;
 	}
 	float CenterX()
 	{
