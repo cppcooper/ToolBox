@@ -1,8 +1,10 @@
-﻿Build started 10/12/2015 11:46:44.
+﻿Build started 15/12/2015 12:40:07.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFramework\GameFramework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\src\GameFramework.cpp
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\src\ControlModule.cpp ..\..\..\GF\src\GameFramework.cpp
          GameFramework.cpp
+         ControlModule.cpp
+         Generating Code...
        Lib:
          C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\GF\GameFramework.lib" /NOLOGO build\Debug\Intermediate\ControlModule.obj
          build\Debug\Intermediate\GameFramework.obj
@@ -11,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.22
+Time Elapsed 00:00:03.30

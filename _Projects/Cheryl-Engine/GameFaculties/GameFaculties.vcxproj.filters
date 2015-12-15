@@ -16,14 +16,8 @@
     <Filter Include="Header Files\Game Faculties">
       <UniqueIdentifier>{b2a839c5-5221-4522-b080-560ddb028a82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game Faculties\Asset Types">
-      <UniqueIdentifier>{6c34b68c-fb69-4104-a607-bfe11a863d49}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game Faculties">
       <UniqueIdentifier>{99ca4e0b-682d-411d-a9c0-687a5f1cf6d3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game Faculties\Asset Types">
-      <UniqueIdentifier>{a91097ff-c287-4438-8cab-55c9ea7844b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,41 +51,11 @@
     <ClInclude Include="..\..\..\GF\Game_Faculties\Storage.h">
       <Filter>Header Files\Game Faculties</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\BasicTypes.h">
-      <Filter>Header Files\Game Faculties\Asset Types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Font.h">
-      <Filter>Header Files\Game Faculties\Asset Types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Mesh.h">
-      <Filter>Header Files\Game Faculties\Asset Types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\SceneNodes.h">
-      <Filter>Header Files\Game Faculties\Asset Types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Sprite.h">
-      <Filter>Header Files\Game Faculties\Asset Types</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\GFX\OpenGL_Headers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp">
-      <Filter>Source Files\Game Faculties\Asset Types</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp">
-      <Filter>Source Files\Game Faculties\Asset Types</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp">
-      <Filter>Source Files\Game Faculties\Asset Types</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp">
-      <Filter>Source Files\Game Faculties\Asset Types</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp">
-      <Filter>Source Files\Game Faculties\Asset Types</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetMgr.cpp">
       <Filter>Source Files\Game Faculties</Filter>
     </ClCompile>

@@ -1,15 +1,16 @@
-﻿Build started 10/12/2015 11:46:43.
+﻿Build started 15/12/2015 12:40:03.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp
-         Sprite.cpp
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\src\AssetMgr.cpp ..\..\..\GF\Game_Faculties\src\File_Mgr.cpp ..\..\..\GF\Game_Faculties\src\InterAccess.cpp ..\..\..\GF\Game_Faculties\src\Loader.cpp ..\..\..\GF\Game_Faculties\src\Pool.cpp ..\..\..\GF\Game_Faculties\src\Storage.cpp
+         Storage.cpp
+         Pool.cpp
+         Loader.cpp
+         InterAccess.cpp
+         File_Mgr.cpp
+         AssetMgr.cpp
+         Generating Code...
        Lib:
-         C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\GF\Game_Faculties\GameFaculties.lib" /NOLOGO build\Debug\Intermediate\BasicTypes.obj
-         build\Debug\Intermediate\Font.obj
-         build\Debug\Intermediate\Mesh.obj
-         build\Debug\Intermediate\SceneNodes.obj
-         build\Debug\Intermediate\Sprite.obj
-         build\Debug\Intermediate\AssetMgr.obj
+         C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\GF\Game_Faculties\GameFaculties.lib" /NOLOGO build\Debug\Intermediate\AssetMgr.obj
          build\Debug\Intermediate\File_Mgr.obj
          build\Debug\Intermediate\InterAccess.obj
          build\Debug\Intermediate\Loader.obj
@@ -20,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.33
+Time Elapsed 00:00:04.14
