@@ -13,6 +13,7 @@ Thus concrete Asset definitions must be seperated from the interface details
 #include "../../../GFX/OpenGL_Headers.h"
 #include "../STL.h"
 #pragma comment (lib,"GFX/ThirdParty/FreeImage.lib")
+#pragma comment (lib,"GF/Game_Assets/Assets.lib")
 using glm::vec2;
 using glm::vec3;
 using glm::vec4;

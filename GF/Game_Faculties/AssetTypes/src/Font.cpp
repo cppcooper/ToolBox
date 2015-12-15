@@ -101,6 +101,13 @@ float Font::WidthText( std::string text )
 	return width_text;
 }
 
+void Font::Print( float x, float y, std::string text )
+{
+	m_CursorPos.x = x;
+	m_CursorPos.y = y;
+	Print( text );
+}
+
 void Font::Print( std::string text )
 {
 	glBindVertexArray( m_VAO );

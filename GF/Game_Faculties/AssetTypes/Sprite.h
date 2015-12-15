@@ -3,7 +3,7 @@
 
 #include "../AssetAbstract.h"
 #include "BasicTypes.h"
-
+#pragma comment (lib,"GF/Game_Assets/Assets.lib")
 
 namespace GameAssets
 {

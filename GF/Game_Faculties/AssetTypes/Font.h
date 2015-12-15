@@ -3,7 +3,7 @@
 
 #include "../AssetAbstract.h"
 #include "BasicTypes.h"
-
+#pragma comment (lib,"GF/Game_Assets/Assets.lib")
 
 namespace GameAssets
 {
@@ -25,6 +25,7 @@ namespace GameAssets
 		void Reset();
 
 		float WidthText( std::string text );
+		void Print( float x, float y, std::string text );
 		void Print( std::string text );
 	};
 }

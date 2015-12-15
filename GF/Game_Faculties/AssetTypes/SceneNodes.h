@@ -4,6 +4,7 @@
 #include "BasicTypes.h"
 #include "../STL.h"
 #include <mutex>
+#pragma comment (lib,"GF/Game_Assets/Assets.lib")
 using namespace GameAssets;
 ///enum NODE_TYPE { SCENE, ROOT, TRAN, ROT, SCALE, TIMER, DYNA, STATIC, ANIM };
 
