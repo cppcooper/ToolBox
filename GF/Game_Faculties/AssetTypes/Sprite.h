@@ -21,6 +21,7 @@ namespace GameAssets
 	public:
 		uint TypeID();
 		void Load( std::string file );
+		void Load( std::string file, Texture* tex, GLSLProgram* shader );
 		void Reset();
 
 		Sprite& operator[]( ushort frame );

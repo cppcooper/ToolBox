@@ -61,16 +61,16 @@ private:
 		m_Width = width;
 		m_Height = height;
 	}
-public:
-	int Width() const{
-		return m_Width;
-	}
-	int Height() const{
-		return m_Height;
-	}
 	static Screen& Instance(){
 		static Screen instance;
 		return instance;
+	}
+public:
+	static int Width() {
+		return Instance().m_Width;
+	}
+	static int Height() {
+		return Instance().m_Height;
 	}
 };
 /* glEngine is a Game Model framework 
