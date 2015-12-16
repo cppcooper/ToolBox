@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\bench.h" />
+    <ClInclude Include="..\..\..\tools_bench.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\bench.cpp" />
+    <ClCompile Include="..\..\..\src\tools_bench.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BC89B0BB-F899-486C-ACC2-2AFB9C6800D7}</ProjectGuid>
@@ -45,8 +45,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>C:\src\Libraries\lib_files\</OutDir>
-    <TargetName>bench</TargetName>
+    <OutDir>C:\src\ToolBox\lib_files\</OutDir>
+    <TargetName>tools_bench</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

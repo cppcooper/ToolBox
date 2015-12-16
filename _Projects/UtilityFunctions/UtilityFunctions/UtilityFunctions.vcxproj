@@ -39,9 +39,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>C:\src\Libraries\lib_files\</OutDir>
+    <OutDir>C:\src\ToolBox\lib_files\</OutDir>
     <TargetExt>.lib</TargetExt>
-    <TargetName>my_utilities</TargetName>
+    <TargetName>tools_utilities</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -68,10 +68,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\my_utilities.h" />
+    <ClInclude Include="..\..\..\tools_utilities.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\my_utilities.cpp" />
+    <ClCompile Include="..\..\..\src\tools_utilities.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\logtools.h" />
+    <ClInclude Include="..\..\..\tools_logger.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\logtools.cpp" />
+    <ClCompile Include="..\..\..\src\tools_logger.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{39B9923B-3925-4CCE-8C65-1DD9CA1DB111}</ProjectGuid>
@@ -45,8 +45,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>C:\src\Libraries\lib_files\</OutDir>
-    <TargetName>logtools</TargetName>
+    <OutDir>C:\src\ToolBox\lib_files\</OutDir>
+    <TargetName>tools_logger</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
