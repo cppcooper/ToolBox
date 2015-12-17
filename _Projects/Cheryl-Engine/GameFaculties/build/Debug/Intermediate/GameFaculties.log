@@ -1,4 +1,4 @@
-﻿Build started 15/12/2015 12:40:03.
+﻿Build started 16/12/2015 22:10:05.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"build\Debug\Intermediate\\" /Fd"build\Debug\Intermediate\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\src\AssetMgr.cpp ..\..\..\GF\Game_Faculties\src\File_Mgr.cpp ..\..\..\GF\Game_Faculties\src\InterAccess.cpp ..\..\..\GF\Game_Faculties\src\Loader.cpp ..\..\..\GF\Game_Faculties\src\Pool.cpp ..\..\..\GF\Game_Faculties\src\Storage.cpp
@@ -21,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.14
+Time Elapsed 00:00:05.66

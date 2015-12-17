@@ -1,5 +1,5 @@
 #include "../gl_engine.h"
-#include "../../bench.h"
+#include "../../tools_bench.h"
 
 
 void key_callback( GLFWwindow* window, int key, int scancode, int action, int mods )

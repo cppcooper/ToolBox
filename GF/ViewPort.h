@@ -9,12 +9,11 @@ protected:
 	float x1, y1, x2, y2;
 	float width, height;
 public:
-	void Set( float x1 = 0.0f, float y1 = 0.0f, float x2 = (float)Screen::Instance().Width(), float y2 = (float)Screen::Instance().Height() )
+	void Set( float x1 = 0.0f, float y1 = 0.0f, float x2 = (float)Screen::Width(), float y2 = (float)Screen::Height() )
 	{
-		static Screen& s = Screen::Instance();
 		float w = x2 - x1;
 		float h = y2 - y1;
-		assert( w <= s.Width() && h <= s.Height() );
+		assert( w <= Screen::Width() && h <= Screen::Height() );
 		this->x1 = x1;
 		this->y1 = y1;
 		this->x2 = x2;

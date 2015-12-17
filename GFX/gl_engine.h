@@ -61,6 +61,7 @@ private:
 		m_Width = width;
 		m_Height = height;
 	}
+protected:
 	static Screen& Instance(){
 		static Screen instance;
 		return instance;
