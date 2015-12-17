@@ -1,5 +1,6 @@
 #include "../AssetMgr.h"
 
+//Returns success - ie. returns false if AssetName was recorded previously
 bool Asset_Manager::RecordAsset( std::string AssetName, GameAsset* p )
 {
 	return Asset_Table.emplace( AssetName, p ).second;

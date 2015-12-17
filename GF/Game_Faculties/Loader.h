@@ -20,6 +20,7 @@ protected:
 public:
 	void RegisterDirectory( std::string path );
 	void LoadAssets();
+	GameAsset* LoadAsset( std::string file );
 	//void UnloadAssets();
 };
 

@@ -16,12 +16,14 @@ void Game::Init()
 
 	//Configure
 	Controls.Bind_Key( GLFW_KEY_ESCAPE, std::bind( &glEngine::Quit, &m_glEngine ) );
-	Asset_Factory<Texture>::Instance().TypeExtensions() = "png";
-	Asset_Factory<GLSLProgram>::Instance().TypeExtensions() = "vert,frag,geom,tese,tesc";
-	Asset_Factory<GLSLProgram>::Instance().RecordExtension() = "glslp";
-	Asset_Factory<Sprite>::Instance().TypeExtensions() = "sdat";
-	Asset_Factory<Font>::Instance().TypeExtensions() = "fdat";
-	Asset_Factory<Mesh>::Instance().TypeExtensions() = "s3d";
+	//Note: The following line ordering matters for the Auto-Load procedure
+	Asset_Factory<Texture>::Instance().TypeExtensions() = ".png";
+	Asset_Factory<GLSLProgram>::Instance().TypeExtensions() = ".vert;.frag;.geom;.tese;.tesc";
+	Asset_Factory<GLSLProgram>::Instance().RecordExtension() = ".glslp";
+	Asset_Factory<Sprite>::Instance().TypeExtensions() = ".sdat";
+	Asset_Factory<Font>::Instance().TypeExtensions() = ".fdat";
+	Asset_Factory<Mesh>::Instance().TypeExtensions() = ".s3d";
+
 	/// Camera Data
 	/*View_Angle = glm::rotate( View_Angle, 180.0f, glm::vec3( 0, 0, 1 ) );
 	View_Matrix = View_Angle * View_Position;
