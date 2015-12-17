@@ -7,7 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glEngine", "glEngine\glEngi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameFaculties", "GameFaculties\GameFaculties.vcxproj", "{B8546C0A-2141-43A3-ABD7-049AA6CB0BE9}"
 	ProjectSection(ProjectDependencies) = postProject
-		{6D422995-1C5E-4E56-AD42-50874700C4D7} = {6D422995-1C5E-4E56-AD42-50874700C4D7}
 		{67D579FB-B402-427B-8A73-4E5BDA1DEABE} = {67D579FB-B402-427B-8A73-4E5BDA1DEABE}
 	EndProjectSection
 EndProject
@@ -21,11 +20,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj",
 	ProjectSection(ProjectDependencies) = postProject
 		{B8546C0A-2141-43A3-ABD7-049AA6CB0BE9} = {B8546C0A-2141-43A3-ABD7-049AA6CB0BE9}
 		{6DE9AF2B-3350-4117-BE9F-A044BAD200DD} = {6DE9AF2B-3350-4117-BE9F-A044BAD200DD}
-		{67D579FB-B402-427B-8A73-4E5BDA1DEABE} = {67D579FB-B402-427B-8A73-4E5BDA1DEABE}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assets", "Assets\Assets.vcxproj", "{6D422995-1C5E-4E56-AD42-50874700C4D7}"
-	ProjectSection(ProjectDependencies) = postProject
 		{67D579FB-B402-427B-8A73-4E5BDA1DEABE} = {67D579FB-B402-427B-8A73-4E5BDA1DEABE}
 	EndProjectSection
 EndProject
@@ -51,10 +45,6 @@ Global
 		{04280AF5-0980-4910-AA13-5551A8584628}.Debug|Win32.Build.0 = Debug|Win32
 		{04280AF5-0980-4910-AA13-5551A8584628}.Release|Win32.ActiveCfg = Release|Win32
 		{04280AF5-0980-4910-AA13-5551A8584628}.Release|Win32.Build.0 = Release|Win32
-		{6D422995-1C5E-4E56-AD42-50874700C4D7}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6D422995-1C5E-4E56-AD42-50874700C4D7}.Debug|Win32.Build.0 = Debug|Win32
-		{6D422995-1C5E-4E56-AD42-50874700C4D7}.Release|Win32.ActiveCfg = Release|Win32
-		{6D422995-1C5E-4E56-AD42-50874700C4D7}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

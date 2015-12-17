@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Game Faculties">
       <UniqueIdentifier>{99ca4e0b-682d-411d-a9c0-687a5f1cf6d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{78ae81ce-c523-41de-9660-2c1f8be5b1ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets">
+      <UniqueIdentifier>{dedbb8a6-d1d8-46f1-ae85-23a41828dd14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\GF\game_faculties.h">
@@ -54,6 +60,21 @@
     <ClInclude Include="..\..\..\GFX\OpenGL_Headers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Sprite.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\BasicTypes.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Font.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Mesh.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\SceneNodes.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetMgr.cpp">
@@ -73,6 +94,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\Storage.cpp">
       <Filter>Source Files\Game Faculties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp">
+      <Filter>Source Files\Assets</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
