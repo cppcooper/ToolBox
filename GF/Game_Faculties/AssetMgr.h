@@ -12,6 +12,7 @@ private:
 protected:
 public:
 	bool RecordAsset( std::string AssetName, GameAsset* p );
+	//TODO: bool RemoveRecord( std::string AssetName );
 	GameAsset* GetAsset( std::string AssetName );
 };
 

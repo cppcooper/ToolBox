@@ -21,6 +21,7 @@ namespace GameAssets
 
 	public:
 		virtual GameAsset* Create( uint N = 1 ) = 0;
+		//TODO: virtual bool Destroy( GameAsset* p ) = 0;
 		virtual uint Get_TypeID() = 0;
 		virtual std::string& TypeExtensions() = 0;
 		virtual std::string& RecordExtension() = 0;
