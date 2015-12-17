@@ -3,7 +3,6 @@
 
 #include "../AssetAbstract.h"
 #include "BasicTypes.h"
-#pragma comment (lib,"GF/Game_Assets/Assets.lib")
 
 namespace GameAssets
 {
@@ -22,7 +21,6 @@ namespace GameAssets
 
 		uint TypeID();
 		void Load( std::string file );
-		void Load( std::string file, Texture* tex );
 		void Reset();
 
 		float WidthText( std::string text );

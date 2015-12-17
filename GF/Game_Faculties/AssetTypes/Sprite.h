@@ -3,7 +3,6 @@
 
 #include "../AssetAbstract.h"
 #include "BasicTypes.h"
-#pragma comment (lib,"GF/Game_Assets/Assets.lib")
 
 namespace GameAssets
 {
@@ -21,7 +20,6 @@ namespace GameAssets
 	public:
 		uint TypeID();
 		void Load( std::string file );
-		void Load( std::string file, Texture* tex, GLSLProgram* shader );
 		void Reset();
 
 		Sprite& operator[]( ushort frame );
