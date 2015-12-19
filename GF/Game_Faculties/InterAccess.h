@@ -30,7 +30,15 @@ public:
 	void Update( double& seconds );
 	void RegisterAssetPath( std::string path );
 	void LoadAssets();
+	GameAsset* LoadAsset( std::string FileName );
 	GameAsset* GetAsset( std::string AssetName );
+	
+
+	template<class T>
+	T* LoadAsset( std::string FileName )
+	{
+		return Loader->LoadAsset( Factories[Asset_Factory<T>::TypeID() - 1], FileName );
+	}
 	template<class T>
 	T* GetAsset( std::string AssetName )
 	{

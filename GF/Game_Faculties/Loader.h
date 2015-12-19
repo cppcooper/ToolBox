@@ -3,7 +3,7 @@
 
 #include "File_Mgr.h"
 #include "STL.h"
-namespace GameAssets{ class Factory; }
+namespace GameAssets{ class Factory; class GameAsset; }
 using namespace GameAssets;
 
 class Asset_Loader
@@ -20,7 +20,7 @@ protected:
 public:
 	void RegisterDirectory( std::string path );
 	void LoadAssets();
-	GameAsset* LoadAsset( std::string file );
+	GameAsset* LoadAsset( Factory* F, std::string FileName );
 	//void UnloadAssets();
 };
 

@@ -148,32 +148,27 @@ void Asset_Loader::LoadAssets()
 	}
 }
 
-GameAsset* Asset_Loader::LoadAsset( std::string file )
+GameAsset* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
 {
-	std::string file_ext = file.substr( file.find_last_of( '.' ), file.npos );
-	file = file.substr( 0, file.find_last_of( '.' ) );
+	std::string file_ext = FileName.substr( FileName.find_last_of( '.' ), FileName.npos );
+	FileName = FileName.substr( 0, FileName.find_last_of( '.' ) );
 
 	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
-	const std::vector<Factory*>& FVector = Asset_Faculties::Instance().Factories;
-	uint Num_Factories = FVector.size();
 
-	for ( uint i = 0; i < Num_Factories; ++i )
+	if ( F->TypeExtensions().find( file_ext ) != std::string::npos )
 	{
-		Factory* F = FVector.at( i );
-		if ( F->TypeExtensions().find( file_ext ) != std::string::npos )
+		GameAsset* p = nullptr;
+		if ( !F->RecordExtension().empty() )
 		{
-			GameAsset* p = nullptr;
-			if ( !F->RecordExtension().empty() )
-			{
-				p = AssetMgr.GetAsset( file + F->RecordExtension() );
-			}
-			if ( p == nullptr )
-			{
-				AssetMgr.RecordAsset
-			}
-			p = p ? p : F->Create();
-			p->Load( file + file_ext );
-			return p;
+			p = AssetMgr.GetAsset( FileName + F->RecordExtension() );
 		}
+		if ( p == nullptr )
+		{
+			p = F->Create();
+			AssetMgr.RecordAsset( FileName + F->RecordExtension(), p );
+		}
+		p->Load( FileName + file_ext );
+		return p;
 	}
+	return nullptr;
 }
