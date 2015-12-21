@@ -11,8 +11,8 @@ void Font::Load( std::string file )
 {
 	assert( !m_Initialized );
 
-	std::string TexName = file.substr( file.find_last_of( '/' ) + 1, file.find_last_of( '.' ) ) + ".png";
-	m_Tex = (Texture*)Asset_Faculties::Instance().GetAsset( TexName );
+	std::string TexName = file.substr( file.find_last_of( '/' ) + 1, file.find_last_of( '.' ) );// +".png";
+	m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexName );
 	assert( m_Tex != nullptr );
 
 	std::ifstream Data;
@@ -32,7 +32,7 @@ void Font::Load( std::string file )
 		m_Widths[i] = (int)buffer[i];
 	}
 
-	m_Shader = (GLSLProgram*)Asset_Faculties::Instance().GetAsset( "font_default.glslp" );
+	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "font_default.glslp" );
 	assert( m_Shader != nullptr );
 
 	uint& Tex_width = m_Tex->width;
