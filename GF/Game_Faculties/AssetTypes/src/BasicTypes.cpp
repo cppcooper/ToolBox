@@ -2,7 +2,6 @@
 
 #include "../../Factory.h"
 #include "../../../../GFX/third party/FreeImage.h"
-#pragma comment (lib,"GFX/ThirdParty/FreeImage.lib")
 using namespace GameAssets;
 
 #include <fstream>
@@ -185,7 +184,7 @@ void Texture::Load( std::string file )
 	glGenTextures( 1, &glTexture_ID );
 
 	///Bind to the new texture ID
-	glActiveTexture( GL_TEXTURE0 );
+	glActiveTexture( GL_TEXTURE0 ); //GLEW #define
 	glBindTexture( GL_TEXTURE_2D, glTexture_ID );
 
 	///Set up some vars for OpenGL texturizing
