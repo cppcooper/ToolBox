@@ -19,7 +19,7 @@ private:
 
 	std::vector<GameModule*> m_Modules;
 	bool m_Initialized = false;
-	Game(){}
+	Game(){ Attach( &Controls ); }
 
 protected:
 	/*Update & Draw are not guaranteed to have a 1:1 execution ratio*/

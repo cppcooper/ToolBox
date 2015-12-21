@@ -12,7 +12,6 @@ void Game::Init()
 	m_glEngine.mouse_button_callback_f = std::bind( &Game::PressMouse, this, _1, _2, _3 );
 	m_glEngine.cursor_position_callback_f = std::bind( &Game::SetCursor, this, _1, _2 );
 	m_glEngine.Init();
-	Attach( &Controls );
 
 	//Configure
 	Controls.Bind_Key( GLFW_KEY_ESCAPE, std::bind( &glEngine::Quit, &m_glEngine ) );
@@ -43,6 +42,7 @@ void Game::Init()
 	//OpenGL Stuff?
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+	
 	m_Initialized = true;
 }
 
