@@ -4,7 +4,6 @@
 #include "GameModule.h"
 
 #include <mutex>
-#include <thread>
 #include <vector>
 #include <map>
 #include <functional>
