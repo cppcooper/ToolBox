@@ -6,66 +6,68 @@
 #include "Storage.h"
 #include "Factory.h"
 #include "STL.h"
-using namespace GameAssets;
+	using namespace GameAssets;
 
-class Asset_Pool
-{
-	using uint = unsigned int;
-	using typePool = std::multimap < uint, GameAsset* > ;
-	using assetPool = std::unordered_map < uint, typePool > ;
-private:
-
-protected:
-	std::unordered_map<uint, std::multimap<uint, GameAsset*>> Object_Pools;
-
-public:
-	void Update();
-
-	template<class T>
-	T* Get( uint N = 1 )
+	//TODO: implement minimum pool size
+	class Asset_Pool
 	{
-		T* ptr = nullptr;
-		uint id = Asset_Factory<T>::Instance().Get_TypeID();
-		if ( !Object_Pools.empty() )
+		using uint = unsigned int;
+		using ObjectPool = std::multimap < uint, GameAsset* >;
+		using AssetPool = std::unordered_map < uint, ObjectPool > ;
+	private:
+
+	protected:
+		//std::unordered_map<uint, std::multimap<uint, GameAsset*>> m_AssetPool
+		AssetPool m_AssetPool;
+
+	public:
+		void Update();
+
+		template<class T>
+		T* Get( uint N = 1 )
 		{
-			assetPool::iterator PoolPool_it = Object_Pools.find( id );
-			if ( PoolPool_it != Object_Pools.end() )
+			T* ptr = nullptr;
+			uint id = Asset_Factory<T>::Instance().Get_TypeID();
+
+			AssetPool::iterator pool_it = m_AssetPool.find( id );
+			if ( pool_it == m_AssetPool.end() )
 			{
-				typePool& TypePool = PoolPool_it->second;
-				typePool::iterator pool_it = TypePool.lower_bound( N );
-				if ( pool_it != TypePool.end() )
+				//Create an empty object pool for the array to be returned to later
+				std::multimap<uint, GameAsset*> Object_Pool;
+				pool_it = m_AssetPool.emplace( id, Object_Pool ).first;
+			}
+
+			ObjectPool& objectPool = ( pool_it->second );
+			ObjectPool::iterator it = objectPool.lower_bound( N );
+			if ( it != objectPool.end() )
+			{
+				uint remainder = it->first - N;
+				assert( Asset_Factory<T>::Instance().IsFactoryType( it->second ) );
+				ptr = (T*)it->second;
+				
+				objectPool.erase( it );
+				if ( remainder > 0 )
 				{
-					uint remainder = pool_it->first - N;
-					ptr = (T*)pool_it->second;
-					TypePool.erase( pool_it );
-					if ( remainder > 0 )
-					{
-						TypePool.emplace( remainder, &ptr[N] );
-					}
-				}
-				else
-				{
-					ptr = Asset_Faculties::Instance().Allocator->Allocate<T>( N );
+					// ptr ranges from [0] to [N-1] (ie. N elements)
+					// this means [N] to [N + remainder] onwards is our remainder
+					objectPool.emplace( remainder, &ptr[N] );
 				}
 			}
+			else
+			{
+				ptr = Asset_Faculties::Instance().Allocator->Allocate<T>( N );
+			}
+			return ptr;
 		}
-		else
+
+		void Return( GameAsset* ptr, uint N = 1 )
 		{
-			//Create an empty object pool for the array to be returned to later
-			std::multimap<uint, GameAsset*> Object_Pool;
-			Object_Pools.emplace( id, Object_Pool );
+			unsigned int id = ptr->TypeID();
+			AssetPool::iterator TPool_it = m_AssetPool.find( id );
+			assert( TPool_it != m_AssetPool.end() );
+			TPool_it->second.emplace( N, ptr );
 		}
-		return ptr;
-	}
 
-	void Return( GameAsset* ptr, uint N = 1 )
-	{
-		unsigned int id = ptr->TypeID();
-		assetPool::iterator TPool_it = Object_Pools.find( id );
-		assert( TPool_it != Object_Pools.end() );
-		TPool_it->second.emplace( N, ptr );
-	}
-
-};
+	};
 
 #endif
