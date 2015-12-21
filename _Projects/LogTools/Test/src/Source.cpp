@@ -1,11 +1,11 @@
-#include <logtools.h>
+#include <tools_logger.h>
 using namespace dbg_log;
 
 void func1()
 {
 	for ( int i = 0; i < 1000; ++i )
 	{
-		LOGFILEX( 0, logDEBUG1 ) << "fuck yea! Alright, count is at: " << i;
+		LOGFILEX( 0, DEBUG1 ) << "fuck yea! Alright, count is at: " << i;
 	}
 }
 
@@ -13,7 +13,7 @@ void func2()
 {
 	for ( int i = 0; i < 1000; ++i )
 	{
-		LOGFILE1( logDEBUG1 ) << "fuck yea! Alright, count is at: " << i++;
+		LOGFILE1( DEBUG1 ) << "fuck yea! Alright, count is at: " << i++;
 	}
 }
 
