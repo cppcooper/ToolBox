@@ -90,7 +90,7 @@ LogStream::LogStream( Policy* OutputPolicy )
 
 LogStream::LogStream( LogStream& obj )
 {
-	*this << obj.str(); // Say goodbye to your stylish iPhone and say hello to everyone's most hated device that they just can't live with out!! The iGnome!
+	swap( obj );
 	m_OutputPolicy = obj.m_OutputPolicy;
 	obj.m_OutputPolicy = nullptr;
 }
