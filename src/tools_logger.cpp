@@ -5,7 +5,6 @@ using namespace logger;
 
 namespace logger
 {
-
 	inline std::string GetTimeNow()
 	{
 		static std::mutex time_mutex;
@@ -90,9 +89,12 @@ LogStream::LogStream( Policy* OutputPolicy )
 
 LogStream::LogStream( LogStream& obj )
 {
-	swap( obj );
-	m_OutputPolicy = obj.m_OutputPolicy;
-	obj.m_OutputPolicy = nullptr;
+	if ( obj.m_OutputPolicy )
+	{
+		swap( obj );
+		m_OutputPolicy = obj.m_OutputPolicy;
+		obj.m_OutputPolicy = nullptr;
+	}
 }
 
 LogStream::~LogStream()
@@ -116,7 +118,7 @@ Log::Log( Policy* OutputPolicy )
 
 Log::~Log()
 {
-	delete m_Policy;
+	m_Policy->Close();
 }
 
 LogLevel& Log::ReportingLevel()
@@ -125,11 +127,15 @@ LogLevel& Log::ReportingLevel()
 	return level;
 }
 
-LogStream Log::Get( LogLevel level )
+LogStream Log::Line( LogLevel level )
 {
-	LogStream logStream( m_Policy );
-	logStream << std::endl << " -  " << GetTimeNow() << " - \t" << GetLogLevel( level );
-	return  logStream ;
+	if ( m_Policy && level <= ReportingLevel() )
+	{
+		LogStream logStream( m_Policy );
+		logStream << std::endl << " -  " << GetTimeNow() << " - \t" << GetLogLevel( level );
+		return  logStream;
+	}
+	return LogStream( nullptr );
 }
 
 #pragma endregion
@@ -175,8 +181,8 @@ LogFile_Manager::~LogFile_Manager()
 {
 	for ( unsigned int i = 0; i < m_Logs.size(); ++i )
 	{
-		m_Files[i]->Close();
 		delete m_Logs[i];
+		delete m_Files[i];
 	}
 }
 
@@ -201,12 +207,19 @@ LogStream LogFile_Manager::Get( unsigned int index, LogLevel level )
 {
 	if ( index < Instance().m_Logs.size() )
 	{
-		if ( level <= Instance().m_Logs[index]->ReportingLevel() )
-		{
-			return  Instance().m_Logs[index]->Get( level ) ;
-		}
+		return  Instance().m_Logs[index]->Line( level );
 	}
 	return  LogStream( nullptr );
+}
+
+Log& LogFile_Manager::GetLog( unsigned int index )
+{
+	static Log emptyLog( nullptr );
+	if ( index < Instance().m_Logs.size() )
+	{
+		return *Instance().m_Logs[index];
+	}
+	return emptyLog;
 }
 
 #pragma endregion

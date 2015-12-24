@@ -36,6 +36,7 @@ namespace logger
 	class Policy
 	{
 	public:
+		virtual bool Close() = 0;
 		virtual void lout( const std::string& LogLine ) = 0;
 	};
 
@@ -59,7 +60,7 @@ namespace logger
 		Log( Policy* OutputPolicy );
 		~Log();
 		LogLevel& ReportingLevel();
-		LogStream Get( LogLevel level );
+		LogStream Line( LogLevel level );
 	};
 
 	//class FilePolicy: defines how to write logs to a file
@@ -72,7 +73,7 @@ namespace logger
 		std::fstream m_File;
 	public:
 		bool Open( std::string FileName, bool Append );
-		bool Close();
+		bool Close() final override;
 		void lout( const std::string& LogLine ) final override;
 	};
 
@@ -88,6 +89,7 @@ namespace logger
 		static LogFile_Manager& Instance();
 		static unsigned int RegisterLog( std::string FileName, bool Append, LogLevel ReportLevel = DEBUG1 );
 		static LogStream Get( unsigned int LogIndex, LogLevel level );
+		static Log& GetLog( unsigned int LogIndex );
 	};
 }
 
