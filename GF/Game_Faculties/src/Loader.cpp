@@ -70,7 +70,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 			if ( p == nullptr )
 			{
 				p = F->Create(); //Guarantees (p != nullptr)
-				AssetMgr.RecordAsset( AssetRecordName, p );
+				assert( AssetMgr.RecordAsset( AssetRecordName, p ) );
 			}
 			p->Load( it->second + it->first );
 			it = std::next( it );
@@ -114,7 +114,7 @@ void Asset_Loader::LoadSingleFileAssets( Factory* F )
 			{
 				p = F->Create();
 				p->Load( it->second + it->first );
-				AssetMgr.RecordAsset( it->first, p );
+				assert( AssetMgr.RecordAsset( it->first, p ) );
 			}
 			it = std::next( it );
 		}
@@ -165,7 +165,7 @@ GameAsset* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
 		if ( p == nullptr )
 		{
 			p = F->Create();
-			AssetMgr.RecordAsset( FileName + F->RecordExtension(), p );
+			assert( AssetMgr.RecordAsset( FileName + F->RecordExtension(), p ) );
 		}
 		p->Load( FileName + file_ext );
 		return p;

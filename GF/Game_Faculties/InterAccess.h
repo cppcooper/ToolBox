@@ -30,14 +30,12 @@ public:
 	void Update( double& seconds );
 	void RegisterAssetPath( std::string path );
 	void LoadAssets();
-	GameAsset* LoadAsset( std::string FileName );
-	GameAsset* GetAsset( std::string AssetName );
-	
+	GameAsset* LoadAsset( unsigned int type_ID, std::string FileName );
 
 	template<class T>
 	T* LoadAsset( std::string FileName )
 	{
-		return Loader->LoadAsset( Factories[Asset_Factory<T>::TypeID() - 1], FileName );
+		return Asset_Factory<T>::Instance().LoadAsset( FileName );
 	}
 	template<class T>
 	T* GetAsset( std::string AssetName )

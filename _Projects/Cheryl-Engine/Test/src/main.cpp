@@ -16,4 +16,6 @@ void main(int argc, char *argv[])
 	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	//_CrtSetBreakAlloc( 1 );
 	Game::Instance().Init();
+	glActiveTexture( GL_TEXTURE0 );
+	Game::Instance().Run();
 }

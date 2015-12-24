@@ -23,25 +23,21 @@ public:
 		return instance;
 	}
 
-	GameAsset* Create( uint N = 1 )	{
+	GameAsset* Create( uint N = 1 ) final override {
 		return (GameAsset*)Asset_Faculties::Instance().Pool->Get<T>( N );
 	}
 
-	T* LoadAsset( std::string FileName ){
-		GameAsset* p = Asset_Faculties::Instance().LoadAsset( FileName );
-		return IsFactoryType( p ) ? (T*)p : nullptr;
+	std::string& TypeExtensions() final override {
+		static std::string extensions = "";
+		return extensions;
 	}
 
-	T* GetAsset( std::string AssetName ){
-		GameAsset* p = Asset_Faculties::Instance().GetAsset( AssetName );
-		return IsFactoryType( p ) ? (T*)p : nullptr;
+	std::string& RecordExtension() final override {
+		static std::string extension = "";
+		return extension;
 	}
 
-	bool IsFactoryType( GameAsset* p ){
-		return ( p->TypeID() == TID );
-	}
-
-	uint Get_TypeID(){
+	uint Get_TypeID() final override {
 		return TID;
 	}
 
@@ -49,14 +45,18 @@ public:
 		return Instance().TID;
 	}
 
-	std::string& TypeExtensions(){
-		static std::string extensions = "";
-		return extensions;
+	bool IsFactoryType( GameAsset* p ){
+		return ( p->TypeID() == TID );
 	}
 
-	std::string& RecordExtension(){
-		static std::string extension = "";
-		return extension;
+	T* LoadAsset( std::string FileName ){
+		GameAsset* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
+		return IsFactoryType( p ) ? (T*)p : nullptr;
+	}
+
+	T* GetAsset( std::string AssetName ){
+		GameAsset* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
+		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 };
 
