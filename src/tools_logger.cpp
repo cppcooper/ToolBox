@@ -43,35 +43,35 @@ namespace logger
 		switch ( level )
 		{
 			case FATAL:
-				return "\t~FATAL~\t\t";
+				return " ~FATAL~\t\t\t";
 				break;
 
 			case ERROR:
-				return "\tERROR: \t\t";
+				return " ~ERROR~\t\t\t";
 				break;
 
 			case WARNING:
-				return "WARNING: \t";
+				return "WARNING:\t\t";
 				break;
 
 			case INFO:
-				return "INFO:\t  ";
+				return "INFO:\t\t";
 				break;
 
 			case DEBUG1:
-				return "DEBUG1:\t\t";
+				return "-DEBUG1:\t\t";
 				break;
 
 			case DEBUG2:
-				return "DEBUG2:\t\t  ";
+				return "--DEBUG2:\t\t";
 				break;
 
 			case DEBUG3:
-				return "DEBUG3:\t\t    ";
+				return "---DEBUG3:\t\t";
 				break;
 
 			case DEBUG4:
-				return "DEBUG4:\t\t      ";
+				return "----DEBUG4:\t\t";
 				break;
 
 			default:
@@ -81,18 +81,30 @@ namespace logger
 }
 
 
+#pragma region "LogStream"
+
 LogStream::LogStream( Policy* OutputPolicy )
 {
 	m_OutputPolicy = OutputPolicy;
+}
+
+LogStream::LogStream( LogStream& obj )
+{
+	*this << obj.str(); // Say goodbye to your stylish iPhone and say hello to everyone's most hated device that they just can't live with out!! The iGnome!
+	m_OutputPolicy = obj.m_OutputPolicy;
+	obj.m_OutputPolicy = nullptr;
 }
 
 LogStream::~LogStream()
 {
 	if ( m_OutputPolicy )
 	{
-		m_OutputPolicy->lout( this->str() );
+		m_OutputPolicy->lout( str() );
 	}
 }
+
+#pragma endregion
+
 
 #pragma region "Log"
 
@@ -117,13 +129,15 @@ LogStream Log::Get( LogLevel level )
 {
 	LogStream logStream( m_Policy );
 	logStream << std::endl << " -  " << GetTimeNow() << " - \t" << GetLogLevel( level );
-	return logStream;
+	return  logStream ;
 }
 
 #pragma endregion
 
 
 #pragma region "FilePolicy"
+
+std::set<std::string> FilePolicy::m_LogFiles;
 
 bool FilePolicy::Open( std::string FileName, bool Append )
 {
@@ -172,7 +186,7 @@ LogFile_Manager& LogFile_Manager::Instance()
 	return instance;
 }
 
-unsigned int LogFile_Manager::RegisterLog( std::string FileName, bool Append, LogLevel ReportLevel = DEBUG1 )
+unsigned int LogFile_Manager::RegisterLog( std::string FileName, bool Append, LogLevel ReportLevel )
 {
 	FilePolicy* file = new FilePolicy();
 	assert( file->Open( FileName, Append ) );
@@ -180,6 +194,7 @@ unsigned int LogFile_Manager::RegisterLog( std::string FileName, bool Append, Lo
 	log->ReportingLevel() = ReportLevel;
 	Instance().m_Files.push_back( file );
 	Instance().m_Logs.push_back( log );
+	return Instance().m_Logs.size() - 1;
 }
 
 LogStream LogFile_Manager::Get( unsigned int index, LogLevel level )
@@ -188,10 +203,10 @@ LogStream LogFile_Manager::Get( unsigned int index, LogLevel level )
 	{
 		if ( level <= Instance().m_Logs[index]->ReportingLevel() )
 		{
-			return Instance().m_Logs[index]->Get( level );
+			return  Instance().m_Logs[index]->Get( level ) ;
 		}
 	}
-	return LogStream( nullptr );
+	return  LogStream( nullptr );
 }
 
 #pragma endregion

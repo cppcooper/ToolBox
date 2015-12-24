@@ -4,7 +4,12 @@
 #ifndef LOG_WRITE_LEVELS
 #define LOG_WRITE_LEVELS (logger::FATAL + logger::ERROR + logger::WARNING + logger::INFO + logger::DEBUG1 + logger::DEBUG2 + logger::DEBUG3 + logger::DEBUG4 )
 #endif
-#pragma comment (lib,"tools_logger.lib")
+
+#ifdef _DEBUG
+#pragma comment (lib,"tools_logger_Debug.lib")
+#else
+#pragma comment (lib,"tools_logger_Release.lib")
+#endif
 
 #include <string>
 #include <sstream>
@@ -41,6 +46,7 @@ namespace logger
 		Policy* m_OutputPolicy = nullptr;
 	public:
 		LogStream( Policy* OutputPolicy );
+		LogStream( LogStream& obj );
 		~LogStream();
 	};
 
@@ -91,5 +97,4 @@ namespace logger
 #define LOGFILE_3( level )				LOGFILE( 2, level )
 #define LOGFILE_4( level )				LOGFILE( 3, level )
 #define LOGFILE_5( level )				LOGFILE( 4, level )
-
 #endif
