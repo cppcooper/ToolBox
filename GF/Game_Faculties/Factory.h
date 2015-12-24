@@ -3,6 +3,7 @@
 
 #include "AssetAbstract.h"
 #include "InterAccess.h"
+#include <tools_logger.h>
 #include "Pool.h"
 #include "STL.h"
 using namespace GameAssets;
@@ -11,13 +12,20 @@ template<class T>
 class Asset_Factory : public Factory
 {
 private:
+	logger::Log* m_Log;
 	uint TID = 0;
 	Asset_Factory(){
 		Asset_Faculties::Instance().Factories.push_back( ( Factory* )this );
 		TID = Asset_Faculties::Instance().Factories.size();
+		m_Log = &Asset_Faculties::Instance().GetManagementLog();
+		m_Log->Line( INFO ) << "Factory Initialized #" << TID;
 	}
 
 public:
+	~Asset_Factory(){
+		m_Log->Line( INFO ) << "Factory Deinitialized #" << TID;
+	}
+
 	static Asset_Factory<T>& Instance(){
 		static Asset_Factory<T> instance;
 		return instance;

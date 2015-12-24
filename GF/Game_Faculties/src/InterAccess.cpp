@@ -6,8 +6,9 @@
 #include "../AssetMgr.h"
 
 
-Asset_Faculties::Asset_Faculties()
+Asset_Faculties::Asset_Faculties() : m_logger( &m_logFile )
 {
+	assert( m_logFile.Open( "Management.log", false ) );
 	Allocator = new Asset_Storage;
 	Pool = new Asset_Pool;
 	Loader = new Asset_Loader;
@@ -45,4 +46,9 @@ void Asset_Faculties::LoadAssets()
 GameAsset* Asset_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
 {
 	return Loader->LoadAsset( Factories[type_ID - 1], FileName );
+}
+
+logger::Log& Asset_Faculties::GetManagementLog()
+{
+	return m_logger;
 }
