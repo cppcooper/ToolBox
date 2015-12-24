@@ -33,12 +33,12 @@ void Mesh::Load( std::string file )
 
 	std::string TexName = "";
 	Data >> TexName;
-	m_Tex = (Texture*)Asset_Faculties::Instance().GetAsset( TexName );
+	m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexName );
 	assert( m_Tex != nullptr );
 	assert( !Data.fail() );
 	Data.close();
 
-	m_Shader = (GLSLProgram*)Asset_Faculties::Instance().GetAsset( "3d_default.glslp" );
+	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "3d_default.glslp" );
 	assert( m_Shader != nullptr );
 
 	Init();

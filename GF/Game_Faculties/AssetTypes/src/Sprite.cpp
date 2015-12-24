@@ -25,7 +25,7 @@ void Sprite::Load( std::string file )
 		Data.read( TexFile, 1 );
 		Data.read( TexFile, TexLength );
 
-		m_Tex = (Texture*)Asset_Faculties::Instance().GetAsset( TexFile );
+		m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexFile );
 		assert( m_Tex != nullptr );
 		uint& Tex_width = m_Tex->width;
 		uint& Tex_height = m_Tex->height;
@@ -100,7 +100,7 @@ void Sprite::Load( std::string file )
 	assert( !Data.fail() );
 	Data.close();
 
-	m_Shader = (GLSLProgram*)Asset_Faculties::Instance().GetAsset( "2d_default.glslp" );
+	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 	assert( m_Shader != nullptr );
 
 	m_FrameIndex = 0;
