@@ -10,12 +10,12 @@ using namespace GameAssets;
 Asset_Loader::Asset_Loader()
 {
 	m_Log = &Asset_Faculties::Instance().GetManagementLog();
-	m_Log->Line( INFO ) << "Asset Loader Initialized.";
+	m_Log->Line( _INFO ) << "Asset Loader Initialized.";
 }
 
 Asset_Loader::~Asset_Loader()
 {
-	m_Log->Line( INFO ) << "Asset Loader Deinitialized.";
+	m_Log->Line( _INFO ) << "Asset Loader Deinitialized.";
 }
 
 
@@ -27,7 +27,7 @@ unsigned int Asset_Loader::CountAssets( Factory* F )
 	std::set<std::string> Assets;
 	std::string Ext_List = F->TypeExtensions();
 	std::string Record_Ext = F->RecordExtension();
-	m_Log->Line( INFO ) << "Counting Catalogued Assets of Type ID: " << F->Get_TypeID() << ", Extension Types to count: " << F->TypeExtensions();
+	m_Log->Line( _INFO ) << "Asset_Loader::CountAssets()";
 	size_t Cpos = 0;
 	size_t Lpos = 0;
 
@@ -37,21 +37,29 @@ unsigned int Asset_Loader::CountAssets( Factory* F )
 	{
 		//This outer loop goes through all the extensions in Ext_List
 		Cpos = Ext_List.find_first_of( ';', Lpos );
-		m_Log->Line( DEBUG2 ) << "Reading extension.. Cpos: " << Cpos << ", Lpos: " << Lpos;
+		std::string Current_Ext = Ext_List.substr( Lpos, Cpos - Lpos );
+		m_Log->Line( _DEBUG3 ) << "Extension Reading Data"
+			<< newl << "Extension List: " << Ext_List
+			<< newl << "Cpos: " << Cpos
+			<< newl << "Lpos: " << Lpos;
 
-		std::string Extension = Ext_List.substr( Lpos, Cpos - Lpos );
-		m_Log->Line( DEBUG1 ) << "Counting Assets of extension type: " << Extension;
-		file_directory& FileListing = file_mgr.Get_Files( Extension );
+		file_directory& File_Listing = file_mgr.Get_Files( Current_Ext );
+		m_Log->Line( _DEBUG3 ) << "Files Data"
+			<< newl << "Current Extension: " << Current_Ext
+			<< newl << "File Count: " << File_Listing.size();
 
-		auto it = FileListing.begin();
-		while ( it != FileListing.end() )
+		auto it = File_Listing.begin();
+		while ( it != File_Listing.end() )
 		{
 			std::string AssetRecordName = it->first.substr( 0, it->first.find_last_of( '.' ) ) + Record_Ext;
 			Assets.emplace( AssetRecordName );
+			it = std::next( it );
 		}
 		Lpos = Cpos + 1;
 	}
-	m_Log->Line( DEBUG1 ) << "There was " << Assets.size() << " asset files counted.";
+	m_Log->Line( _DEBUG1 ) << "Count Complete"
+		<< newl << "Type ID: " << F->Get_TypeID()
+		<< newl << "Count: " << Assets.size();
 	return Assets.size();
 }
 
@@ -59,7 +67,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 {
 	std::string Ext_List = F->TypeExtensions();
 	std::string Record_Ext = F->RecordExtension();
-	m_Log->Line( INFO ) << "Loading Multi-File Assets of Type ID: " << F->Get_TypeID();
+	m_Log->Line( _INFO ) << "Asset_Loader::LoadMultiFileAssets()";
 	size_t Cpos = 0;
 	size_t Lpos = 0;
 
@@ -76,10 +84,17 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 	while ( Cpos < final_pos )
 	{
 		Cpos = Ext_List.find_first_of( ';', Lpos );
-		m_Log->Line( DEBUG3 ) << "Reading extension.. Cpos: " << Cpos << ", Lpos: " << Lpos;
 		
 		std::string Current_Ext = Ext_List.substr( Lpos, Cpos - Lpos );
+		m_Log->Line( _DEBUG3 ) << "Extension Reading Data"
+			<< newl << "Extension List: " << Ext_List
+			<< newl << "Cpos: " << Cpos
+			<< newl << "Lpos: " << Lpos;
+
 		file_directory& File_Listing = file_mgr.Get_Files( Current_Ext );
+		m_Log->Line( _DEBUG3 ) << "Files Data"
+			<< newl << "Current Extension: " << Current_Ext
+			<< newl << "File Count: " << File_Listing.size();
 
 		//Load assets with files of the Current_Extension
 		auto it = File_Listing.begin();
@@ -91,18 +106,18 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 			if ( p == nullptr )
 			{
 				p = F->Create(); //Guarantees (p != nullptr)
-				m_Log->Line( DEBUG2 ) << "New Asset: " << AssetRecordName << " Address: " << p;
+				m_Log->Line( _INFO ) << "New Record";
 				assert( AssetMgr.RecordAsset( AssetRecordName, p ) );
 			}
 			else
 			{
-				m_Log->Line( DEBUG2 ) << "Existing Asset: " << AssetRecordName << " Address: " << p;
+				m_Log->Line( _INFO ) << "Existing Record";
 			}
 
-			m_Log->Line( DEBUG1 )
-				<< std::endl << "Asset Record: " << AssetRecordName << ", pointer = " << p
-				<< std::endl << "Loading file: " << it->first
-				<< std::endl;
+			m_Log->Line( _DEBUG1 ) << "Loading File"
+				<< newl << "Record: " << AssetRecordName
+				<< newl << "Address: " << p
+				<< newl << "Loading: " << it->first;
 			p->Load( it->second + it->first );
 			it = std::next( it );
 		}
@@ -114,7 +129,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 void Asset_Loader::LoadSingleFileAssets( Factory* F )
 {
 	std::string Ext_List = F->TypeExtensions();
-	m_Log->Line( INFO ) << "Loading Single-File Assets of Type ID: " << F->Get_TypeID();
+	m_Log->Line( _INFO ) << "Asset_Loader::LoadSingleFileAssets()";
 	size_t Cpos = 0;
 	size_t Lpos = 0;
 
@@ -132,10 +147,17 @@ void Asset_Loader::LoadSingleFileAssets( Factory* F )
 	while ( Cpos < final_pos )
 	{
 		Cpos = Ext_List.find_first_of( ',', Lpos );
-		m_Log->Line( DEBUG3 ) << "Reading extension.. Cpos: " << Cpos << ", Lpos: " << Lpos;
 
 		std::string Current_Ext = Ext_List.substr( Lpos, Cpos - Lpos );
+		m_Log->Line( _DEBUG3 ) << "Extension Reading Data"
+			<< newl << "Extension List: " << Ext_List
+			<< newl << "Cpos: " << Cpos
+			<< newl << "Lpos: " << Lpos;
+
 		file_directory& File_Listing = file_mgr.Get_Files( Current_Ext );
+		m_Log->Line( _DEBUG3 ) << "Files Data"
+			<< newl << "Current Extension: " << Current_Ext
+			<< newl << "File Count: " << File_Listing.size();
 
 		//Load assets with files of the Current_Extension
 		auto it = File_Listing.begin();
@@ -146,12 +168,16 @@ void Asset_Loader::LoadSingleFileAssets( Factory* F )
 			{
 				p = F->Create();
 				p->Load( it->second + it->first );
-				m_Log->Line( DEBUG1 ) << "Asset loaded" << std::endl << "Asset: " << it->first << std::endl << "Address: " << p;
+				m_Log->Line(_DEBUG2) << "Successful Asset Load"
+					<< newl << "Asset: " << it->first 
+					<< newl << "Address: " << p;
 				assert( AssetMgr.RecordAsset( it->first, p ) );
 			}
 			else
 			{
-				m_Log->Line( ERROR ) << "Asset was previously loaded" << std::endl << "Asset: " << it->first << std::endl << "Address: " << p;
+				m_Log->Line( _ERROR ) << "Failed Asset Load - Pre-existing Asset"
+					<< newl << "Asset: " << it->first 
+					<< newl << "Address: " << p;
 			}
 			it = std::next( it );
 		}
@@ -166,14 +192,15 @@ void Asset_Loader::RegisterDirectory( std::string path )
 
 void Asset_Loader::LoadAssets()
 {
-	m_Log->Line( INFO ) << "Asset Loader.... Loading all registered asset files";
+	m_Log->Line( _INFO ) << "Asset Loader::LoadAssets()";
 	const std::vector<Factory*>& FVector = Asset_Faculties::Instance().Factories;
 	uint Num_Factories = FVector.size();
 
 	for ( uint i = 0; i < Num_Factories; ++i )
 	{
 		Factory* F = FVector.at( i );
-		m_Log->Line( DEBUG1 ) << "Auto-Load sequence: Processing Type ID #" << F->Get_TypeID();
+		m_Log->Line( _DEBUG1 ) << "Auto-Load Sequence"
+			<< newl << "Type ID:" << F->Get_TypeID();
 		assert( !F->TypeExtensions().empty() );
 		bool bType_Loads_ManyFiles = !F->RecordExtension().empty();
 		if ( bType_Loads_ManyFiles )
@@ -184,49 +211,45 @@ void Asset_Loader::LoadAssets()
 		{
 			LoadSingleFileAssets( F );
 		}
+		m_Log->Line( _INFO ) << "Sequence Completed for Type ID:" << F->Get_TypeID();
 	}
 }
 
 GameAsset* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
 {
-	m_Log->Line( INFO ) << "Manual Load Procedure"
-		<< std::endl << "Asset: " << FileName
-		<< std::endl << "Type ID: " << F->Get_TypeID();
+	m_Log->Line( _INFO ) << "Asset_Loader::LoadAsset()";
+	m_Log->Line( _DEBUG1 ) << "Manual Load Procedure"
+		<< newl << "File: " << FileName
+		<< newl << "Type ID: " << F->Get_TypeID()
+		<< newl << "Type ID Extensions: " << F->TypeExtensions();
+	
 	std::string file_ext = FileName.substr( FileName.find_last_of( '.' ), FileName.npos );
-	FileName = FileName.substr( 0, FileName.find_last_of( '.' ) );
-
+	std::string RecordName = FileName.substr( 0, FileName.find_last_of( '.' ) );
 	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 
 	if ( F->TypeExtensions().find( file_ext ) != std::string::npos )
 	{
 		GameAsset* p = nullptr;
-		LogStream& logLine = m_Log->Line( DEBUG1 );
-		logLine << std::endl << "Asset File: " + FileName;
-		if ( !F->RecordExtension().empty() )
-		{
-			p = AssetMgr.GetAsset( FileName + F->RecordExtension() );
-			logLine << F->RecordExtension();
-		}
-		else
-		{
-			p = AssetMgr.GetAsset( FileName + file_ext );
-			logLine << file_ext;
-		}
-		logLine << std::endl << "Address: ";
+		RecordName += !F->RecordExtension().empty() ? F->RecordExtension() : file_ext;
+		p = AssetMgr.GetAsset( RecordName );
 		if ( p == nullptr )
 		{
 			p = F->Create();
-			logLine << std::endl << "*Asset Loaded*";
-			assert( AssetMgr.RecordAsset( FileName + F->RecordExtension(), p ) );
+			m_Log->Line( _DEBUG1 ) << "New Asset"
+				<< newl << "Record: " << RecordName
+				<< newl << "Address: " << p;
+			assert( AssetMgr.RecordAsset( RecordName, p ) );
 		}
 		else
 		{
-			logLine << std::endl << "*Asset Reloaded*";
+			m_Log->Line( _DEBUG1 ) << "Existing Asset"
+				<< newl << "Record: " << RecordName
+				<< newl << "Address: " << p;
 		}
-		logLine << std::endl;
 		p->Load( FileName + file_ext );
 		return p;
 	}
-	m_Log->Line( ERROR ) << FileName << " is not a valid Asset File. - nullptr return";
+	m_Log->Line( _ERROR ) << "EXTENSION NOT FOUND - Returns nullptr"
+		<< newl << "Extension: " << file_ext;
 	return nullptr;
 }

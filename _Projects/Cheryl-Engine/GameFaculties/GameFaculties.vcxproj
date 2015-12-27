@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp" />
+    <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetAbstract.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetMgr.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\File_Mgr.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\InterAccess.cpp" />

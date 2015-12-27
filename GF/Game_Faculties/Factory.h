@@ -18,12 +18,16 @@ private:
 		Asset_Faculties::Instance().Factories.push_back( ( Factory* )this );
 		TID = Asset_Faculties::Instance().Factories.size();
 		m_Log = &Asset_Faculties::Instance().GetManagementLog();
-		m_Log->Line( INFO ) << "Factory Initialized #" << TID;
+		m_Log->Line( _INFO ) << "Factory Initialized #" << TID;
+	}
+
+	logger::LogStream gLog( logger::LogLevel level ){
+		return m_Log->Line( level );
 	}
 
 public:
 	~Asset_Factory(){
-		m_Log->Line( INFO ) << "Factory Deinitialized #" << TID;
+		m_Log->Line( _INFO ) << "Factory Deinitialized #" << TID;
 	}
 
 	static Asset_Factory<T>& Instance(){
@@ -32,7 +36,17 @@ public:
 	}
 
 	GameAsset* Create( uint N = 1 ) final override {
+		gLog( _INFO ) << "Factory #" << TID << " Creating Array with " << N << " elements.";
 		return (GameAsset*)Asset_Faculties::Instance().Pool->Get<T>( N );
+	}
+
+	T* Cast( GameAsset* p ){
+		if ( IsFactoryType( p ) ){
+			return (T*)p;
+		}
+		else{
+			return nullptr;
+		}
 	}
 
 	std::string& TypeExtensions() final override {
@@ -54,24 +68,23 @@ public:
 	}
 
 	bool IsFactoryType( GameAsset* p ){
+		gLog( _DEBUG1 ) << "Factory ID: " << TID
+			<< newl << "p: " << p
+			<< newl << "p Type ID: " << p->TypeID();
 		return ( p->TypeID() == TID );
 	}
 
 	T* LoadAsset( std::string FileName ){
+		gLog( _INFO ) << "Factory #" << TID << " Loading Asset " << FileName;
 		GameAsset* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 
 	T* GetAsset( std::string AssetName ){
+		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName;
 		GameAsset* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 };
-
-/*template<class T>
-T* Asset_Faculties::GetAsset( std::string AssetName )
-{
-	return Asset_Factory<T>::Instance().GetAsset( AssetName );
-}*/
 
 #endif

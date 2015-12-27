@@ -41,40 +41,40 @@ namespace logger
 	{
 		switch ( level )
 		{
-			case FATAL:
-				return " ~FATAL~\t\t\t";
+			case _FATAL:
+				return "\n\t\t\t\t\t~FATAL~\n";
 				break;
 
-			case ERROR:
-				return " ~ERROR~\t\t\t";
+			case _ERROR:
+				return "\n\t\t\t\t\t~ERROR~\n";
 				break;
 
-			case WARNING:
-				return "WARNING:\t\t";
+			case _WARNING:
+				return "WARNING:\t";
 				break;
 
-			case INFO:
+			case _INFO:
 				return "INFO:\t\t";
 				break;
 
-			case DEBUG1:
-				return "-DEBUG1:\t\t";
+			case _DEBUG1:
+				return "-DEBUG1:\n\t\t\t\t\t";
 				break;
 
-			case DEBUG2:
-				return "--DEBUG2:\t\t";
+			case _DEBUG2:
+				return "--DEBUG2:\n\t\t\t\t\t";
 				break;
 
-			case DEBUG3:
-				return "---DEBUG3:\t\t";
+			case _DEBUG3:
+				return "---DEBUG3:\n\t\t\t\t\t";
 				break;
 
-			case DEBUG4:
-				return "----DEBUG4:\t\t";
+			case _DEBUG4:
+				return "----DEBUG4:\n\t\t\t\t\t";
 				break;
 
 			default:
-				return "DoneFucked:\t\t      ";
+				return "DoneFucked:\t\t\t      ";
 		}
 	}
 }
@@ -101,7 +101,8 @@ LogStream::~LogStream()
 {
 	if ( m_OutputPolicy )
 	{
-		m_OutputPolicy->lout( str() );
+		//TODO: Branch here with a new thread? Investigate performance
+		m_OutputPolicy->lout( str().append( "\n" ) );
 	}
 }
 
@@ -132,7 +133,7 @@ LogStream Log::Line( LogLevel level )
 	if ( m_Policy && level <= ReportingLevel() )
 	{
 		LogStream logStream( m_Policy );
-		logStream << std::endl << " -  " << GetTimeNow() << " - \t" << GetLogLevel( level );
+		logStream << " -  " << GetTimeNow() << " ~ - ~ " << GetLogLevel( level );
 		return  logStream;
 	}
 	return LogStream( nullptr );
@@ -149,7 +150,7 @@ bool FilePolicy::Open( std::string FileName, bool Append )
 {
 	m_FileLock.lock();
 	assert( !m_File.is_open() && m_LogFiles.emplace( FileName ).second );
-	m_File.open( FileName, Append ? std::fstream::in | std::fstream::app : std::fstream::in );
+	m_File.open( FileName, Append ? std::fstream::out | std::fstream::app : std::fstream::out );
 	bool bOpen = m_File.is_open();
 	m_FileLock.unlock();
 	return bOpen;
@@ -169,6 +170,7 @@ void FilePolicy::lout( const std::string& LogLine )
 	m_FileLock.lock();
 	assert( m_File.is_open() );
 	m_File << LogLine;
+	m_File.flush();
 	m_FileLock.unlock();
 }
 

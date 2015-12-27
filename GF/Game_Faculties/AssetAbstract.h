@@ -2,6 +2,7 @@
 #define _ASSETABSTRACT_H
 
 #include "STL.h"
+#include <tools_logger.h>
 
 class Asset_Storage;
 class Asset_Loader;
@@ -9,6 +10,7 @@ class Asset_Loader;
 namespace GameAssets
 {
 	class GameAsset;
+	extern logger::LogStream LogLine( logger::LogLevel level );
 
 	/* Asset Factory Base Class
 	Defines factory interface

@@ -1,13 +1,13 @@
-﻿Build started 21/12/2015 13:11:56.
-     1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" on node 2 (Build target(s)).
+﻿Build started 27/12/2015 15:35:59.
+     1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\glEngine\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\glEngine\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GFX\GL_Engine\gl_engine.cpp
          gl_engine.cpp
        Lib:
          C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\GFX\GL_Engine\glEngine.lib" /NOLOGO "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\glEngine\gl_engine.obj"
          glEngine.vcxproj -> C:\src\ToolBox\lib_files\GFX\GL_Engine\glEngine.lib
-     1>Done Building Project "C:\src\ToolBox\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\src\ToolBox\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.99
+Time Elapsed 00:00:01.63

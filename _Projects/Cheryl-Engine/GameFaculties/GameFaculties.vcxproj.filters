@@ -110,5 +110,8 @@
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp">
       <Filter>Source Files\Assets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetAbstract.cpp">
+      <Filter>Source Files\Game Faculties</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

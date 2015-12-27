@@ -5,12 +5,12 @@ using namespace logger;
 File_Manager::File_Manager()
 {
 	m_Log = &Asset_Faculties::Instance().GetManagementLog();
-	m_Log->Line( INFO ) << "File Manager Initialized.";
+	m_Log->Line( _INFO ) << "File Manager Initialized.";
 }
 
 File_Manager::~File_Manager()
 {
-	m_Log->Line( INFO ) << "File Manager Deinitialized.";
+	m_Log->Line( _INFO ) << "File Manager Deinitialized.";
 }
 
 File_Manager& File_Manager::Instance()
@@ -21,7 +21,7 @@ File_Manager& File_Manager::Instance()
 
 void File_Manager::Register_Directory( std::string path )
 {
-	m_Log->Line( INFO ) << "File_Manager is registering the directory: " << path;
+	m_Log->Line( _INFO ) << "File_Manager::Register_Directory()";
 	///We don't want to load this directory if we've already loaded it
 	if ( Loaded_Dirs.emplace( path ).second )
 	{
@@ -29,17 +29,21 @@ void File_Manager::Register_Directory( std::string path )
 		Listing_Tool.Set_Path( path );
 		Listing_Tool.Find_Files();
 		///Now we have
-		m_Log->Line( DEBUG1 ) << "Directory has been registered and its files catalogued";
+		m_Log->Line( _DEBUG1 ) << "Registered and Catalogued"
+			<< newl << "Path: " << path;
 	}
 	else
 	{
-		m_Log->Line( ERROR ) << "Directory has been registered previously - *No Actions Taken*";
+		m_Log->Line( _ERROR ) << "*Previously* Registered and Catalogued"
+			<< newl << "Path: " << path;
 	}
 }
 
 file_directory& File_Manager::Get_Files( std::string extension )
 {
-	m_Log->Line( INFO ) << "Getting all catalogued files of extension type: " << extension;
+	m_Log->Line( _INFO ) << "File_Manager::Get_Files()";
+	m_Log->Line( _DEBUG1 ) << "Getting Catalogued Files"
+		<< newl << "Extension Type: " << extension;
 	///convert the indicated extension to lower case
 	std::transform( extension.begin(), extension.end(), extension.begin(), ::tolower );
 

@@ -3,12 +3,12 @@
 Asset_Pool::Asset_Pool()
 {
 	m_Log = &Asset_Faculties::Instance().GetManagementLog();
-	m_Log->Line( INFO ) << "Asset Pool Initialized.";
+	m_Log->Line( _INFO ) << "Asset Pool Initialized.";
 }
 
 Asset_Pool::~Asset_Pool()
 {
-	m_Log->Line( INFO ) << "Asset Pool Deinitialized.";
+	m_Log->Line( _INFO ) << "Asset Pool Deinitialized.";
 }
 
 void Asset_Pool::Update()

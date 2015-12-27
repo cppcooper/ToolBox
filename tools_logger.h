@@ -2,7 +2,7 @@
 #define _TOOLS_LOGGER_H
 
 #ifndef LOG_WRITE_LEVELS
-#define LOG_WRITE_LEVELS (logger::FATAL + logger::ERROR + logger::WARNING + logger::INFO + logger::DEBUG1 + logger::DEBUG2 + logger::DEBUG3 + logger::DEBUG4 )
+#define LOG_WRITE_LEVELS (logger::_FATAL + logger::_ERROR + logger::_WARNING + logger::_INFO + logger::_DEBUG1 + logger::_DEBUG2 + logger::_DEBUG3 + logger::_DEBUG4 )
 #endif
 
 #ifdef _DEBUG
@@ -26,11 +26,12 @@ namespace logger
 	// Implemented as bits in a Byte as to facilitate turning specific levels on and off with a #define macro
 	enum LogLevel
 	{
-		FATAL = 1 << 0, ERROR = 1 << 1,
-		WARNING = 1 << 2, INFO = 1 << 3,
-		DEBUG1 = 1 << 4, DEBUG2 = 1 << 5,
-		DEBUG3 = 1 << 6, DEBUG4 = 1 << 7
+		_FATAL = 1 << 0, _ERROR = 1 << 1,
+		_WARNING = 1 << 2, _INFO = 1 << 3,
+		_DEBUG1 = 1 << 4, _DEBUG2 = 1 << 5,
+		_DEBUG3 = 1 << 6, _DEBUG4 = 1 << 7
 	};
+
 
 	//class Policy: Ouput Policies' Base Class
 	class Policy
@@ -70,7 +71,7 @@ namespace logger
 		static std::set<std::string> m_LogFiles;
 		std::string m_FileName;
 		std::mutex m_FileLock;
-		std::fstream m_File;
+		std::ofstream m_File;
 	public:
 		bool Open( std::string FileName, bool Append );
 		bool Close() final override;
@@ -87,10 +88,17 @@ namespace logger
 		~LogFile_Manager();
 	public:
 		static LogFile_Manager& Instance();
-		static unsigned int RegisterLog( std::string FileName, bool Append, LogLevel ReportLevel = DEBUG1 );
+		static unsigned int RegisterLog( std::string FileName, bool Append, LogLevel ReportLevel = _DEBUG1 );
 		static LogStream Get( unsigned int LogIndex, LogLevel level );
 		static Log& GetLog( unsigned int LogIndex );
 	};
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& newl( std::basic_ostream<CharT, Traits>& os )
+	{
+		os << std::endl << "\t\t\t\t\t   ";
+		return os;
+	}
 }
 
 #define LOGFILE( index, level )		if ( level & ~LOG_WRITE_LEVELS ); else logger::LogFile_Manager::Get( index, level )

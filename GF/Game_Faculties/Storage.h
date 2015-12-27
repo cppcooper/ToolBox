@@ -24,40 +24,45 @@ public:
 	template<class T>
 	T* Allocate( uint N = 1 )
 	{
-		m_Log->Line( INFO ) << "Allocating " << N * sizeof( T ) << " Bytes";
+		m_Log->Line( _INFO ) << "Asset_Storage::Allocate()";
 		if ( N > 0 )
 		{
-			GameAsset* p = new T[N]; //TODO: determine if this will cause run-time errors (GameAsset* vs T*)
+			T* ptr = new T[N]; //TODO: determine if this will cause run-time errors (GameAsset* vs T*)
 			for ( uint i = 0; i < N; ++i )
 			{
-				p[i].storage.allocation = p;
-				p[i].storage.length = N;
-				p[i].storage.index = i;
-				p[i].storage.bytes = N * sizeof( T );
+				GameAsset* p = &ptr[i];
+				p->storage.allocation = ptr;
+				p->storage.length = N;
+				p->storage.index = i;
+				p->storage.bytes = N * sizeof( T );
 			}
-			assert( p == p[N - 1].storage.allocation ); //For the above TODO
-			m_Log->Line( DEBUG1 ) << "Allocated " << p << " -- as " << N << " sized array";
-			Address_Table.emplace( p );
-			return (T*)p;
+			m_Log->Line( _DEBUG1 ) << "Memory Allocated"
+				<< newl << "Address:" << ptr
+				<< newl << "Elements: " << N
+				<< newl << "Size: " << sizeof( T ) * N << " Bytes";
+			Address_Table.emplace( (GameAsset*)ptr );
+			return ptr;
 		}
-		m_Log->Line( ERROR ) << "Allocation failed, returning nullptr";
+		m_Log->Line( _ERROR ) << "ALLOCATION FAILED - Returns nullptr";
+		//Likely should be an assert() or exit()
 		return nullptr;
 	}
 
 	template<class T>
 	void Deallocate( T* ptr )
 	{
-		m_Log->Line( INFO ) << "Deallocating " << ptr;
+		m_Log->Line( _INFO ) << "Asset_Storage::Deallocate()";
 		std::set<GameAsset*>::iterator it = Address_Table.find( (GameAsset*)ptr );
 		if ( it != Address_Table.end() && *it == ptr )
 		{
 			delete ptr;
 			Address_Table.erase( it );
-			m_Log->Line( DEBUG1 ) << "Deallocated " << ptr;
+			m_Log->Line( _DEBUG1 ) << "Deallocated: " << ptr;
 		}
 		else
 		{
-			m_Log->Line( ERROR ) << "Could not find pointer: " << ptr << " -- Deallocation FAILED";
+			m_Log->Line( _ERROR ) << "Pointer Not Found"
+				<< newl << "Pointer: " << ptr;
 		}
 	}
 
@@ -65,10 +70,10 @@ public:
 	template<class T>
 	bool Find( T* ptr )
 	{
-		m_Log->Line( INFO ) << "Finding address " << ptr;
+		m_Log->Line( _INFO ) << "Asset_Storage::Find()";
 		if ( Address_Table.empty() )
 		{
-			m_Log->Line( ERROR ) << "Allocation Address Table is empty";
+			m_Log->Line( _WARNING ) << "Allocation Address Table is empty\n";
 			return false;
 		}
 
@@ -92,12 +97,16 @@ public:
 
 		if ( *it == p && ( *it )->TypeID() == p->TypeID() )
 		{
-			m_Log->Line( DEBUG1 ) << "Found Address " << ptr << " under " << p << " in the Address Table";
+			m_Log->Line( _DEBUG1 ) << "Found Address"
+				<< newl << "Pointer: " << ptr
+				<< newl << "Found Under: " << p;
 			return true;
 		}
 		else
 		{
-			m_Log->Line( DEBUG1 ) << "Could not find the address " << ptr;
+			m_Log->Line( _WARNING ) << "Address Not Found"
+				<< newl << "Pointer: " << ptr
+				<< newl << "Allocation Pointer: " << p;
 			return false;
 		}
 	}
