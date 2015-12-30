@@ -1,13 +1,15 @@
-﻿Build started 27/12/2015 15:35:52.
+﻿Build started 30/12/2015 16:13:09.
      1>Project "C:\src\ToolBox\_Projects\LogTools\Logger\Logger.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\VS2013\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\LogTools\build\Release\Logger\\" /Fd"C:\src\ToolBox\_Projects\LogTools\build\Release\Logger\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\tools_logger.cpp
+         C:\VS2013\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\LogTools\build\Release\Logger\\" /Fd"C:\src\ToolBox\_Projects\LogTools\build\Release\Logger\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\tools_logger.cpp ..\..\..\src\tools_stacktracer.cpp
          tools_logger.cpp
+         tools_stacktracer.cpp
        Lib:
          C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\tools_logger_Release.lib" /NOLOGO /LTCG C:\src\ToolBox\_Projects\LogTools\build\Release\Logger\tools_logger.obj
+         C:\src\ToolBox\_Projects\LogTools\build\Release\Logger\tools_stacktracer.obj
          Logger.vcxproj -> C:\src\ToolBox\lib_files\tools_logger_Release.lib
      1>Done Building Project "C:\src\ToolBox\_Projects\LogTools\Logger\Logger.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.82
+Time Elapsed 00:00:01.71

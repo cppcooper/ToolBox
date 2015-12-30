@@ -12,9 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\tools_logger.h" />
+    <ClInclude Include="..\..\..\stacktracer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\tools_logger.cpp" />
+    <ClCompile Include="..\..\..\src\tools_stacktracer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{39B9923B-3925-4CCE-8C65-1DD9CA1DB111}</ProjectGuid>
