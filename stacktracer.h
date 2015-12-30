@@ -5,6 +5,8 @@ Which was in turn based on a StackOverflow answer
 
 Well mine is based on that comment, because I have changed very little outside of formatting.
 */
+
+//TODO: Separate to its own Library Project
 #ifndef _TOOLS_STACKTRACER_H
 #define _TOOLS_STACKTRACER_H
 

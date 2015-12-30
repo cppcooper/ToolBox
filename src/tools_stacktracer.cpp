@@ -5,7 +5,7 @@ Which was in turn based on a StackOverflow answer
 
 Well mine is based on that comment, because I have changed very little outside of formatting.
 */
-#include "../tools_stacktracer.h"
+#include "../stacktracer.h"
 #include <mutex>
 #include <Windows.h>
 #include <WinBase.h>
@@ -50,9 +50,9 @@ void StackTracer::InsertStackTrace( std::ostream& os, __int8 skip, unsigned __in
 	for ( unsigned int i = skip; i < frames; i++ )
 	{
 		SymFromAddr( process, (DWORD64)( callers_stack[i] ), 0, symbol );
-		os << "\t\tStack: " << i - skip 
-			<< ", 0x" << callers_stack[i] 
-			<< " ~Symbol:\t0x" << (void*)symbol->Address 
+		os << "\t\tFrame: " << i - skip 
+			<< ",\t0x" << callers_stack[i] 
+			<< " _Symbol:\t0x" << (void*)symbol->Address 
 			<< ", " << symbol->Name 
 			<< std::endl;
 	}

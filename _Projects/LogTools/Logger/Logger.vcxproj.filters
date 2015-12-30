@@ -18,7 +18,7 @@
     <ClInclude Include="..\..\..\tools_logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\tools_stacktracer.h">
+    <ClInclude Include="..\..\..\stacktracer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

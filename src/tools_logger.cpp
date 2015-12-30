@@ -105,7 +105,7 @@ LogStream::~LogStream()
 		//TODO: Branch here with a new thread? Investigate performance
 		if ( m_CallInfo )
 		{
-			InsertStackTrace( *this, 0, 6 );
+			InsertStackTrace( *this, 4, 1 );
 		}
 		m_OutputPolicy->lout( str().append( "\n" ) );
 	}
@@ -127,6 +127,7 @@ Log::Log( Policy* OutputPolicy )
 {
 	assert( OutputPolicy );
 	m_Policy = OutputPolicy;
+	StackTracer::Instance();
 }
 
 LogLevel& Log::ReportingLevel()

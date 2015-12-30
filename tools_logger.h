@@ -20,7 +20,7 @@
 
 #endif
 
-#include "tools_stacktracer.h"
+#include "stacktracer.h"
 
 #include <string>
 #include <sstream>
@@ -116,21 +116,21 @@ namespace logger
 	template< class CharT, class Traits >
 	std::basic_ostream<CharT, Traits>& lastcall( std::basic_ostream<CharT, Traits>& os )
 	{
-		InsertStackTrace( os, 4, 1 );
+		InsertStackTrace( os, 5, 1 );
 		return os;
 	}
 
 	template< class CharT, class Traits >
 	std::basic_ostream<CharT, Traits>& thiscall( std::basic_ostream<CharT, Traits>& os )
 	{
-		InsertStackTrace( os, 3, 1 );
+		InsertStackTrace( os, 4, 1 );
 		return os;
 	}
 
 	template< class CharT, class Traits >
 	std::basic_ostream<CharT, Traits>& callstack( std::basic_ostream<CharT, Traits>& os )
 	{
-		InsertStackTrace( os );
+		InsertStackTrace( os, 4 );
 		return os;
 	}
 }

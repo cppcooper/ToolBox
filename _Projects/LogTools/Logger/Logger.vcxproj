@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\tools_logger.h" />
-    <ClInclude Include="..\..\..\tools_stacktracer.h" />
+    <ClInclude Include="..\..\..\stacktracer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\tools_logger.cpp" />
