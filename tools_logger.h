@@ -1,15 +1,26 @@
 #ifndef _TOOLS_LOGGER_H
 #define _TOOLS_LOGGER_H
+#pragma once
+
+#ifdef _DEBUG
+#pragma comment (lib,"tools_logger_Debug.lib")
 
 #ifndef LOG_WRITE_LEVELS
 #define LOG_WRITE_LEVELS (logger::_FATAL + logger::_ERROR + logger::_WARNING + logger::_INFO + logger::_DEBUG1 + logger::_DEBUG2 + logger::_DEBUG3 + logger::_DEBUG4 )
 #endif
 
-#ifdef _DEBUG
-#pragma comment (lib,"tools_logger_Debug.lib")
 #else
 #pragma comment (lib,"tools_logger_Release.lib")
+
+#ifndef LOG_WRITE_LEVELS
+#define LOG_WRITE_LEVELS \
+(logger::_FATAL + logger::_ERROR + logger::_WARNING )
+
 #endif
+
+#endif
+
+#include "tools_stacktracer.h"
 
 #include <string>
 #include <sstream>
@@ -46,10 +57,12 @@ namespace logger
 	{
 	private:
 		Policy* m_OutputPolicy = nullptr;
+		bool m_CallInfo = false;
 	public:
 		LogStream( Policy* OutputPolicy );
 		LogStream( LogStream& obj );
 		~LogStream();
+		void ShowCallStackTop();
 	};
 
 	//class Log: Represents an individual Log... the log's output destination is provided to the log
@@ -59,7 +72,6 @@ namespace logger
 		Policy* m_Policy = nullptr;
 	public:
 		Log( Policy* OutputPolicy );
-		~Log();
 		LogLevel& ReportingLevel();
 		LogStream Line( LogLevel level );
 	};
@@ -73,6 +85,7 @@ namespace logger
 		std::mutex m_FileLock;
 		std::ofstream m_File;
 	public:
+		~FilePolicy();
 		bool Open( std::string FileName, bool Append );
 		bool Close() final override;
 		void lout( const std::string& LogLine ) final override;
@@ -97,6 +110,27 @@ namespace logger
 	std::basic_ostream<CharT, Traits>& newl( std::basic_ostream<CharT, Traits>& os )
 	{
 		os << std::endl << "\t\t\t\t\t   ";
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& lastcall( std::basic_ostream<CharT, Traits>& os )
+	{
+		InsertStackTrace( os, 4, 1 );
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& thiscall( std::basic_ostream<CharT, Traits>& os )
+	{
+		InsertStackTrace( os, 3, 1 );
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& callstack( std::basic_ostream<CharT, Traits>& os )
+	{
+		InsertStackTrace( os );
 		return os;
 	}
 }

@@ -62,15 +62,15 @@ namespace logger
 				break;
 
 			case _DEBUG2:
-				return "--DEBUG2:\n\t\t\t\t\t";
+				return "- -DEBUG2:\n\t\t\t\t\t";
 				break;
 
 			case _DEBUG3:
-				return "---DEBUG3:\n\t\t\t\t\t";
+				return "- - -DEBUG3:\n\t\t\t\t\t";
 				break;
 
 			case _DEBUG4:
-				return "----DEBUG4:\n\t\t\t\t\t";
+				return "- - - -DEBUG4:\n\t\t\t\t\t";
 				break;
 
 			default:
@@ -94,6 +94,7 @@ LogStream::LogStream( LogStream& obj )
 		swap( obj );
 		m_OutputPolicy = obj.m_OutputPolicy;
 		obj.m_OutputPolicy = nullptr;
+		m_CallInfo = obj.m_CallInfo;
 	}
 }
 
@@ -102,8 +103,19 @@ LogStream::~LogStream()
 	if ( m_OutputPolicy )
 	{
 		//TODO: Branch here with a new thread? Investigate performance
+		if ( m_CallInfo )
+		{
+			InsertStackTrace( *this, 0, 6 );
+		}
 		m_OutputPolicy->lout( str().append( "\n" ) );
 	}
+}
+
+void LogStream::ShowCallStackTop()
+{
+#ifndef DISABLE_INFOCALLSTACK
+	m_CallInfo = true;
+#endif
 }
 
 #pragma endregion
@@ -117,11 +129,6 @@ Log::Log( Policy* OutputPolicy )
 	m_Policy = OutputPolicy;
 }
 
-Log::~Log()
-{
-	m_Policy->Close();
-}
-
 LogLevel& Log::ReportingLevel()
 {
 	static LogLevel level;
@@ -133,6 +140,10 @@ LogStream Log::Line( LogLevel level )
 	if ( m_Policy && level <= ReportingLevel() )
 	{
 		LogStream logStream( m_Policy );
+		if ( level == _INFO )
+		{
+			logStream.ShowCallStackTop();
+		}
 		logStream << " -  " << GetTimeNow() << " ~ - ~ " << GetLogLevel( level );
 		return  logStream;
 	}
@@ -145,6 +156,11 @@ LogStream Log::Line( LogLevel level )
 #pragma region "FilePolicy"
 
 std::set<std::string> FilePolicy::m_LogFiles;
+
+FilePolicy::~FilePolicy()
+{
+	Close();
+}
 
 bool FilePolicy::Open( std::string FileName, bool Append )
 {
