@@ -1,6 +1,9 @@
-﻿Build started 27/12/2015 15:38:01.
+﻿Build started 10/01/2016 21:38:43.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\Test\Test.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\main.cpp
+         main.cpp
+       Link:
          C:\VS2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.lib" /MACHINE:X86 "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\main.obj"
      1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
          Test.vcxproj -> C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.exe
@@ -8,4 +11,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.75
+Time Elapsed 00:00:02.45
