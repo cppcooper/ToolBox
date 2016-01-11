@@ -20,6 +20,8 @@
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Mesh.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\SceneNodes.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Sprite.h" />
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.h" />
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\TileSet.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\Factory.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\File_Mgr.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\InterAccess.h" />
@@ -29,11 +31,13 @@
     <ClInclude Include="..\..\..\GF\Game_Faculties\Storage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp" />
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\TileSet.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetAbstract.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetMgr.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\File_Mgr.cpp" />
