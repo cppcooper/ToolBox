@@ -5,7 +5,7 @@
 #include "InterAccess.h"
 #include <tools_logger.h>
 #include "Storage.h"
-//#include "Factory.h"
+#include "Factory.h"
 #include "STL.h"
 	using namespace GameAssets;
 

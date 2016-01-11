@@ -3,8 +3,37 @@
 #include "../../InterAccess.h"
 #include "../../Factory.h"
 #include "../../AssetMgr.h"
+#include "2dtools.h"
 using namespace GameAssets;
 
+using uint = unsigned int;
+
+SpriteFrame::SpriteFrame( uint frame, uint width, uint height, float scale, float alpha, GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha) :
+m_FrameIndex( frame ),
+m_Width( width ),
+m_Height( height ),
+m_Scale( scale ),
+m_Alpha(alpha),
+m_Shader( glslp ),
+m_Tex( tex ),
+m_VAO( vao ),
+m_VBO( vbo ),
+p_Scale( scale ),
+p_Alpha( alpha )
+{	}
+
+void SpriteFrame::Draw( const glm::mat4& matrix )
+{
+	glBindVertexArray( m_VAO );
+	m_Tex->Bind();
+	m_Shader->UseProgram();
+
+	m_Shader->SetUniform( "in_Scale", m_Scale * p_Scale );
+	m_Shader->SetUniform( "in_Alpha", m_Alpha * p_Alpha );
+	m_Shader->SetUniform( "modelMatrix", matrix );
+
+	glDrawArrays( GL_QUADS, m_FrameIndex * 4, 4 );
+}
 
 TYPE_ID_IMPL( Sprite )
 void Sprite::Load( std::string file )
@@ -15,82 +44,55 @@ void Sprite::Load( std::string file )
 	if ( Data.is_open() )
 	{
 		ushort Sections = 0;
-		Data >> Sections;
-
 		ushort TexLength = 0;
-		Data >> TexLength;
 
+		Data >> Sections;
+		Data >> TexLength;
 		char* TexFile = new char[TexLength + 1];
 		memset( TexFile, 0, TexLength + 1 );
 		Data.read( TexFile, 1 );
 		Data.read( TexFile, TexLength );
-
 		m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexFile );
+		m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 		assert( m_Tex != nullptr );
+		assert( m_Shader != nullptr );
+
+
 		uint& Tex_width = m_Tex->width;
 		uint& Tex_height = m_Tex->height;
+		ushort Frames = 0, width = 0, height = 0, x_offset = 0, y_offset = 0;
+		float scale = 0.0f, alpha = 0.0f;
+		std::vector<std::pair<ushort, ushort>> texcoords;
 
-		
-		ushort Frames = 0, width = 0, height = 0, x = 0, y = 0, temp = 0;
-
-		std::ifstream::pos_type cursor = Data.tellg();
+		m_FrameIndex = 0;
 		for ( int i = 0; i < Sections; ++i )
 		{
 			Data >> Frames;
 			Data >> width;
 			Data >> height;
-			m_Frames += Frames;
-			m_PixelWidth = m_PixelWidth > width ? m_PixelWidth : width;
-			m_PixelHeight = m_PixelHeight > height ? m_PixelHeight : height;
+			Data >> scale;
+			Data >> alpha;
+			SpriteFrame frame( m_FrameIndex++, width, height, scale, alpha, m_Shader, m_Tex, m_VAO, m_VBO, m_Scale, m_Alpha );
+			m_Frames.push_back( frame );
 			for ( int f = 0; f < Frames; ++f )
 			{
+				ushort x, y;
 				Data >> x;
 				Data >> y;
+				texcoords.push_back( std::make_pair( x, y ) );
 			}
 		}
-		Data.seekg( cursor );
 
-		m_vCount = 4 * m_Frames;
+		m_vCount = 4 * m_Frames.size();
 		m_vLength = 5;
 		m_Vertices = new float[m_vCount * m_vLength];
-		for ( int i = 0; i < Sections; ++i )
+		for ( uint f = 0; f < m_Frames.size(); ++f )
 		{
-			Data >> Frames;
-			Data >> width;
-			Data >> height;
-			for ( m_FrameIndex = 0; m_FrameIndex < m_Frames; ++m_FrameIndex )
-			{
-				Data >> x;
-				Data >> y;
+			auto ref = texcoords.at( f );
+			ushort x = ref.first;
+			ushort y = ref.second;
 
-				///Bottom Left
-				m_Vertices[( m_FrameIndex * 20 ) + 0] = ( m_PixelWidth - width ) / 2.0f;											/// X
-				m_Vertices[( m_FrameIndex * 20 ) + 1] = ( m_PixelHeight - height ) / 2.0f;											/// Y
-				m_Vertices[( m_FrameIndex * 20 ) + 2] = 0.0f;																						/// Z
-				m_Vertices[( m_FrameIndex * 20 ) + 3] = (float)x / (float)Tex_width;													/// U - Texture mapping
-				m_Vertices[( m_FrameIndex * 20 ) + 4] = 1.0f - ( ( (float)y + (float)height ) / (float)Tex_height );		/// V - Texture mapping (Inverted Axis?)
-
-				///Bottom Right
-				m_Vertices[( m_FrameIndex * 20 ) + 5] = (float)width - ( ( m_PixelWidth - width ) / 2.0f );
-				m_Vertices[( m_FrameIndex * 20 ) + 6] = ( m_PixelHeight - height ) / 2.0f;
-				m_Vertices[( m_FrameIndex * 20 ) + 7] = 0.0f;
-				m_Vertices[( m_FrameIndex * 20 ) + 8] = ( (float)x + (float)width ) / (float)Tex_width;
-				m_Vertices[( m_FrameIndex * 20 ) + 9] = 1.0f - ( ( (float)y + (float)height ) / (float)Tex_height );
-
-				///Top Right
-				m_Vertices[( m_FrameIndex * 20 ) + 10] = (float)width - ( ( m_PixelWidth - width ) / 2.0f );
-				m_Vertices[( m_FrameIndex * 20 ) + 11] = (float)height - ( ( m_PixelHeight - height ) / 2.0f );
-				m_Vertices[( m_FrameIndex * 20 ) + 12] = 0.0f;
-				m_Vertices[( m_FrameIndex * 20 ) + 13] = ( (float)x + (float)width ) / (float)Tex_width;
-				m_Vertices[( m_FrameIndex * 20 ) + 14] = 1.0f - ( (float)y / (float)Tex_height );
-
-				///Top Left
-				m_Vertices[( m_FrameIndex * 20 ) + 15] = ( m_PixelWidth - width ) / 2.0f;
-				m_Vertices[( m_FrameIndex * 20 ) + 16] = (float)height - ( ( m_PixelHeight - height ) / 2.0f );
-				m_Vertices[( m_FrameIndex * 20 ) + 17] = 0.0f;
-				m_Vertices[( m_FrameIndex * 20 ) + 18] = (float)x / (float)Tex_width;
-				m_Vertices[( m_FrameIndex * 20 ) + 19] = 1.0f - ( (float)y / (float)Tex_height );
-			}
+			AnchorCenter( &m_Vertices[m_FrameIndex * 20], Tex_width, Tex_height, width, height, x, y );
 		}
 	}
 	else
@@ -100,44 +102,28 @@ void Sprite::Load( std::string file )
 	assert( !Data.fail() );
 	Data.close();
 
-	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
-	assert( m_Shader != nullptr );
-
-	m_FrameIndex = 0;
 	Init();
 }
 
 void Sprite::Reset()
 {
-	m_Frames = 0;
 	m_FrameIndex = 0;
 	m_Scale = 1.0f;
 	m_Alpha = 1.0f;
 	Deinit();
 }
 
-Sprite& Sprite::operator[]( ushort frame )
+SpriteFrame& Sprite::operator[]( ushort frame )
 {
-	m_FrameIndex = m_Frames ? frame % m_Frames : 0;
-	return *this;
-}
-
-void Sprite::Draw()
-{
-	Draw( glm::mat4( 1.f ) );
+	m_FrameIndex = frame % m_Frames.size();
+	return m_Frames.at( m_FrameIndex );
 }
 
 void Sprite::Draw( const glm::mat4& matrix )
 {
-	glBindVertexArray( m_VAO );
-	m_Tex->Bind();
-	m_Shader->UseProgram();
+	assert( !m_Frames.empty() );
 
-	m_Shader->SetUniform( "in_Scale", m_Scale );
-	m_Shader->SetUniform( "in_Alpha", m_Alpha );
-	m_Shader->SetUniform( "modelMatrix", matrix );
-
-	glDrawArrays( GL_QUADS, m_FrameIndex * 4, 4 );
+	m_Frames[m_FrameIndex].Draw( matrix );
 }
 
 void Sprite::Scale( float scale )
