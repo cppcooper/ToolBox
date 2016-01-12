@@ -79,34 +79,37 @@ void Sprite::Load( std::string file )
 			Data >> alpha;
 			Data >> x_offset;
 			Data >> y_offset;
-			SpriteFrame frame( m_Shader, m_Tex,
-							   m_VAO, m_VBO,
-							   m_Scale, m_Alpha,
-							   m_FrameIndex++,
-							   width, height,
-							   x_offset, y_offset,
-							   scale, alpha );
-			m_Frames.push_back( frame );
 			for ( int f = 0; f < Frames; ++f )
 			{
 				ushort x, y;
 				Data >> x;
 				Data >> y;
-				texcoords.push_back( std::make_pair( x, y ) );
+				texcoords.emplace_back( x, y );
+				SpriteFrame frame( m_Shader, m_Tex,
+								   m_VAO, m_VBO,
+								   m_Scale, m_Alpha,
+								   m_FrameIndex++,
+								   width, height,
+								   x_offset, y_offset,
+								   scale, alpha );
+				m_Frames.push_back( frame );
 			}
 		}
 
+		assert( texcoords.size() == m_Frames.size() );
 		m_vCount = 4 * m_Frames.size();
 		m_vLength = 5;
 		m_Vertices = new float[m_vCount * m_vLength];
+		memset( m_Vertices, 0, m_vCount * m_vLength );
 		for ( uint f = 0; f < m_Frames.size(); ++f )
 		{
-			auto ref = texcoords.at( f );
-			ushort x = ref.first;
-			ushort y = ref.second;
+			std::pair<ushort, ushort> value = texcoords.at( f );
+			ushort x = value.first;
+			ushort y = value.second;
 
-			AnchorCenter( &m_Vertices[m_FrameIndex * 20], Tex_width, Tex_height, width, height, x, y );
+			AnchorCenter( &m_Vertices[f * 20], Tex_width, Tex_height, width, height, x, y );
 		}
+		texcoords.resize( 0 );
 	}
 	else
 	{
