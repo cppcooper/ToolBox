@@ -111,13 +111,6 @@ LogStream::~LogStream()
 	}
 }
 
-void LogStream::ShowCallStackTop()
-{
-#ifndef DISABLE_INFOCALLSTACK
-	m_CallInfo = true;
-#endif
-}
-
 #pragma endregion
 
 
