@@ -79,20 +79,20 @@ void Sprite::Load( std::string file )
 			Data >> alpha;
 			Data >> x_offset;
 			Data >> y_offset;
-			SpriteFrame frame( m_Shader, m_Tex,
-							   m_VAO, m_VBO,
-							   m_Scale, m_Alpha,
-							   m_FrameIndex++,
-							   width, height,
-							   x_offset, y_offset,
-							   scale, alpha );
-			m_Frames.push_back( frame );
 			for ( int f = 0; f < Frames; ++f )
 			{
 				ushort x, y;
 				Data >> x;
 				Data >> y;
 				texcoords.push_back( std::make_pair( x, y ) );
+				SpriteFrame frame( m_Shader, m_Tex,
+								   m_VAO, m_VBO,
+								   m_Scale, m_Alpha,
+								   m_FrameIndex++,
+								   width, height,
+								   x_offset, y_offset,
+								   scale, alpha );
+				m_Frames.push_back( frame );
 			}
 		}
 
