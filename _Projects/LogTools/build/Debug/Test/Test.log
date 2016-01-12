@@ -1,4 +1,4 @@
-﻿Build started 30/12/2015 16:13:14.
+﻿Build started 12/01/2016 00:31:47.
      1>Project "C:\src\ToolBox\_Projects\LogTools\Test\Test.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\LogTools\build\Debug\Test\\" /Fd"C:\src\ToolBox\_Projects\LogTools\build\Debug\Test\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\Source.cpp
@@ -10,4 +10,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.51
+Time Elapsed 00:00:01.79

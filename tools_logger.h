@@ -62,7 +62,12 @@ namespace logger
 		LogStream( Policy* OutputPolicy );
 		LogStream( LogStream& obj );
 		~LogStream();
-		void ShowCallStackTop();
+		void ShowCallStackTop()
+		{
+#ifndef DISABLE_SHOWCALLSTACKTOP
+			m_CallInfo = true;
+#endif
+		}
 	};
 
 	//class Log: Represents an individual Log... the log's output destination is provided to the log
