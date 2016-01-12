@@ -1,4 +1,4 @@
-﻿Build started 11/01/2016 23:11:42.
+﻿Build started 12/01/2016 00:05:48.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\Test\Test.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\main.cpp
@@ -11,4 +11,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.13
+Time Elapsed 00:00:02.36
