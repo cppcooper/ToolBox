@@ -5,12 +5,12 @@ using namespace logger;
 File_Manager::File_Manager()
 {
 	m_Log = &Asset_Faculties::Instance().GetManagementLog();
-	m_Log->Line( _INFO ) << "File Manager Initialized.";
+	//m_Log->Line( _INFO ) << "File Manager Initialized.";
 }
 
 File_Manager::~File_Manager()
 {
-	m_Log->Line( _INFO ) << "File Manager Deinitialized.";
+	//m_Log->Line( _INFO ) << "File Manager Deinitialized.";
 }
 
 File_Manager& File_Manager::Instance()

@@ -10,6 +10,10 @@ Asset_Manager::Asset_Manager()
 
 Asset_Manager::~Asset_Manager()
 {
+	for ( auto asset : Asset_Table )
+	{
+		asset.second->Reset();
+	}
 	m_Log->Line( _INFO ) << "Asset Manager Deinitialized";
 }
 

@@ -27,7 +27,7 @@ public:
 		m_Log->Line( _INFO ) << "Asset_Storage::Allocate()";
 		if ( N > 0 )
 		{
-			T* ptr = new T[N]; //TODO: determine if this will cause run-time errors (GameAsset* vs T*)
+			T* ptr = new T[N];
 			for ( uint i = 0; i < N; ++i )
 			{
 				GameAsset* p = &ptr[i];

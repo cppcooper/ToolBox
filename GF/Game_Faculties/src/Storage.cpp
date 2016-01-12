@@ -11,7 +11,9 @@ Asset_Storage::~Asset_Storage()
 {
 	for ( auto ptr : Address_Table )
 	{
-		delete ptr;
+		m_Log->Line( _DEBUG1 ) << "Delete Pointer"
+			<< newl << "Address: " << ptr;
+		delete[] ptr;
 	}
 	m_Log->Line( _INFO ) << "Asset Storage Deinitialized.";
 }

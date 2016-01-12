@@ -47,6 +47,7 @@ namespace GameAssets
 			}
 
 	public:
+		virtual ~GameAsset(){}
 		virtual uint TypeID() = 0;
 		virtual void Load( std::string filename ) = 0;
 		virtual void Reset() = 0;

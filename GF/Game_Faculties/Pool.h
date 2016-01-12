@@ -60,7 +60,7 @@
 					// ptr ranges from [0] to [N-1] (ie. N elements)
 					// this means [N] to [N + remainder] onwards is our remainder
 					m_Log->Line( _DEBUG2 ) << "Array Found - Available Elements Remaining"
-						<< newl << "Address: "
+						<< newl << "Address: " << ptr
 						<< newl << "Available Elements: " << N + remainder
 						<< newl << "Elements Needed: " << N
 						<< newl << "Remainder: " << remainder

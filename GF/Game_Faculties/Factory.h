@@ -75,13 +75,13 @@ public:
 	}
 
 	T* LoadAsset( std::string FileName ){
-		gLog( _INFO ) << "Factory #" << TID << " Loading Asset " << FileName;
+		gLog( _INFO ) << "Factory #" << TID << " Loading Asset " << FileName.c_str();
 		GameAsset* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 
 	T* GetAsset( std::string AssetName ){
-		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName;
+		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName.c_str();
 		GameAsset* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
