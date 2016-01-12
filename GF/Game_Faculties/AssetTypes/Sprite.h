@@ -23,9 +23,15 @@ namespace GameAssets
 	public:
 		float m_Scale = 1.0f;
 		float m_Alpha = 1.0f;
-		glm::vec2 m_Offset;
+		glm::vec3 m_Offset;
 
-		SpriteFrame( uint frame, uint width, uint height, float scale, float alpha, GLSLProgram* &glslp, Texture* &tex, GLuint& vao, GLuint& vbo, float& global_scale, float& global_alpha );
+		SpriteFrame( GLSLProgram* &glslp, Texture* &tex,
+					 GLuint& vao, GLuint& vbo,
+					 float& global_scale, float& global_alpha,
+					 uint frame,
+					 uint width = 0, uint height = 0,
+					 uint x_offset = 0, uint y_offset = 0,
+					 float scale = 1.0f, float alpha = 1.0f );
 		uint Width() const { return m_Width; }
 		uint Height() const { return m_Height; }
 		void Draw( const glm::mat4& matrix );

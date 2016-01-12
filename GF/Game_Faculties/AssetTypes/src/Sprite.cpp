@@ -8,29 +8,34 @@ using namespace GameAssets;
 
 using uint = unsigned int;
 
-SpriteFrame::SpriteFrame( uint frame, uint width, uint height, float scale, float alpha, GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha) :
-m_FrameIndex( frame ),
-m_Width( width ),
-m_Height( height ),
-m_Scale( scale ),
-m_Alpha(alpha),
+SpriteFrame::SpriteFrame( GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha, 
+						  uint frame, uint width, uint height, uint x_offset, uint y_offset, float scale, float alpha ) :
 m_Shader( glslp ),
 m_Tex( tex ),
 m_VAO( vao ),
 m_VBO( vbo ),
 p_Scale( scale ),
-p_Alpha( alpha )
-{	}
+p_Alpha( alpha ),
+m_FrameIndex( frame )
+{
+	m_Width = width;
+	m_Height = height;
+	m_Offset.x = (float)x_offset;
+	m_Offset.y = (float)y_offset;
+	m_Scale = scale;
+	m_Alpha = alpha;
+}
 
 void SpriteFrame::Draw( const glm::mat4& matrix )
 {
+	glm::mat4 model_matrix = glm::translate( matrix, m_Offset );
 	glBindVertexArray( m_VAO );
 	m_Tex->Bind();
 	m_Shader->UseProgram();
 
 	m_Shader->SetUniform( "in_Scale", m_Scale * p_Scale );
 	m_Shader->SetUniform( "in_Alpha", m_Alpha * p_Alpha );
-	m_Shader->SetUniform( "modelMatrix", matrix );
+	m_Shader->SetUniform( "modelMatrix", model_matrix );
 
 	glDrawArrays( GL_QUADS, m_FrameIndex * 4, 4 );
 }
@@ -72,7 +77,15 @@ void Sprite::Load( std::string file )
 			Data >> height;
 			Data >> scale;
 			Data >> alpha;
-			SpriteFrame frame( m_FrameIndex++, width, height, scale, alpha, m_Shader, m_Tex, m_VAO, m_VBO, m_Scale, m_Alpha );
+			Data >> x_offset;
+			Data >> y_offset;
+			SpriteFrame frame( m_Shader, m_Tex,
+							   m_VAO, m_VBO,
+							   m_Scale, m_Alpha,
+							   m_FrameIndex++,
+							   width, height,
+							   x_offset, y_offset,
+							   scale, alpha );
 			m_Frames.push_back( frame );
 			for ( int f = 0; f < Frames; ++f )
 			{
