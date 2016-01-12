@@ -23,6 +23,17 @@ bool Asset_Manager::RecordAsset( std::string AssetName, GameAsset* p )
 	return Asset_Table.emplace( AssetName, p ).second;
 }
 
+bool Asset_Manager::RemoveRecord( std::string AssetName )
+{
+	auto it = Asset_Table.find( AssetName );
+	if ( it != Asset_Table.end() )
+	{
+		Asset_Table.erase( it );
+		return true;
+	}
+	return false;
+}
+
 GameAsset* Asset_Manager::GetAsset( std::string AssetName )
 {
 	m_Log->Line( _INFO ) << "Asset_Manager::GetAsset()";

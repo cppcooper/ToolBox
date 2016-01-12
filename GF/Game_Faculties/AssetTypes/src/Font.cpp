@@ -12,6 +12,7 @@ void Font::Load( std::string file )
 	assert( !m_Initialized );
 
 	std::string TexName = file.substr( file.find_last_of( '/' ) + 1, file.find_last_of( '.' ) );// +".png";
+	TexName = TexName.substr( TexName.find_last_of( '\\' ) + 1, TexName.find_last_of( '.' ) ) +".png";
 	m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexName );
 	assert( m_Tex != nullptr );
 

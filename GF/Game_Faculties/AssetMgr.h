@@ -16,7 +16,8 @@ public:
 	Asset_Manager();
 	~Asset_Manager();
 	bool RecordAsset( std::string AssetName, GameAsset* p );
-	//TODO: bool RemoveRecord( std::string AssetName );
+	bool RemoveRecord( std::string AssetName );
+	//TODO: bool RemoveRecord( GameAsset* p );
 	GameAsset* GetAsset( std::string AssetName );
 };
 
