@@ -58,6 +58,7 @@ void Sprite::Load( std::string file )
 		Data.read( TexFile, 1 );
 		Data.read( TexFile, TexLength );
 		m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexFile );
+		delete[] TexFile;
 		m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 		assert( m_Tex != nullptr );
 		assert( m_Shader != nullptr );

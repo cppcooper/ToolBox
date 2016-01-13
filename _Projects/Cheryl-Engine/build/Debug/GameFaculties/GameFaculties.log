@@ -1,40 +1,5 @@
-﻿Build started 12/01/2016 19:04:57.
-     1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\TileSet.cpp ..\..\..\GF\Game_Faculties\src\AssetAbstract.cpp ..\..\..\GF\Game_Faculties\src\AssetMgr.cpp ..\..\..\GF\Game_Faculties\src\File_Mgr.cpp ..\..\..\GF\Game_Faculties\src\InterAccess.cpp ..\..\..\GF\Game_Faculties\src\Loader.cpp ..\..\..\GF\Game_Faculties\src\Pool.cpp ..\..\..\GF\Game_Faculties\src\Storage.cpp
-         Storage.cpp
-         Pool.cpp
-         Loader.cpp
-         InterAccess.cpp
-         File_Mgr.cpp
-         AssetMgr.cpp
-         AssetAbstract.cpp
-         TileSet.cpp
-         Sprite.cpp
-         SceneNodes.cpp
-         Mesh.cpp
-         Font.cpp
-         BasicTypes.cpp
-         2dtools.cpp
-         Generating Code...
-       Lib:
-         C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\GF\Game_Faculties\GameFaculties.lib" /NOLOGO "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\2dtools.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\BasicTypes.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\Font.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\Mesh.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\SceneNodes.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\Sprite.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\TileSet.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\AssetAbstract.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\AssetMgr.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\File_Mgr.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\InterAccess.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\Loader.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\Pool.obj"
-         "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\Storage.obj"
-         GameFaculties.vcxproj -> C:\src\ToolBox\lib_files\GF\Game_Faculties\GameFaculties.lib
-     1>Done Building Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" (Build target(s)).
+﻿Build started 13/01/2016 12:24:52.
 
 Build succeeded.
 
-Time Elapsed 00:00:11.85
+Time Elapsed 00:00:00.03
