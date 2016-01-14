@@ -1,22 +1,8 @@
-﻿Build started 13/01/2016 12:29:07.
+﻿Build started 14/01/2016 11:27:58.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp ..\..\..\GF\Game_Faculties\AssetTypes\src\TileSet.cpp ..\..\..\GF\Game_Faculties\src\AssetAbstract.cpp ..\..\..\GF\Game_Faculties\src\AssetMgr.cpp ..\..\..\GF\Game_Faculties\src\File_Mgr.cpp ..\..\..\GF\Game_Faculties\src\InterAccess.cpp ..\..\..\GF\Game_Faculties\src\Loader.cpp ..\..\..\GF\Game_Faculties\src\Pool.cpp ..\..\..\GF\Game_Faculties\src\Storage.cpp
-         Storage.cpp
-         Pool.cpp
-         Loader.cpp
-         InterAccess.cpp
-         File_Mgr.cpp
-         AssetMgr.cpp
-         AssetAbstract.cpp
-         TileSet.cpp
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp
          Sprite.cpp
-         SceneNodes.cpp
-         Mesh.cpp
-         Font.cpp
-         BasicTypes.cpp
-         2dtools.cpp
-         Generating Code...
        Lib:
          C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\GF\Game_Faculties\GameFaculties.lib" /NOLOGO "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\2dtools.obj"
          "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\BasicTypes.obj"
@@ -37,4 +23,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:10.33
+Time Elapsed 00:00:01.30

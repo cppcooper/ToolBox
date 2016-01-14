@@ -14,8 +14,8 @@ m_Shader( glslp ),
 m_Tex( tex ),
 m_VAO( vao ),
 m_VBO( vbo ),
-p_Scale( scale ),
-p_Alpha( alpha ),
+p_Scale( global_scale ),
+p_Alpha( global_alpha ),
 m_FrameIndex( frame )
 {
 	m_Width = width;
@@ -120,6 +120,7 @@ void Sprite::Load( std::string file )
 	Data.close();
 
 	Init();
+	m_FrameIndex = 0;
 }
 
 void Sprite::Reset()

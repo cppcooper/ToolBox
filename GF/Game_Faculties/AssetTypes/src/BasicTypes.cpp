@@ -233,7 +233,7 @@ void Texture::Load( std::string file )
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
 	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 
-	glTexture_Unit = GL_TEXTURE0 + ( Texture_Count++ % 32 );
+	glTexture_Unit = GL_TEXTURE0;
 	return void( 0 );
 
 TEXTURE_ERROR:

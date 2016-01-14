@@ -80,8 +80,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 	Asset_Faculties::Instance().Pool->Return( p, p[0].storage.length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
-	size_t final_pos = Ext_List.find_last_of( ';' );
-	while ( Cpos < final_pos )
+	while ( Cpos != std::string::npos )
 	{
 		Cpos = Ext_List.find_first_of( ';', Lpos );
 		
