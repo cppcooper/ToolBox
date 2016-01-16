@@ -1,4 +1,4 @@
-﻿Build started 14/01/2016 11:27:58.
+﻿Build started 16/01/2016 18:50:49.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\GameFaculties\GameFaculties.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\GameFaculties\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp
@@ -23,4 +23,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.30
+Time Elapsed 00:00:02.02
