@@ -39,9 +39,9 @@ void Font::Load( std::string file )
 	uint& Tex_width = m_Tex->width;
 	uint& Tex_height = m_Tex->height;
 
-	m_vLength = 5;
+	m_vStride = 5 * sizeof( float );
 	m_vCount = 4 * 256;
-	m_Vertices = new float[m_vLength * m_vCount];
+	m_Vertices = new float[m_vCount * 5];
 	//Textures are assumed to have 16 characters per line
 	for ( int loop = 0; loop<256; loop++ )
 	{

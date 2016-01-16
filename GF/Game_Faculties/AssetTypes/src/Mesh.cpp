@@ -13,10 +13,10 @@ void Mesh::Load( std::string file )
 	Data.open( file );
 	assert( Data.is_open() );
 
-	m_vLength = 8;
+	m_vStride = 8 * sizeof( float );
 	Data >> m_vCount;
 	
-	uint vFloats = m_vLength * m_vCount;
+	uint vFloats = m_vCount * 8;
 	m_Vertices = new float[vFloats];
 	for ( uint i = 0; i < vFloats; ++i )
 	{

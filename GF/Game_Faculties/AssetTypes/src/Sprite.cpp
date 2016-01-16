@@ -68,7 +68,17 @@ void Sprite::Load( std::string file )
 		uint& Tex_height = m_Tex->height;
 		ushort Frames = 0, width = 0, height = 0, x_offset = 0, y_offset = 0;
 		float scale = 0.0f, alpha = 0.0f;
-		std::vector<std::pair<ushort, ushort>> texcoords;
+		struct frame_data
+		{
+			ushort width;
+			ushort height;
+			ushort start_x;
+			ushort start_y;
+			frame_data(){}
+			frame_data( ushort a, ushort b, ushort c, ushort d ) :
+				width( a ), height( b ), start_x( c ), start_y( d ){}
+		};
+		std::vector<frame_data> frameData;
 
 		m_FrameIndex = 0;
 		for ( int i = 0; i < Sections; ++i )
@@ -85,7 +95,7 @@ void Sprite::Load( std::string file )
 				ushort x, y;
 				Data >> x;
 				Data >> y;
-				texcoords.emplace_back( x, y );
+				frameData.emplace_back( width, height, x, y );
 				SpriteFrame frame( m_Shader, m_Tex,
 								   m_VAO, m_VBO,
 								   m_Scale, m_Alpha,
@@ -97,20 +107,18 @@ void Sprite::Load( std::string file )
 			}
 		}
 
-		assert( texcoords.size() == m_Frames.size() );
+		assert( frameData.size() == m_Frames.size() );
 		m_vCount = 4 * m_Frames.size();
-		m_vLength = 5;
-		m_Vertices = new float[m_vCount * m_vLength];
-		memset( m_Vertices, 0, m_vCount * m_vLength );
+		m_vStride = 5 * sizeof( float );
+		m_Vertices = new float[m_vCount * 5];
+		memset( m_Vertices, 0, m_vCount * m_vStride );
 		for ( uint f = 0; f < m_Frames.size(); ++f )
 		{
-			std::pair<ushort, ushort> value = texcoords.at( f );
-			ushort x = value.first;
-			ushort y = value.second;
+			frame_data& ref = frameData.at( f );
 
-			AnchorCenter( &m_Vertices[f * 20], Tex_width, Tex_height, width, height, x, y );
+			AnchorCenter( &m_Vertices[f * 20], Tex_width, Tex_height, ref.width, ref.height, ref.start_x, ref.start_y );
 		}
-		texcoords.resize( 0 );
+		frameData.resize( 0 );
 	}
 	else
 	{

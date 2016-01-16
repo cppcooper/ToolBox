@@ -32,9 +32,9 @@ void TileSet::Load( std::string file )
 		Data >> width;
 		Data >> height;
 
-		m_vLength = 5;
-		m_vCount = 4 * m_TileCount;
-		m_Vertices = new float[m_vCount * m_vLength];
+		m_vStride = 5 * sizeof( float );
+		m_vCount = m_TileCount * 4;
+		m_Vertices = new float[m_vCount * 5];
 		for ( m_FrameIndex = 0; m_FrameIndex < m_TileCount; ++m_FrameIndex )
 		{
 			ushort x = 0, y = 0;

@@ -56,9 +56,9 @@ namespace GameAssets
 		float* m_Vertices = nullptr;
 		bool m_Initialized = false;
 
-		GLuint m_iCount = 0;
-		GLuint m_vLength = 0;
-		GLuint m_vCount = 0;
+		GLuint m_iCount = 0; //How many indices
+		GLuint m_vCount = 0; //How many vertices
+		GLuint m_vStride = 0; //How many bytes in one Triangle/Quad
 
 		GLuint m_IndexOrder = 0;
 		GLuint m_VBO = 0;

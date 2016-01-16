@@ -27,22 +27,18 @@ void VO_Data::Init()
 	if ( m_Initialized )
 		return;
 
-	if ( m_vLength < 5 )
+	if ( m_vStride < 20 )
 		assert( 0 );
 
 	//Triangle or larger?
 	if ( m_vCount >= 3 )
 	{
-		glGenBuffers( 1, &m_VBO );
-		glBindBuffer( GL_ARRAY_BUFFER, m_VBO );
-
-		GLuint vSize = m_vLength * sizeof( float );
-		//Transfer Vertex data
-		glBufferData( GL_ARRAY_BUFFER, m_vCount * vSize, m_Vertices, GL_STATIC_DRAW );
-
 		glGenVertexArrays( 1, &m_VAO );
 		glBindVertexArray( m_VAO );
 
+		glGenBuffers( 1, &m_VBO );
+		glBindBuffer( GL_ARRAY_BUFFER, m_VBO );
+		glBufferData( GL_ARRAY_BUFFER, m_vCount * m_vStride, m_Vertices, GL_STATIC_DRAW );
 		/*The VAO composition must match what the Shaders expect as input
 		What each shader expects depends on whether the shader is 2D or 3D
 		2D: X,Y,Z,U,V
@@ -50,43 +46,36 @@ void VO_Data::Init()
 
 		The code below maps VAO data to Shader input fields
 		*/
-
-		//Map XYZ Data
-		glEnableVertexAttribArray( 0 );
-		glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, vSize, BUFFER_OFFSET( 0 ) );
-
-		// Is this 3d?
 		if ( m_iCount != 0 )
 		{
-			if ( m_vLength < 8 )
+			if ( m_vStride < 32 )
 				assert( 0 );
 
-			glGenBuffers( 1, &m_IndexOrder );
-
-			//Map Normal Data
-			glEnableVertexAttribArray( 1 );
-			glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, vSize, BUFFER_OFFSET( sizeof( float ) * 3 ) );
-
-			//Map UV Data
-			glEnableVertexAttribArray( 2 );
-			glVertexAttribPointer( 2, 2, GL_FLOAT, GL_FALSE, vSize, BUFFER_OFFSET( sizeof( float ) * 6 ) );
-
-			//Transfer Triangle Strip data
-			glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, m_IndexOrder ); //Binding must come after VAO code
+			glEnableVertexAttribArray( 0 ); //XYZ
+			glEnableVertexAttribArray( 1 ); //Normal
+			glEnableVertexAttribArray( 2 ); //UV
+			glBindBuffer( GL_ARRAY_BUFFER, m_VBO );
+			glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, m_vStride, BUFFER_OFFSET( 0 ) );
+			glVertexAttribPointer( 1, 3, GL_FLOAT, GL_FALSE, m_vStride, BUFFER_OFFSET( sizeof( float ) * 3 ) );
+			glVertexAttribPointer( 2, 2, GL_FLOAT, GL_FALSE, m_vStride, BUFFER_OFFSET( sizeof( float ) * 6 ) );
+			glGenBuffers( 1, &m_IndexOrder ); //Triangle Strip Data
+			glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, m_IndexOrder );
 			glBufferData( GL_ELEMENT_ARRAY_BUFFER, m_iCount * sizeof( int ), m_Indices, GL_STATIC_DRAW );
 		}
-		//TODO: rewrite shaders and sandwich the UV data in order to remove the else
 		else
 		{
-			//Map UV Data
-			glEnableVertexAttribArray( 1 );
-			glVertexAttribPointer( 1, 2, GL_FLOAT, GL_FALSE, vSize, BUFFER_OFFSET( sizeof( float ) * 3 ) );
+			glEnableVertexAttribArray( 0 ); //XYZ
+			glEnableVertexAttribArray( 1 ); //UV
+			glBindBuffer( GL_ARRAY_BUFFER, m_VBO );
+			glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, m_vStride, BUFFER_OFFSET( 0 ) );
+			glVertexAttribPointer( 1, 2, GL_FLOAT, GL_FALSE, m_vStride, BUFFER_OFFSET( sizeof( float ) * 3 ) );
 		}
 		delete m_Vertices;
 		delete m_Indices;
 		m_Vertices = nullptr;
 		m_Indices = nullptr;
 		m_Initialized = true;
+		assert( glGetError() == GL_NO_ERROR );
 		return;
 	}
 	assert( 0 );
@@ -109,7 +98,6 @@ void VO_Data::Deinit()
 	m_Tex = nullptr;
 	m_Shader = nullptr;
 	m_iCount = 0;
-	m_vLength = 0;
 	m_vCount = 0;
 	m_Initialized = false;
 }
