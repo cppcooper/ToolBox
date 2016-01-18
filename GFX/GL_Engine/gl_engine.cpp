@@ -17,15 +17,19 @@ void mouse_button_callback( GLFWwindow* window, int button, int action, int mods
 	glEngine::Instance().mouse_button_callback_f( button, action, mods );
 }
 
+void window_resize_callback( GLFWwindow* window, int width, int height )
+{
+	glEngine::Instance().Resize( width, height );
+}
 
 glEngine::glEngine( GL_Engine::window windowMode, int width, int height )
 {
-	wMode = windowMode;
+	m_wMode = windowMode;
 	m_Screen.m_Width = width;
 	m_Screen.m_Height = height;
 
-	nearplane = 0.1f;
-	farplane = 10000.f;
+	m_nearplane = 0.1f;
+	m_farplane = 10000.f;
 }
 
 /// Will only be run from a new thread
@@ -50,14 +54,16 @@ void glEngine::Update()
 void glEngine::Draw()
 {
 	///Makes this thread the current context in which OpenGL rendering can occur
-	wglMakeCurrent( currentDC, currentContext );
+	wglMakeCurrent( m_currentDC, m_currentContext );
 
+	glClearColor( m_red, m_green, m_blue, m_alpha );
 	while ( Run_Threads )
 	{
-		glClearColor( 0.8f, 0.6f, 0.7f, 0.0f );
-		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+		if ( !ManualBufferSwap )
+			glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 		Draw_f();
-		glfwSwapBuffers( window );
+		if ( !ManualBufferSwap )
+			glfwSwapBuffers( m_window );
 	}
 	///We need to disassociate this thread with OpenGL's rendering
 	wglMakeCurrent( 0, 0 );
@@ -77,28 +83,28 @@ void glEngine::ShowCursor( bool show )
 {
 	if ( show )
 	{
-		glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );
+		glfwSetInputMode( m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL );
 	}
 	else
 	{
-		glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN );
+		glfwSetInputMode( m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN );
 	}
 }
 
 //Basically sets the projection matrix required for rendering in "newMode"
 void glEngine::SetMode( GL_Engine::graphics newMode )
 {
-	if ( gMode == newMode ) return;
+	if ( m_gMode == newMode ) return;
 
-	gMode = newMode;
+	m_gMode = newMode;
 
-	if ( gMode == GL_Engine::graphics::R3D )
+	if ( m_gMode == GL_Engine::graphics::R3D )
 	{
 		/// Enable Depth Testing for 3D!
 		glEnable( GL_DEPTH_TEST );
 
 		///3D perspective projection
-		projectionMatrix = glm::mat4( 1.f ) * glm::perspective( 45.0f, (GLfloat)( m_Screen.Width() ) / (GLfloat)( m_Screen.Height() ), nearplane, farplane );
+		m_projectionMatrix = glm::mat4( 1.f ) * glm::perspective( 45.0f, (GLfloat)( m_Screen.Width() ) / (GLfloat)( m_Screen.Height() ), m_nearplane, m_farplane );
 	}
 	else
 	{
@@ -106,7 +112,7 @@ void glEngine::SetMode( GL_Engine::graphics newMode )
 		glDisable( GL_DEPTH_TEST );
 
 		///2d orthographic projection
-		projectionMatrix = glm::mat4( 1.f ) * glm::ortho( 0.f, (float)m_Screen.Width(), 0.f, (float)m_Screen.Height(), 0.f, 1.f );
+		m_projectionMatrix = glm::mat4( 1.f ) * glm::ortho( 0.f, (float)m_Screen.Width(), 0.f, (float)m_Screen.Height(), 0.f, 1.f );
 	}
 
 }
@@ -149,11 +155,11 @@ bool glEngine::Init()
 	const GLFWvidmode* mode = glfwGetVideoMode( glfwGetPrimaryMonitor() );
 
 	///Create a window of a particular type
-	switch ( wMode )
+	switch ( m_wMode )
 	{
 		case GL_Engine::window::FULLSCREEN:
 		{
-			window = glfwCreateWindow( mode->width, mode->height, "Fullscreen", glfwGetPrimaryMonitor(), NULL );
+			m_window = glfwCreateWindow( mode->width, mode->height, "Fullscreen", glfwGetPrimaryMonitor(), NULL );
 			m_Screen.m_Height = mode->height;
 			m_Screen.m_Width = mode->width;
 			break;
@@ -161,8 +167,7 @@ bool glEngine::Init()
 
 		case GL_Engine::window::DECORATEDWINDOW:
 		{
-
-			window = glfwCreateWindow( m_Screen.Width(), m_Screen.Height(), "Decorated Window", NULL, NULL );
+			m_window = glfwCreateWindow( m_Screen.Width(), m_Screen.Height(), "Decorated Window", NULL, NULL );
 			break;
 		}
 
@@ -175,7 +180,7 @@ bool glEngine::Init()
 			glfwWindowHint( GLFW_BLUE_BITS, mode->blueBits );
 			glfwWindowHint( GLFW_REFRESH_RATE, mode->refreshRate );
 
-			window = glfwCreateWindow( mode->width, mode->height, "Borderless Fullscreen", NULL, NULL );
+			m_window = glfwCreateWindow( mode->width, mode->height, "Borderless Fullscreen", NULL, NULL );
 			m_Screen.m_Height = mode->height;
 			m_Screen.m_Width = mode->width;
 			break;
@@ -183,19 +188,20 @@ bool glEngine::Init()
 	}
 
 	/// If creating the window failed we need to terminate
-	if ( !window )
+	if ( !m_window )
 	{
 		glfwTerminate();
 		return false;
 	}
 	/// Associates this window with OpenGL's rendering (I believe)
-	glfwMakeContextCurrent( window );
+	glfwMakeContextCurrent( m_window );
 
 	/// Sets our input processing function, all input will be passed to this function
 	//glfwSetScrollCallback( window, scroll_callback );
-	glfwSetKeyCallback( window, key_callback );
-	glfwSetCursorPosCallback( window, cursor_position_callback );
-	glfwSetMouseButtonCallback( window, mouse_button_callback );
+	glfwSetKeyCallback( m_window, key_callback );
+	glfwSetCursorPosCallback( m_window, cursor_position_callback );
+	glfwSetMouseButtonCallback( m_window, mouse_button_callback );
+	glfwSetWindowSizeCallback( m_window, window_resize_callback );
 
 	/// start GLEW extension handler
 	glewExperimental = GL_TRUE;
@@ -207,8 +213,8 @@ bool glEngine::Init()
 	///oLog( Level::Info ) << "Renderer: " << renderer;
 	///oLog( Level::Info ) << "OpenGL version supported: " << version;
 
-	projectionMatrix = glm::mat4( 1.f );
-	viewMatrix = glm::mat4( 1.f );
+	m_projectionMatrix = glm::mat4( 1.f );
+	m_viewMatrix = glm::mat4( 1.f );
 
 	glEnable( GL_CULL_FACE );
 	glCullFace( GL_BACK );
@@ -220,8 +226,8 @@ bool glEngine::Init()
 	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );	///clear colour: r,g,b,a 	
 	glfwSwapInterval( 1 ); ///cap FPS
 
-	currentDC = wglGetCurrentDC();
-	currentContext = wglGetCurrentContext();
+	m_currentDC = wglGetCurrentDC();
+	m_currentContext = wglGetCurrentContext();
 
 	return true;
 }
@@ -240,7 +246,7 @@ void glEngine::Run()
 	Game_Update_thread = std::thread( &glEngine::Update, this );
 	Game_Draw_thread = std::thread( &glEngine::Draw, this );
 
-	while ( !glfwWindowShouldClose( window ) )
+	while ( !glfwWindowShouldClose( m_window ) )
 	{
 		///We are about to get keyboard input and other events
 		///Polling for input events is the most important function of the engine so Polling is done here in the main thread.
@@ -248,7 +254,7 @@ void glEngine::Run()
 	}
 	Quit();
 	///Makes this thread the current context in which OpenGL rendering can occur
-	wglMakeCurrent( currentDC, currentContext );
+	wglMakeCurrent( m_currentDC, m_currentContext );
 	glfwTerminate();
 }
 
@@ -264,6 +270,47 @@ void glEngine::Quit()
 		Game_Draw_thread.join();
 
 		///Closes window
-		glfwSetWindowShouldClose( window, GL_TRUE );
+		glfwSetWindowShouldClose( m_window, GL_TRUE );
 	}
+}
+
+void glEngine::DisableBufferSwap( bool disable )
+{
+	ManualBufferSwap = disable;
+}
+
+void glEngine::LockScreenSize()
+{
+	m_ScreenSizeLock = true;
+}
+
+void glEngine::UnlockScreenSize()
+{
+	m_ScreenSizeLock = false;
+}
+
+void glEngine::Resize( int width, int height )
+{
+	if ( !m_ScreenSizeLock )
+	{
+		assert( width >= 0 && height >= 0 );
+		const GLFWvidmode * mode = glfwGetVideoMode( glfwGetPrimaryMonitor() );
+		width = width <= mode->width ? width : mode->width;
+		height = height <= mode->height ? height : mode->height;
+		glfwSetWindowSize( m_window, width, height );
+		glViewport( 0, 0, width, height );
+		m_Screen.Resize( width, height );
+	}
+	else
+	{
+		glfwSetWindowSize( m_window, m_Screen.Width(), m_Screen.Height() );
+	}
+}
+
+void glEngine::SetClearColor( float r, float g, float b, float a )
+{
+	m_red = r;
+	m_blue = b;
+	m_green = g;
+	m_alpha = a;
 }

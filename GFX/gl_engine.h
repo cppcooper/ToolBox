@@ -49,6 +49,7 @@ namespace GL_Engine
 extern void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 extern void mouse_button_callback( GLFWwindow* window, int button, int action, int mods );
 extern void cursor_position_callback( GLFWwindow* window, double x, double y );
+extern void window_resize_callback( GLFWwindow* window, int width, int height );
 
 class Screen
 {
@@ -80,10 +81,11 @@ public:
 class glEngine
 {
 private:
-	HDC currentDC;
-	HGLRC currentContext;
+	HDC m_currentDC;
+	HGLRC m_currentContext;
 
 	bool Run_Threads = false;
+	bool ManualBufferSwap = false;
 	std::thread Game_Update_thread;
 	std::thread Game_Draw_thread;
 	std::function<void( double& seconds )> Update_f;
@@ -94,16 +96,22 @@ public:
 	std::function<void( int& button, int& action, int& mod )> mouse_button_callback_f;
 	std::function<void( double& x, double& y )> cursor_position_callback_f;
 
-	GLFWwindow* window;
-	float nearplane, farplane;
-	glm::mat4 projectionMatrix;
-	glm::mat4 viewMatrix;
+	GLFWwindow* m_window;
+	float m_nearplane;
+	float m_farplane;
+	glm::mat4 m_projectionMatrix;
+	glm::mat4 m_viewMatrix;
 
 private:
 	friend class Screen;
-	GL_Engine::graphics gMode;
-	GL_Engine::window wMode;
+	GL_Engine::graphics m_gMode;
+	GL_Engine::window m_wMode;
 	Screen& m_Screen = Screen::Instance();
+	bool m_ScreenSizeLock = false;
+	GLclampf m_red = 0.8f;
+	GLclampf m_blue = 0.6f;
+	GLclampf m_green = 0.7f;
+	GLclampf m_alpha = 0.0f;
 
 protected:
 	glEngine( GL_Engine::window wMode = GL_Engine::window::DECORATEDWINDOW, int width = 1920, int height = 1080 );
@@ -121,6 +129,12 @@ public:
 	void Run();
 	void Quit();
 	
+	void DisableBufferSwap( bool disable = true );
+	void LockScreenSize();
+	void UnlockScreenSize();
+	void Resize( int width, int height );
+	void SetClearColor( float r, float g, float b, float a = 0.0f );
+
 	static glEngine& Instance()
 	{
 		static glEngine engine( GL_Engine::window::DECORATEDWINDOW, 1000, 600 );
