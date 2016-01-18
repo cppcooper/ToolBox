@@ -1,7 +1,6 @@
 *.obj
 *.tlog
 *.log
-*3rdParty*
 *Blit3D*
 
 # Windows image file caches
