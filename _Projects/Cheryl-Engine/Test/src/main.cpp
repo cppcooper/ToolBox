@@ -35,7 +35,7 @@ protected:
 		m_engine.SetMode( GL_Engine::graphics::R2D );
 		float width = (float)Screen::Width() / 2.f;
 		float height = (float)Screen::Height() / 2.f;
-		m_engine.projectionMatrix = glm::mat4( 1.f ) * glm::ortho( 0.f, (float)Screen::Width(), 0.f, (float)Screen::Height(), -1.f, 1.f );
+		m_engine.m_projectionMatrix = glm::mat4( 1.f ) * glm::ortho( 0.f, (float)Screen::Width(), 0.f, (float)Screen::Height(), -1.f, 1.f );
 		//m_engine.projectionMatrix = glm::mat4( 1.f ) * glm::ortho( -width, width, -height, height, -1.f, 1.f );
 		//m_engine.projectionMatrix = glm::perspective( 60.0f, (GLfloat)( Screen::Width() ) / (GLfloat)( Screen::Height() ), -2.0f, 10.0f );
 		//m_engine.projectionMatrix[0][0] = 2.f / (float)Screen::Width();
@@ -43,7 +43,7 @@ protected:
 		// 2D Section
 		/// Binding Values to Variables within shader
 #ifndef DUMBSHADER
-		shader_2d->SetUniform( "projectionMatrix", m_engine.projectionMatrix );
+		shader_2d->SetUniform( "projectionMatrix", m_engine.m_projectionMatrix );
 		shader_2d->SetUniform( "viewMatrix", glm::mat4( 1.f ) );
 		shader_2d->SetUniform( "in_Alpha", 1.0f );
 		shader_2d->SetUniform( "in_Scale", 1.0f );
