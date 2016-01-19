@@ -17,8 +17,9 @@ namespace GameAssets
 		float m_Angle;
 		float m_Alpha;
 		float m_FontSize;
-		bool m_AltFont = false;
+		bool m_AltFont;
 
+		Font();
 		uint TypeID();
 		void Load( std::string file );
 		void Reset();

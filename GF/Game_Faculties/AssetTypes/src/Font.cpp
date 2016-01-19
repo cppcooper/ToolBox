@@ -77,6 +77,11 @@ void Font::Load( std::string file )
 	Init();
 }
 
+Font::Font()
+{
+	Reset();
+}
+
 void Font::Reset()
 {
 	m_Angle = 0.0f;
