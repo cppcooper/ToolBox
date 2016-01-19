@@ -291,6 +291,7 @@ void glEngine::UnlockScreenSize()
 
 void glEngine::Resize( int width, int height )
 {
+	//TODO: Recalculate projection matrix for GLSLPrograms
 	if ( !m_ScreenSizeLock )
 	{
 		assert( width >= 0 && height >= 0 );
