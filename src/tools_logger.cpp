@@ -77,6 +77,18 @@ namespace logger
 				return "DoneFucked:\t\t\t      ";
 		}
 	}
+
+	inline void InitializeLogLibrary()
+	{
+		static bool Init = false;
+		if ( !Init )
+		{
+			Init = true;
+			FILE * AssertLog;
+			freopen_s( &AssertLog, "assert.log", "w", stderr );
+			StackTracer::Instance();
+		}
+	}
 }
 
 
@@ -120,7 +132,7 @@ Log::Log( Policy* OutputPolicy )
 {
 	assert( OutputPolicy );
 	m_Policy = OutputPolicy;
-	StackTracer::Instance();
+	InitializeLogLibrary();
 }
 
 LogLevel& Log::ReportingLevel()
