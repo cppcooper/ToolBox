@@ -58,7 +58,7 @@ namespace GameAssets
 
 		GLuint m_iCount = 0; //How many indices
 		GLuint m_vCount = 0; //How many vertices
-		GLuint m_vStride = 0; //How many bytes in one Triangle/Quad
+		GLuint m_vStride = 0; //How many bytes in one Triangle/Quad vert
 
 		GLuint m_IndexOrder = 0;
 		GLuint m_VBO = 0;

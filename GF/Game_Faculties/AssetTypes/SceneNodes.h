@@ -24,6 +24,7 @@ protected:
 	void Kill_SubGraph();
 
 protected:
+	BaseNode* m_Parent = nullptr;
 	std::vector<SceneNode*> m_Children;
 	glm::mat4 m_ModelMatrix;
 };
@@ -55,7 +56,6 @@ class SceneNode : public BaseNode
 	friend class BaseNode;
 	friend class RootNode;
 protected:
-	BaseNode* m_Parent = nullptr;
 	Drawable* m_Drawable = nullptr;
 
 protected:
@@ -84,8 +84,10 @@ protected:
 	glm::vec3 m_Axis;
 	float m_Speed = 0.0f;
 
+protected:
 	void Update_ModelMatrix() override;
 	void CheapMove( glm::vec3& displacement );
+
 public:
 	TranNode( BaseNode* parent );
 	TranNode( BaseNode* parent, glm::vec3& axis );
@@ -108,8 +110,10 @@ protected:
 	glm::mat4 m_RMatrix;
 	glm::quat m_RPM;
 
+protected:
 	void Update_ModelMatrix() override;
 	void CheapRotate( glm::quat& rot );
+
 public:
 	RotNode( BaseNode* parent );
 	RotNode( BaseNode* parent, glm::quat& rpm );
@@ -131,8 +135,10 @@ protected:
 	glm::mat4 m_SMatrix;
 	glm::vec3 m_SPM;
 
+protected:
 	void Update_ModelMatrix() override;
 	void CheapScale( glm::vec3& scale );
+
 public:
 	ScalerNode( BaseNode* parent );
 	ScalerNode( BaseNode* parent, glm::vec3& spm );

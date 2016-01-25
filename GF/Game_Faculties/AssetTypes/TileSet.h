@@ -1,5 +1,5 @@
-#ifndef GRAPHIC_H
-#define GRAPHIC_H
+#ifndef TILESET_H
+#define TILESET_H
 
 #include "../AssetAbstract.h"
 #include "BasicTypes.h"

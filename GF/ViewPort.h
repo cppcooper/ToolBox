@@ -9,17 +9,22 @@ protected:
 	float x1, y1, x2, y2;
 	float width, height;
 public:
-	void Set( float x1 = 0.0f, float y1 = 0.0f, float x2 = (float)Screen::Width(), float y2 = (float)Screen::Height() )
+	void Set( float x1 = 0.0f, float y1 = 0.0f, float w = (float)Screen::Width(), float h = (float)Screen::Height() )
 	{
-		float w = x2 - x1;
-		float h = y2 - y1;
 		assert( w <= Screen::Width() && h <= Screen::Height() );
 		this->x1 = x1;
 		this->y1 = y1;
-		this->x2 = x2;
-		this->y2 = y2;
+		this->x2 = x1 + w;
+		this->y2 = y1 + h;
 		width = w;
 		height = h;
+	}
+	void Scroll( glm::vec2 dir )
+	{
+		x1 += dir.x;
+		y1 += dir.y;
+		x2 = x1 + width;
+		y2 = y1 + height;
 	}
 	float CenterX()
 	{

@@ -82,6 +82,7 @@ The features I was interested in were the following:
 #include "Game_Faculties/Loader.h"
 #include "Game_Faculties/InterAccess.h"
 #include "Game_Faculties/AssetTypes/BasicTypes.h"
+#include "Game_Faculties/AssetTypes/TileSet.h"
 #include "Game_Faculties/AssetTypes/Sprite.h"
 #include "Game_Faculties/AssetTypes/Font.h"
 #include "Game_Faculties/AssetTypes/Mesh.h"

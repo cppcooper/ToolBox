@@ -9,51 +9,98 @@ using namespace GameAssets;
 TYPE_ID_IMPL( TileSet )
 void TileSet::Load( std::string file )
 {
-	assert( !m_Initialized );
+	Reset(); // Initializes TileSet member variables
 	std::ifstream Data;
 	Data.open( file );
 	if ( Data.is_open() )
 	{
-		Data >> m_TileCount;
-
 		ushort TexLength = 0;
 		Data >> TexLength;
+
 		char* TexFile = new char[TexLength + 1];
 		memset( TexFile, 0, TexLength + 1 );
 		Data.read( TexFile, 1 );
 		Data.read( TexFile, TexLength );
 		m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexFile );
+		delete[] TexFile;
+		m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 		assert( m_Tex != nullptr );
+		assert( m_Shader != nullptr );
 
-		uint& Tex_width = m_Tex->width;
-		uint& Tex_height = m_Tex->height;
+		uint& TextureWidth = m_Tex->width;
+		uint& TextureHeight = m_Tex->height;
 
-		ushort width = 0, height = 0;
-		Data >> width;
-		Data >> height;
+		ushort Columns = 0, Rows = 0;
+		Data >> Columns;
+		Data >> Rows;
+		Data >> m_Width;
+		Data >> m_Height;
 
+		assert( TextureWidth >= (uint)( Columns * m_Width ) );
+		assert( TextureHeight >= (uint)( Rows * m_Height ) );
+
+		m_TileCount = Columns * Rows;
+		m_vCount = 4 * m_TileCount;
 		m_vStride = 5 * sizeof( float );
-		m_vCount = m_TileCount * 4;
-		m_Vertices = new float[m_vCount * 5];
-		for ( m_FrameIndex = 0; m_FrameIndex < m_TileCount; ++m_FrameIndex )
-		{
-			ushort x = 0, y = 0;
-			Data >> x;
-			Data >> y;
+		m_Vertices = new float[5 * m_vCount];
+		memset( m_Vertices, 0, m_vCount * m_vStride );
 
-			AnchorBottomLeft( &m_Vertices[m_FrameIndex * 20], Tex_width, Tex_height, width, height, x, y );
+		for ( uint row = 0; row < Rows; ++row )
+		{
+			for ( uint col = 0; col < Columns; ++col )
+			{
+				AnchorBottomLeft( &m_Vertices[m_FrameIndex++ * 20], TextureWidth, TextureHeight, m_Width, m_Height, col * m_Width, row * m_Height );
+			}
 		}
+
+		assert( !Data.fail() );
+		Data.close();
 	}
 	else
 	{
 		assert( 0 ); //Couldn't open file
 	}
-	assert( !Data.fail() );
-	Data.close();
 
-	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
-	assert( m_Shader != nullptr );
-
-	m_FrameIndex = 0;
 	Init();
+	m_FrameIndex = 0;
+}
+
+void TileSet::Reset()
+{
+	m_TileCount = 0;
+	m_FrameIndex = 0;
+	m_Width = 0;
+	m_Height = 0;
+	m_Scale = 1.0f;
+	m_Alpha = 1.0f;
+	Deinit();
+}
+
+TileSet& TileSet::operator[]( ushort frame )
+{
+	m_FrameIndex = frame % m_TileCount;
+	return *this;
+}
+
+void TileSet::Draw( const glm::mat4& matrix )
+{
+	glBindVertexArray( m_VAO );
+	m_Tex->Bind();
+	m_Shader->UseProgram();
+
+	m_Shader->SetUniform( "in_Scale", m_Scale );
+	m_Shader->SetUniform( "in_Alpha", m_Alpha );
+	m_Shader->SetUniform( "modelMatrix", matrix );
+
+	glDrawArrays( GL_QUADS, m_FrameIndex * 4, 4 );
+}
+
+void TileSet::Scale( float scale )
+{
+	m_Scale = scale;
+}
+
+void TileSet::SetAlpha( float alpha )
+{
+	m_Alpha = alpha;
 }

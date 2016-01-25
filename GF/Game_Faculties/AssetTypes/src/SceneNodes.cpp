@@ -9,6 +9,23 @@ void BaseNode::Adopt( SceneNode* child )
 	m_Children.push_back( child );
 }
 
+void BaseNode::OrphanSelf()
+{
+	if ( m_Parent )
+	{
+		auto &p_children = m_Parent->m_Children;
+		m_Parent = nullptr;
+		for ( auto it = p_children.begin(); it != p_children.end(); ++it )
+		{
+			if ( *it == this )
+			{
+				p_children.erase( it );
+				return;
+			}
+		}
+	}
+}
+
 void BaseNode::Flatten_SubGraph()
 {
 	if ( m_Children.size() != 0 )
@@ -157,12 +174,15 @@ SceneNode::SceneNode( BaseNode* parent )
 SceneNode::~SceneNode()
 {
 	Kill_SubGraph();
-	for ( auto it = m_Parent->m_Children.begin(); it != m_Parent->m_Children.end(); ++it )
+	if ( m_Parent )
 	{
-		if ( this == *it )
+		for ( auto it = m_Parent->m_Children.begin(); it != m_Parent->m_Children.end(); ++it )
 		{
-			m_Parent->m_Children.erase( it );
-			break;
+			if ( this == *it )
+			{
+				m_Parent->m_Children.erase( it );
+				break;
+			}
 		}
 	}
 }
