@@ -6,7 +6,11 @@
 #include <string>
 #include <map>
 #include <algorithm>
-#pragma comment (lib,"tools_winfs.lib")
+#ifdef _DEBUG
+#pragma comment (lib,"tools_winfs_Debug.lib")
+#else
+#pragma comment (lib,"tools_winfs_Release.lib")
+#endif
 
 using std::string;
 using f_name = std::string;

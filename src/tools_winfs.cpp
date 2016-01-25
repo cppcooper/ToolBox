@@ -46,15 +46,9 @@ DirReader::DirReader( string path )
 
 void DirReader::Set_Path( string path )
 {
-	if ( ( Directory = opendir( path.c_str() ) ) == NULL )
-	{
-		//you done fucked it up
-		assert( "You done fucked it up. Directory is invalid" );
-	}
-	else
-	{
-		this->sDirpath = path;
-	}
+	Directory = opendir( path.c_str() );
+	assert( Directory != NULL );
+	this->sDirpath = path;
 }
 
 void DirReader::Find_Files()
