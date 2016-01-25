@@ -19,6 +19,7 @@ void Game::Init()
 	Asset_Factory<Texture>::Instance().TypeExtensions() = ".png";
 	Asset_Factory<GLSLProgram>::Instance().TypeExtensions() = ".vert;.frag;.geom;.tese;.tesc";
 	Asset_Factory<GLSLProgram>::Instance().RecordExtension() = ".glslp";
+	Asset_Factory<TileSet>::Instance().TypeExtensions() = ".tdat";
 	Asset_Factory<Sprite>::Instance().TypeExtensions() = ".sdat";
 	Asset_Factory<Font>::Instance().TypeExtensions() = ".fdat";
 	Asset_Factory<Mesh>::Instance().TypeExtensions() = ".s3d";

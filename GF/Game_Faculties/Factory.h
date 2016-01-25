@@ -68,6 +68,7 @@ public:
 	}
 
 	bool IsFactoryType( GameAsset* p ){
+		assert( p != nullptr );
 		gLog( _DEBUG1 ) << "Factory ID: " << TID
 			<< newl << "p: " << p
 			<< newl << "p Type ID: " << p->TypeID();
@@ -83,7 +84,10 @@ public:
 	T* GetAsset( std::string AssetName ){
 		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName.c_str();
 		GameAsset* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
-		return IsFactoryType( p ) ? (T*)p : nullptr;
+		if ( p != nullptr && IsFactoryType( p ) ){
+			return (T*)p;
+		}
+		return nullptr;
 	}
 };
 
