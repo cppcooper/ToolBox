@@ -14,29 +14,29 @@ inline T LowBitMask( size_t LowBits )
 }
 
 template<typename T>
-inline T GetHighBits( T value, unsigned char MaskBits )
+inline T GetHighBits( T Value, unsigned char MaskBits )
 {
-	return value & ~LowBitMask<T>( MaskBits );
+	return Value & ~LowBitMask<T>( MaskBits );
 }
 
 template<typename T>
-inline T GetLowBits( T value, unsigned char MaskBits )
+inline T GetLowBits( T Value, unsigned char MaskBits )
 {
-	return value & LowBitMask<T>( MaskBits );
+	return Value & LowBitMask<T>( MaskBits );
 }
 
 template<typename T>
 inline T IncrementAtBit( T Value, unsigned char bit )
 {
 	assert( bit != 0 );
-	return value + ( 1 << ( bit - 1 ) );
+	return Value + ( 1 << ( bit - 1 ) );
 }
 
 template<typename T>
 inline T DecrementAtBit( T Value, unsigned char bit )
 {
 	assert( bit != 0 );
-	return value - ( 1 << ( bit - 1 ) );
+	return Value - ( 1 << ( bit - 1 ) );
 }
 
 inline long long MergeIntegers( int A, int B )
