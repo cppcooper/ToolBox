@@ -10,13 +10,21 @@ inline T LowBitMask( size_t LowBits )
 {
 	size_t total_bits = sizeof( T ) * 8;
 	assert( LowBits != 0 && LowBits < total_bits );
-	return (T)( 1 << ( total_bits - LowBits ) ) - 1;
+	return (T)( 1 << LowBits ) - 1;
+}
+
+template<typename T>
+inline T HighBitMask( size_t HighBits )
+{
+	size_t total_bits = sizeof( T ) * 8;
+	assert( HighBits != 0 && HighBits < total_bits );
+	return ~( (T)( 1 << ( total_bits - HighBits ) ) - 1 );
 }
 
 template<typename T>
 inline T GetHighBits( T Value, unsigned char MaskBits )
 {
-	return Value & ~LowBitMask<T>( MaskBits );
+	return Value & HighBitMask<T>( MaskBits );
 }
 
 template<typename T>
