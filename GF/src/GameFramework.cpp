@@ -61,6 +61,20 @@ void Game::Attach( GameModule* module )
 	m_Modules.push_back( module );
 }
 
+void Game::Detach( GameModule* module )
+{
+	auto it = m_Modules.begin();
+	for ( auto m : m_Modules )
+	{
+		if ( m == module )
+		{
+			m_Modules.erase( it );
+			return;
+		}
+		it++;
+	}
+}
+
 void Game::Run() const
 {
 	assert( m_Initialized );
@@ -114,7 +128,7 @@ void Game::PressMouse( int& button, int& action, int& mod )
 {
 	if ( action == GLFW_PRESS )
 	{
-		Controls.QueueButton( button );
+		Controls.QueueMButton( button );
 	}
 }
 

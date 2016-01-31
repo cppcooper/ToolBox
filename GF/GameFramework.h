@@ -40,7 +40,7 @@ public:
 	void Init();
 	void Deinit();
 	void Attach( GameModule* module );
-	//TODO: void Detach( GameModule* module );
+	void Detach( GameModule* module );
 	void Run() const;
 };
 

@@ -9,6 +9,16 @@ ControlModule& ControlModule::Instance()
 	return instance;
 }
 
+void ControlModule::Disable_MouseInput()
+{
+	m_MouseEnabled = false;
+}
+
+void ControlModule::Enable_MouseInput()
+{
+	m_MouseEnabled = true;
+}
+
 void ControlModule::Bind_Cursor( std::function<void( double x, double y )> reader )
 {
 	m_ActionMutex.lock();
@@ -16,7 +26,7 @@ void ControlModule::Bind_Cursor( std::function<void( double x, double y )> reade
 	m_ActionMutex.unlock();
 }
 
-void ControlModule::Bind_Button( int button, std::function<void( MState state )> action )
+void ControlModule::Bind_MButton( int button, std::function<void( MState state )> action )
 {
 	m_ActionMutex.lock();
 	Button_Action_Map.emplace( button, action );
@@ -33,6 +43,8 @@ void ControlModule::Bind_Key( int key, std::function<void()> action )
 
 void ControlModule::MoveCursor( double x, double y )
 {
+	if ( !m_MouseEnabled )
+		return;
 	m_InputMutex.lock();
 	mouse_state.cursor_x = x;
 	mouse_state.cursor_y = y;
@@ -43,8 +55,10 @@ void ControlModule::MoveCursor( double x, double y )
 	}
 }
 
-void ControlModule::QueueButton( int button )
+void ControlModule::QueueMButton( int button )
 {
+	if ( !m_MouseEnabled )
+		return;
 	m_InputMutex.lock();
 	mouse_state.button = button;
 	m_MouseInput.push_back( mouse_state );
@@ -74,16 +88,19 @@ void ControlModule::Process()
 	}
 	m_KeysInput.clear();
 
-	for ( auto m : m_MouseInput )
+	if ( m_MouseEnabled )
 	{
-		auto actions = Button_Action_Map.equal_range( m.button );
-		for ( auto it = actions.first; it != actions.second; ++it )
+		for ( auto m : m_MouseInput )
 		{
-			it->second( m );
+			auto actions = Button_Action_Map.equal_range( m.button );
+			for ( auto it = actions.first; it != actions.second; ++it )
+			{
+				it->second( m );
+			}
 		}
+		m_MouseInput.clear();
 	}
-	m_MouseInput.clear();
-	
+
 	m_InputMutex.unlock();
 	m_ActionMutex.unlock();
 }

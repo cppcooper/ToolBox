@@ -13,6 +13,7 @@
 class ControlModule : public GameModule
 {
 private:
+	bool m_MouseEnabled;
 	struct MState
 	{
 		double cursor_x;
@@ -28,17 +29,19 @@ private:
 	std::multimap<int, std::function<void()>> Key_Action_Map;
 	std::multimap<int, std::function<void( MState state )>> Button_Action_Map;
 	std::vector<std::function<void( double x, double y )>> Cursor_Readers;
-	ControlModule(){}
+	ControlModule(){ m_MouseEnabled = true; }
 	~ControlModule(){}
 
 public:
 	static ControlModule& Instance();
+	void Disable_MouseInput();
+	void Enable_MouseInput();
 	void Bind_Cursor( std::function<void( double x, double y )> reader );
-	void Bind_Button( int button, std::function<void( MState state )> action );
+	void Bind_MButton( int button, std::function<void( MState state )> action );
 	void Bind_Key( int key, std::function<void()> action );
 
 	void MoveCursor( double x, double y );
-	void QueueButton( int button );
+	void QueueMButton( int button );
 	void QueueKey( int key );
 
 	void Process() override;
