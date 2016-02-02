@@ -1,4 +1,4 @@
-﻿Build started 25/01/2016 16:56:32.
+﻿Build started 01/02/2016 11:23:14.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\glEngine\glEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\glEngine\\" /Fd"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\glEngine\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\GFX\GL_Engine\gl_engine.cpp
@@ -10,4 +10,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.64
+Time Elapsed 00:00:02.06

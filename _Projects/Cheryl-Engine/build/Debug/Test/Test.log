@@ -1,4 +1,4 @@
-﻿Build started 25/01/2016 17:32:44.
+﻿Build started 01/02/2016 11:23:17.
      1>Project "C:\src\ToolBox\_Projects\Cheryl-Engine\Test\Test.vcxproj" on node 2 (Build target(s)).
      1>Link:
          C:\VS2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\bin\Test.lib" /MACHINE:X86 "C:\src\ToolBox\_Projects\Cheryl-Engine\build\Debug\Test\main.obj"
@@ -8,4 +8,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.90
+Time Elapsed 00:00:00.71
