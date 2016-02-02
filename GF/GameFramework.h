@@ -6,7 +6,12 @@
 #include "game_faculties.h"
 #include "GameModule.h"
 #include "ControlModule.h"
-#pragma comment (lib,"GF/GameFramework.lib")
+#ifdef _DEBUG
+#pragma comment (lib,"GF/GameFramework_Debug.lib")
+#else
+#pragma comment (lib,"GF/GameFramework_Release.lib")
+#endif
+
 
 #include <vector>
 

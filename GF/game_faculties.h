@@ -89,6 +89,11 @@ The features I was interested in were the following:
 #include "Game_Faculties/AssetTypes/Font.h"
 #include "Game_Faculties/AssetTypes/Mesh.h"
 #include "Game_Faculties/AssetTypes/SceneNodes.h"
-#pragma comment (lib,"GF/Game_Faculties/GameFaculties.lib")
+
+#ifdef _DEBUG
+#pragma comment (lib,"GF/Game_Faculties/GameFaculties_Debug.lib")
+#else
+#pragma comment (lib,"GF/Game_Faculties/GameFaculties_Release.lib")
+#endif
 
 #endif
