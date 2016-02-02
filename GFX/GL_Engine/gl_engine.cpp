@@ -251,6 +251,7 @@ void glEngine::Run()
 		///We are about to get keyboard input and other events
 		///Polling for input events is the most important function of the engine so Polling is done here in the main thread.
 		glfwPollEvents();
+		std::this_thread::sleep_for( std::chrono::milliseconds( 75 ) );
 	}
 	Quit();
 	///Makes this thread the current context in which OpenGL rendering can occur

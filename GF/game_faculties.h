@@ -35,7 +35,8 @@ THE SOFTWARE.*/
 This body of work was designed and implemented as a self-learning exercise, and
 as such it gives little consideration to data locality. As a useful component to an
 optimized game engine, this codebase certainly would not be contributing any
-optimizations. Though future versions may in fact be redesigned for data locality.
+optimizations. Though future versions may in fact be redesigned for data locality
+and have optimized algorithms.
 
 
 More on this as a research project.. =)
@@ -61,7 +62,8 @@ New features not withstanding, this project was for compiling a static library d
 to implementing core asset features. Eg. The code that loads an image as a texture.
 While I was in the neigbourhood I decided features for managing these derived assets
 would be a smart idea now instead of later. Though derived assets may be warrant
-separation later on.
+separation later on; however due to the coupling of assets to their own management,
+that may prove extremely difficult.
 
 The features I was interested in were the following:
 *Centralized Memory Allocation
