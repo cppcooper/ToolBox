@@ -117,13 +117,13 @@ void glEngine::SetMode( GL_Engine::graphics newMode )
 
 }
 
-//Method sets the update function to be called every tick
+//Method sets the update function to be called every cycle
 void glEngine::set_Update_f( std::function<void( double& seconds )> Update_f )
 {
 	this->Update_f = Update_f;
 }
 
-//Method sets the draw function to be called every tick
+//Method sets the draw function to be called every cycle
 void glEngine::set_Draw_f( std::function<void()> Draw_f )
 {
 	this->Draw_f = Draw_f;
