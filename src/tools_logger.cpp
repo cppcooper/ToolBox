@@ -130,7 +130,6 @@ LogStream::~LogStream()
 
 Log::Log( Policy* OutputPolicy )
 {
-	assert( OutputPolicy );
 	m_Policy = OutputPolicy;
 	InitializeLogLibrary();
 }

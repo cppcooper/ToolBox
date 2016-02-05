@@ -1,5 +1,5 @@
-#ifndef GRAPHIC_H
-#define GRAPHIC_H
+#ifndef SPRITE_H
+#define SPRITE_H
 
 #include "../AssetAbstract.h"
 #include "BasicTypes.h"
