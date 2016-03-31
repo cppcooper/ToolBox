@@ -111,10 +111,46 @@ namespace logger
 		static Log& GetLog( unsigned int LogIndex );
 	};
 
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& newl0( std::basic_ostream<CharT, Traits>& os )
+	{
+		os << std::endl << "\t";
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& newl1( std::basic_ostream<CharT, Traits>& os )
+	{
+		os << std::endl << "\t\t";
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& newl2( std::basic_ostream<CharT, Traits>& os )
+	{
+		os << std::endl << "\t\t\t";
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& newl3( std::basic_ostream<CharT, Traits>& os )
+	{
+		os << std::endl << "\t\t\t\t";
+		return os;
+	}
+
+	template< class CharT, class Traits >
+	std::basic_ostream<CharT, Traits>& newl4( std::basic_ostream<CharT, Traits>& os )
+	{
+		os << std::endl << "\t\t\t\t\t";
+		return os;
+	}
+
 	template< class CharT, class Traits >
 	std::basic_ostream<CharT, Traits>& newl( std::basic_ostream<CharT, Traits>& os )
 	{
-		os << std::endl << "\t\t\t\t\t   ";
+		os << newl4;
 		return os;
 	}
 

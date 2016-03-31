@@ -1,5 +1,6 @@
 #include "../tools_logger.h"
 #include <cassert>
+#include <sstream>
 
 using namespace logger;
 
@@ -39,43 +40,46 @@ namespace logger
 
 	inline std::string GetLogLevel( LogLevel level )
 	{
+		static std::stringstream LogLevelHeader;
+		LogLevelHeader.str( "" );
 		switch ( level )
 		{
 			case _FATAL:
-				return "\n\t\t\t\t\t~FATAL~\n";
+				LogLevelHeader << "\n\t\t\t\t\t~FATAL~\n";
 				break;
 
 			case _ERROR:
-				return "\n\t\t\t\t\t~ERROR~\n";
+				LogLevelHeader << "\n\t\t\t\t\t~ERROR~\n";
 				break;
 
 			case _WARNING:
-				return "WARNING:\t";
+				LogLevelHeader << "WARNING:\t";
 				break;
 
 			case _INFO:
-				return "INFO:\t\t";
+				LogLevelHeader << "INFO:\t\t";
 				break;
 
 			case _DEBUG1:
-				return "-DEBUG1:\n\t\t\t\t\t";
+				LogLevelHeader << "-DEBUG1:" << newl0 << "  ";
 				break;
 
 			case _DEBUG2:
-				return "- -DEBUG2:\n\t\t\t\t\t";
+				LogLevelHeader << "- -DEBUG2:" << newl1 << "  ";
 				break;
 
 			case _DEBUG3:
-				return "- - -DEBUG3:\n\t\t\t\t\t";
+				LogLevelHeader << "- - -DEBUG3:" << newl2 << "  ";
 				break;
 
 			case _DEBUG4:
-				return "- - - -DEBUG4:\n\t\t\t\t\t";
+				LogLevelHeader << "- - - -DEBUG4:" << newl3 << "  ";
 				break;
 
 			default:
 				return "DoneFucked:\t\t\t      ";
 		}
+		return LogLevelHeader.str();
 	}
 
 	inline void InitializeLogLibrary()
@@ -130,7 +134,6 @@ LogStream::~LogStream()
 
 Log::Log( Policy* OutputPolicy )
 {
-	assert( OutputPolicy );
 	m_Policy = OutputPolicy;
 	InitializeLogLibrary();
 }

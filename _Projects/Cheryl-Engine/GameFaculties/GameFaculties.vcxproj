@@ -17,6 +17,7 @@
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetMgr.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\BasicTypes.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Font.h" />
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Graphic.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Mesh.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\SceneNodes.h" />
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Sprite.h" />
@@ -34,6 +35,7 @@
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\BasicTypes.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Font.cpp" />
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Graphic.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Mesh.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\SceneNodes.cpp" />
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Sprite.cpp" />
@@ -58,7 +60,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -77,6 +79,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.lib</TargetExt>
     <OutDir>C:\src\ToolBox\lib_files\GF\Game_Faculties\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetExt>.lib</TargetExt>
+    <OutDir>C:\src\ToolBox\lib_files\GF\Game_Faculties\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

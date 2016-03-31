@@ -31,8 +31,12 @@ THE SOFTWARE.*/
 #endif
 
 #include "OpenGL_Headers.h"
-#pragma comment (lib,"GFX/GL_Engine/glEngine.lib")
 
+#ifdef _DEBUG
+#pragma comment (lib,"GFX/GL_Engine/glEngine_Debug.lib")
+#else
+#pragma comment (lib,"GFX/GL_Engine/glEngine_Release.lib")
+#endif
 //Threading Libraries
 #include <thread>
 #include <mutex>

@@ -81,6 +81,9 @@
     <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.h">
       <Filter>Header Files\Assets</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\GF\Game_Faculties\AssetTypes\Graphic.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\GF\Game_Faculties\src\AssetMgr.cpp">
@@ -123,6 +126,9 @@
       <Filter>Source Files\Assets</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\2dtools.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GF\Game_Faculties\AssetTypes\src\Graphic.cpp">
       <Filter>Source Files\Assets</Filter>
     </ClCompile>
   </ItemGroup>
