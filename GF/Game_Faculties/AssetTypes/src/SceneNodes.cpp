@@ -7,6 +7,7 @@ void BaseNode::Adopt( SceneNode* child )
 {
 	child->m_Parent = this;
 	m_Children.push_back( child );
+	child->Cascade_Data();
 }
 
 void BaseNode::OrphanSelf()
@@ -24,6 +25,7 @@ void BaseNode::OrphanSelf()
 			}
 		}
 	}
+	Cascade_Data();
 }
 
 void BaseNode::Flatten_SubGraph()
@@ -162,7 +164,10 @@ void SceneNode::Update_ModelMatrix()
 
 void SceneNode::Copy_ParentMatrix()
 {
-	m_ModelMatrix = m_Parent->m_ModelMatrix;
+	if ( m_Parent != nullptr )
+		m_ModelMatrix = m_Parent->m_ModelMatrix;
+	else
+		m_ModelMatrix = glm::mat4( 1.f );
 }
 
 SceneNode::SceneNode( BaseNode* parent )

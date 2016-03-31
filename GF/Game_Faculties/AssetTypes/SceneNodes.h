@@ -89,6 +89,7 @@ protected:
 	void CheapMove( glm::vec3& displacement );
 
 public:
+	TranNode(){}
 	TranNode( BaseNode* parent );
 	TranNode( BaseNode* parent, glm::vec3& axis );
 	
@@ -115,6 +116,7 @@ protected:
 	void CheapRotate( glm::quat& rot );
 
 public:
+	RotNode(){}
 	RotNode( BaseNode* parent );
 	RotNode( BaseNode* parent, glm::quat& rpm );
 
@@ -140,6 +142,7 @@ protected:
 	void CheapScale( glm::vec3& scale );
 
 public:
+	ScalerNode(){}
 	ScalerNode( BaseNode* parent );
 	ScalerNode( BaseNode* parent, glm::vec3& spm );
 
