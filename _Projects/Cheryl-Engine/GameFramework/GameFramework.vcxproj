@@ -14,6 +14,8 @@
     <ClInclude Include="..\..\..\GF\ControlModule.h" />
     <ClInclude Include="..\..\..\GF\GameFramework.h" />
     <ClInclude Include="..\..\..\GF\GameModule.h" />
+    <ClInclude Include="..\..\..\GF\Input\InputContext.h" />
+    <ClInclude Include="..\..\..\GF\Input\InputMapper.h" />
     <ClInclude Include="..\..\..\GF\ViewPort.h" />
   </ItemGroup>
   <ItemGroup>

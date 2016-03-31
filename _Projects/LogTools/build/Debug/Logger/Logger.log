@@ -1,14 +1,16 @@
-﻿Build started 04/02/2016 14:30:48.
-     1>Project "C:\src\ToolBox\_Projects\LogTools\Logger\Logger.vcxproj" on node 2 (Build target(s)).
+﻿Build started 09/02/2016 14:03:27.
+     1>Project "C:\src\ToolBox\_Projects\LogTools\Logger\Logger.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\LogTools\build\Debug\Logger\\" /Fd"C:\src\ToolBox\_Projects\LogTools\build\Debug\Logger\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\tools_logger.cpp
+         C:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\src\ToolBox\_Projects\LogTools\build\Debug\Logger\\" /Fd"C:\src\ToolBox\_Projects\LogTools\build\Debug\Logger\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\tools_logger.cpp ..\..\..\src\tools_stacktracer.cpp
+         tools_stacktracer.cpp
          tools_logger.cpp
+         Generating Code...
        Lib:
          C:\VS2013\VC\bin\Lib.exe /OUT:"C:\src\ToolBox\lib_files\tools_logger_Debug.lib" /NOLOGO C:\src\ToolBox\_Projects\LogTools\build\Debug\Logger\tools_logger.obj
          C:\src\ToolBox\_Projects\LogTools\build\Debug\Logger\tools_stacktracer.obj
          Logger.vcxproj -> C:\src\ToolBox\lib_files\tools_logger_Debug.lib
-     1>Done Building Project "C:\src\ToolBox\_Projects\LogTools\Logger\Logger.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\src\ToolBox\_Projects\LogTools\Logger\Logger.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.85
+Time Elapsed 00:00:02.09
