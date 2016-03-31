@@ -4,7 +4,11 @@
 #include <string>
 #include <chrono>
 
-#pragma comment (lib,"tools_bench.lib")
+#ifdef _DEBUG
+#pragma comment (lib,"tools_bench_Debug.lib")
+#else
+#pragma comment (lib,"tools_bench_Release.lib")
+#endif
 
 using namespace std::chrono;
 

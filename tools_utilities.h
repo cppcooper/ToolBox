@@ -3,7 +3,11 @@
 #include <cassert>
 #include <cmath>
 
-//#pragma comment (lib,"tools_utilities.lib")
+#ifdef _DEBUG
+#pragma comment (lib,"tools_utilities_Debug.lib")
+#else
+#pragma comment (lib,"tools_utilities_Release.lib")
+#endif
 
 template<typename T>
 inline T LowBitMask( size_t LowBits )
