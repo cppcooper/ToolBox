@@ -11,17 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputBinding.cpp" />
     <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputMapper.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputState_SteamController.cpp" />
     <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp" />
     <ClCompile Include="C:\src\ToolBox\cheryl-engine\GameFramework\src\ControlModule.cpp" />
     <ClCompile Include="C:\src\ToolBox\cheryl-engine\src\GameFramework.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Events\Event.h" />
-    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Events\EventSystem.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputBinding.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputContext.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputMapper.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState_SteamController.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputSystem.h" />
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework.h" />
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\ControlModule.h" />
