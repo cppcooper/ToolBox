@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -11,10 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp" />
     <ClCompile Include="C:\src\ToolBox\cheryl-engine\GameFramework\src\ControlModule.cpp" />
     <ClCompile Include="C:\src\ToolBox\cheryl-engine\src\GameFramework.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Events\Event.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Events\EventSystem.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputBinding.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputContext.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputMapper.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputSystem.h" />
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework.h" />
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\ControlModule.h" />
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\GameModule.h" />
@@ -22,6 +30,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6DE9AF2B-3350-4117-BE9F-A044BAD200DD}</ProjectGuid>
     <RootNamespace>GameFramework</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

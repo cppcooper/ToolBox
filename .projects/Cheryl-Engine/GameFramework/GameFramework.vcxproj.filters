@@ -22,6 +22,9 @@
     <Filter Include="Source Files\GameFramework\Input">
       <UniqueIdentifier>{a6c787c9-7224-4aa1-bf58-93398e36c641}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameFramework\Events">
+      <UniqueIdentifier>{e9d9c21e-3af2-43c8-b7ef-9f267d9355de}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\GameFramework\Input">
       <UniqueIdentifier>{955d53a2-6091-4289-85fd-bd0155ce6e39}</UniqueIdentifier>
     </Filter>
@@ -33,6 +36,12 @@
     <ClCompile Include="C:\src\ToolBox\cheryl-engine\GameFramework\src\ControlModule.cpp">
       <Filter>Source Files\GameFramework</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp">
+      <Filter>Source Files\GameFramework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp">
+      <Filter>Source Files\GameFramework\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework.h">
@@ -43,6 +52,24 @@
     </ClInclude>
     <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\GameModule.h">
       <Filter>Header Files\GameFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputSystem.h">
+      <Filter>Header Files\GameFramework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputMapper.h">
+      <Filter>Header Files\GameFramework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputContext.h">
+      <Filter>Header Files\GameFramework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputBinding.h">
+      <Filter>Header Files\GameFramework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Events\Event.h">
+      <Filter>Header Files\GameFramework\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Events\EventSystem.h">
+      <Filter>Header Files\GameFramework\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
