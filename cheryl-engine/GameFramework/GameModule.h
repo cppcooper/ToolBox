@@ -4,15 +4,15 @@
 class GameModule
 {
 public:
-	virtual void Init() = 0;
-	virtual void Deinit() = 0;
+	virtual void Init() {}
+	virtual void Deinit() {}
 
-	virtual void Process() = 0;
-	virtual void Update( double& seconds ) = 0;
-	virtual void PostProcess() = 0;
+	virtual void Process() {}
+	virtual void Update(double& seconds) {}
+	virtual void PostProcess() {}
 	
-	virtual void Buffer() = 0;
-	virtual void Draw() = 0;
+	virtual void Buffer() {}
+	virtual void Draw() {}
 };
 
 #endif

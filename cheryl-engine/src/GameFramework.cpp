@@ -5,6 +5,8 @@ using namespace GameAssets;
 
 void Game::Init()
 {
+	SteamAPI_Init();
+
 	using namespace std::placeholders;
 	m_glEngine.set_Update_f( std::bind( &Game::Update, this, _1 ) );
 	m_glEngine.set_Draw_f( std::bind( &Game::Draw, this ) );

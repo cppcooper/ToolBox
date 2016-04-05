@@ -7,6 +7,9 @@
 #include "GameFramework\GameModule.h"
 #include "GameFramework\ControlModule.h"
 
+#include "../../3rdparty/Steamworks/public/steam/steam_api.h"
+#pragma comment (lib, "3rdparty/Steamworks/steam_api.lib")
+
 #ifdef _DEBUG
 #pragma comment (lib,"Cheryl-Engine/GameFramework_Debug.lib")
 #else
