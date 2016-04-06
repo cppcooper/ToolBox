@@ -1,8 +1,8 @@
 #include "../Mesh.h"
 
 #include "../../InterAccess.h"
-#include "../../Factory.h"
-#include "../../AssetMgr.h"
+#include "../../Components/Factory.h"
+#include "../../Components/AssetMgr.h"
 using namespace GameAssets;
 
 

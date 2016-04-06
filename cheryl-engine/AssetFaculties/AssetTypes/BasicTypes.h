@@ -9,10 +9,12 @@ this ensures Macros from OpenGL_Headers and dirent.h do not collide
 Thus concrete Asset definitions must be seperated from the interface details
 */
 
-#include "../AssetAbstract.h"
 #include "../../../3rdparty/OpenGL_Headers.h"
 #include "../STL.h"
+#include "../Components/AssetAbstract.h"
+
 #pragma comment (lib,"3rdparty/FreeImage/FreeImage.lib")
+
 using glm::vec2;
 using glm::vec3;
 using glm::vec4;

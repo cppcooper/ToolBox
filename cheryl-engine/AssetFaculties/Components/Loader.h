@@ -1,9 +1,12 @@
 #ifndef _ASSETLOADER_H
 #define _ASSETLOADER_H
 
-#include "File_Mgr.h"
-#include "STL.h"
 #include <tools_logger.h>
+
+#include "../STL.h"
+
+#include "File_Mgr.h"
+
 namespace GameAssets{ class Factory; class GameAsset; }
 using namespace GameAssets;
 

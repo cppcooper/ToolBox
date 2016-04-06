@@ -1,7 +1,8 @@
 #ifndef _FONT_HANDLER_H_
 #define _FONT_HANDLER_H_
 
-#include "../AssetAbstract.h"
+#include "../Components/AssetAbstract.h"
+
 #include "BasicTypes.h"
 
 namespace GameAssets

@@ -1,12 +1,11 @@
 #pragma once
 
 #include <functional>
-#include <int_typedefs.h>
 
 class InputBinding
 {
 protected:
-	uint32 m_Priority = -1;
+	unsigned int m_Priority = -1;
 public:
 	virtual void poll() = 0;
 };
@@ -20,7 +19,7 @@ private:
 	InputStateDigital* m_State = nullptr;
 
 public:
-	InputBindingDigital( InputStateDigital* state, std::function<void()> action, uint32 priority );
+	InputBindingDigital( InputStateDigital* state, std::function<void()> action, unsigned int priority );
 	void poll() override;
 };
 
@@ -33,6 +32,6 @@ private:
 	InputStateAnalog* m_State = nullptr;
 
 public:
-	InputBindingAnalog( InputStateAnalog* state, std::function<void( double, double )> action, uint32 priority );
+	InputBindingAnalog( InputStateAnalog* state, std::function<void( double, double )> action, unsigned int priority );
 	void poll() override;
 };

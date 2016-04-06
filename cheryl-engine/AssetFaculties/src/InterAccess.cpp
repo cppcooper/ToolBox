@@ -1,9 +1,9 @@
 #include "../InterAccess.h"
 
-#include "../Storage.h"
-#include "../Pool.h"
-#include "../Loader.h"
-#include "../AssetMgr.h"
+#include "../Components/Storage.h"
+#include "../Components/Pool.h"
+#include "../Components/Loader.h"
+#include "../Components/AssetMgr.h"
 
 
 Asset_Faculties::Asset_Faculties() : m_logger( &m_logFile )

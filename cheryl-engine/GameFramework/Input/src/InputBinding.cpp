@@ -1,7 +1,7 @@
 #include "../InputBinding.h"
 #include "../InputState.h"
 
-InputBindingDigital::InputBindingDigital( InputStateDigital * state, std::function<void()> callback, uint32 priority )
+InputBindingDigital::InputBindingDigital( InputStateDigital * state, std::function<void()> callback, unsigned int priority )
 {
 	m_State = state;
 	m_ActionCallback = callback;
@@ -15,7 +15,7 @@ void InputBindingDigital::poll()
 }
 
 
-InputBindingAnalog::InputBindingAnalog( InputStateAnalog * state, std::function<void( double, double )> callback, uint32 priority )
+InputBindingAnalog::InputBindingAnalog( InputStateAnalog * state, std::function<void( double, double )> callback, unsigned int priority )
 {
 	m_State = state;
 	m_RangeCallback = callback;

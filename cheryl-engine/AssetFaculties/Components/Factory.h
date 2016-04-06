@@ -1,11 +1,14 @@
 #ifndef _ASSETFACTORY_H
 #define _ASSETFACTORY_H
 
-#include "AssetAbstract.h"
-#include "InterAccess.h"
 #include <tools_logger.h>
+
+#include "../STL.h"
+#include "../InterAccess.h"
+
+#include "AssetAbstract.h"
 #include "Pool.h"
-#include "STL.h"
+
 using namespace GameAssets;
 
 template<class T>

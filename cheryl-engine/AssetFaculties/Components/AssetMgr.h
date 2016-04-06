@@ -1,9 +1,12 @@
 #ifndef _ASSETMANAGER_H
 #define _ASSETMANAGER_H
 
-#include "AssetAbstract.h"
 #include <tools_logger.h>
-#include "STL.h"
+
+#include "../STL.h"
+
+#include "AssetAbstract.h"
+
 using namespace GameAssets;
 
 class Asset_Manager

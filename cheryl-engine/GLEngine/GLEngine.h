@@ -30,7 +30,7 @@ THE SOFTWARE.*/
 	#include <Windows.h>
 #endif
 
-#include "../3rdparty/OpenGL_Headers.h"
+#include "../../3rdparty/OpenGL_Headers.h"
 
 #ifdef _DEBUG
 #pragma comment (lib,"Cheryl-Engine/GLEngine_Debug.lib")

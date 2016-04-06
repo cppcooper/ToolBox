@@ -1,7 +1,8 @@
 #ifndef TILESET_H
 #define TILESET_H
 
-#include "../AssetAbstract.h"
+#include "../Components/AssetAbstract.h"
+
 #include "BasicTypes.h"
 
 namespace GameAssets

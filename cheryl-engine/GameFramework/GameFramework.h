@@ -1,14 +1,14 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-#include "GLEngine.h"
-#include "AssetFaculties.h"
-
-#include "GameFramework\GameModule.h"
-#include "GameFramework\ControlModule.h"
-
 #include "../../3rdparty/Steamworks/public/steam/steam_api.h"
 #pragma comment (lib, "3rdparty/Steamworks/steam_api.lib")
+
+#include "../GLEngine/GLEngine.h"
+#include "../AssetFaculties/AssetFaculties.h"
+
+#include "GameModule.h"
+#include "ControlModule.h"
 
 #ifdef _DEBUG
 #pragma comment (lib,"Cheryl-Engine/GameFramework_Debug.lib")

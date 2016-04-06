@@ -1,8 +1,9 @@
 #ifndef _ASSETABSTRACT_H
 #define _ASSETABSTRACT_H
 
-#include "STL.h"
 #include <tools_logger.h>
+
+#include "../STL.h"
 
 class Asset_Storage;
 class Asset_Loader;

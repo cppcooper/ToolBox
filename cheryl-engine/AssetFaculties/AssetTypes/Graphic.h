@@ -1,7 +1,8 @@
 #ifndef GRAPHIC_H
 #define GRAPHIC_H
 
-#include "../AssetAbstract.h"
+#include "../Components/AssetAbstract.h"
+
 #include "BasicTypes.h"
 
 namespace GameAssets

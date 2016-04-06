@@ -77,19 +77,21 @@ The features I was interested in were the following:
 //TODO: Remove using namespace from the headers global space
 #pragma endregion
 
-#include "AssetFaculties/Storage.h"
-#include "AssetFaculties/Pool.h"
-#include "AssetFaculties/Factory.h"
-#include "AssetFaculties/AssetMgr.h"
-#include "AssetFaculties/Loader.h"
-#include "AssetFaculties/InterAccess.h"
-#include "AssetFaculties/AssetTypes/BasicTypes.h"
-#include "AssetFaculties/AssetTypes/Graphic.h"
-#include "AssetFaculties/AssetTypes/TileSet.h"
-#include "AssetFaculties/AssetTypes/Sprite.h"
-#include "AssetFaculties/AssetTypes/Font.h"
-#include "AssetFaculties/AssetTypes/Mesh.h"
-#include "AssetFaculties/AssetTypes/SceneNodes.h"
+#include "InterAccess.h"
+
+#include "Components/Storage.h"
+#include "Components/Pool.h"
+#include "Components/Factory.h"
+#include "Components/AssetMgr.h"
+#include "Components/Loader.h"
+
+#include "AssetTypes/BasicTypes.h"
+#include "AssetTypes/Graphic.h"
+#include "AssetTypes/TileSet.h"
+#include "AssetTypes/Sprite.h"
+#include "AssetTypes/Font.h"
+#include "AssetTypes/Mesh.h"
+#include "AssetTypes/SceneNodes.h"
 
 #ifdef _DEBUG
 #pragma comment (lib,"Cheryl-Engine/AssetFaculties_Debug.lib")

@@ -1,7 +1,7 @@
 #include "../Graphic.h"
 #include "../../InterAccess.h"
-#include "../../Factory.h"
-#include "../../AssetMgr.h"
+#include "../../Components/Factory.h"
+#include "../../Components/AssetMgr.h"
 #include "2dtools.h"
 using namespace GameAssets;
 

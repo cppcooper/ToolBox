@@ -1,6 +1,6 @@
 #include "../BasicTypes.h"
 
-#include "../../Factory.h"
+#include "../../Components/Factory.h"
 #include "../../../../3rdparty/FreeImage/FreeImage.h"
 using namespace GameAssets;
 

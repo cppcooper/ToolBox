@@ -2,7 +2,7 @@
 #define _ASSETSTORAGE_H
 
 #include "AssetAbstract.h"
-#include "STL.h"
+#include "../STL.h"
 #include <tools_logger.h>
 using namespace GameAssets;
 using namespace logger;

@@ -1,9 +1,12 @@
 #ifndef SCENENODES_H_
 #define SCENENODES_H_
 
-#include "BasicTypes.h"
-#include "../STL.h"
 #include <mutex>
+
+#include "../STL.h"
+
+#include "BasicTypes.h"
+
 using namespace GameAssets;
 ///enum NODE_TYPE { SCENE, ROOT, TRAN, ROT, SCALE, TIMER, DYNA, STATIC, ANIM };
 
