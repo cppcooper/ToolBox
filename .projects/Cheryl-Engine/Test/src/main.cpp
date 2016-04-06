@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 
-#include <cheryl-engine\GameFramework.h>
+#include <cheryl-engine/CherylEngine.h>
 using namespace GameAssets;
 
 static const GLfloat g_vertex_buffer_data[] = {

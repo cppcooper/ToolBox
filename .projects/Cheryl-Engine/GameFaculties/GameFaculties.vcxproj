@@ -11,41 +11,40 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetAbstract.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetMgr.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\BasicTypes.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Font.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Graphic.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Mesh.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\SceneNodes.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Sprite.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\TileSet.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Factory.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\File_Mgr.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\InterAccess.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Loader.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Pool.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\STL.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Storage.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetFaculties.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\BasicTypes.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Font.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Graphic.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Mesh.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\SceneNodes.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Sprite.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\TileSet.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetAbstract.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetMgr.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Factory.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\File_Mgr.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Loader.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Pool.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Storage.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\InterAccess.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\BasicTypes.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Font.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Graphic.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Mesh.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\SceneNodes.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Sprite.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\TileSet.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\AssetAbstract.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\AssetMgr.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\File_Mgr.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\InterAccess.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\Loader.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\Pool.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\Storage.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\BasicTypes.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Font.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Graphic.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Mesh.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\SceneNodes.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Sprite.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\TileSet.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\AssetAbstract.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\AssetMgr.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\File_Mgr.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\Loader.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\Pool.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\Storage.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\src\InterAccess.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B8546C0A-2141-43A3-ABD7-049AA6CB0BE9}</ProjectGuid>

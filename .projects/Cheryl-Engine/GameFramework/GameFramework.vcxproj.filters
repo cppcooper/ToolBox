@@ -13,69 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\GameFramework">
-      <UniqueIdentifier>{b956092c-6d98-4ec0-969a-3b518d9717e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameFramework">
-      <UniqueIdentifier>{497d9c85-e38d-45af-bc2b-598174093059}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameFramework\Input">
+    <Filter Include="Source Files\Input">
       <UniqueIdentifier>{a6c787c9-7224-4aa1-bf58-93398e36c641}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameFramework\Input">
+    <Filter Include="Header Files\Input">
       <UniqueIdentifier>{955d53a2-6091-4289-85fd-bd0155ce6e39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\src\GameFramework.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\GameFramework\src\ControlModule.cpp">
-      <Filter>Source Files\GameFramework</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp">
-      <Filter>Source Files\GameFramework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp">
-      <Filter>Source Files\GameFramework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputBinding.cpp">
-      <Filter>Source Files\GameFramework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputMapper.cpp">
-      <Filter>Source Files\GameFramework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputState_SteamController.cpp">
-      <Filter>Source Files\GameFramework\Input</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\ControlModule.h">
-      <Filter>Header Files\GameFramework</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\GameModule.h">
-      <Filter>Header Files\GameFramework</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputSystem.h">
-      <Filter>Header Files\GameFramework\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputMapper.h">
-      <Filter>Header Files\GameFramework\Input</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputBinding.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputContext.h">
-      <Filter>Header Files\GameFramework\Input</Filter>
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputBinding.h">
-      <Filter>Header Files\GameFramework\Input</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputMapper.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState.h">
-      <Filter>Header Files\GameFramework\Input</Filter>
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState_SteamController.h">
-      <Filter>Header Files\GameFramework\Input</Filter>
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputSystem.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\ControlModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\GameFramework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\GameModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputBinding.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputMapper.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputState_SteamController.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\src\ControlModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\src\GameFramework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

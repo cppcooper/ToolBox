@@ -11,24 +11,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputBinding.cpp" />
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp" />
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputMapper.cpp" />
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputState_SteamController.cpp" />
-    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\GameFramework\src\ControlModule.cpp" />
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\src\GameFramework.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\ControlModule.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\GameFramework.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\GameModule.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputBinding.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputContext.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputMapper.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState_SteamController.h" />
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputSystem.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\ControlModule.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GameFramework\GameModule.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputBinding.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputContext.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputMapper.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputState_SteamController.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputSystem.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\src\ControlModule.cpp" />
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\src\GameFramework.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6DE9AF2B-3350-4117-BE9F-A044BAD200DD}</ProjectGuid>
@@ -71,9 +71,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -85,11 +86,12 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

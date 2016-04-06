@@ -11,11 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\src\ToolBox\3rdparty\OpenGL_Headers.h" />
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\GLEngine.h" />
+    <ClCompile Include="..\..\..\cheryl-engine\GLEngine\src\GLEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\src\GLEngine.cpp" />
+    <ClInclude Include="..\..\..\3rdparty\OpenGL_Headers.h" />
+    <ClInclude Include="..\..\..\cheryl-engine\GLEngine\GLEngine.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{67D579FB-B402-427B-8A73-4E5BDA1DEABE}</ProjectGuid>

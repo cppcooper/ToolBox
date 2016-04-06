@@ -13,120 +13,117 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\AssetFaculties">
-      <UniqueIdentifier>{6e57c824-948a-4c99-87ab-5db332b643b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\AssetFaculties">
-      <UniqueIdentifier>{6b1d65fb-3075-4493-ae97-c2846df857d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\AssetFaculties\AssetTypes">
+    <Filter Include="Header Files\AssetTypes">
       <UniqueIdentifier>{a5545a2b-70ce-4ab5-b488-824d5ce92a91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\AssetFaculties\AssetTypes">
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{6e57c824-948a-4c99-87ab-5db332b643b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{6b1d65fb-3075-4493-ae97-c2846df857d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AssetTypes">
       <UniqueIdentifier>{c12b8ca6-64aa-469c-8aac-5271a85ef43f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties.h">
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetFaculties.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetAbstract.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetAbstract.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetMgr.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetMgr.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Factory.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Factory.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\File_Mgr.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\File_Mgr.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\InterAccess.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Loader.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Loader.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Pool.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Pool.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Storage.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\STL.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\BasicTypes.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\Storage.h">
-      <Filter>Header Files\AssetFaculties</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Font.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\BasicTypes.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Graphic.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Font.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Mesh.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Graphic.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\SceneNodes.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Mesh.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Sprite.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\SceneNodes.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\TileSet.h">
+      <Filter>Header Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\Sprite.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.h">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\TileSet.h">
-      <Filter>Header Files\AssetFaculties\AssetTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.h">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\InterAccess.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\AssetAbstract.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\AssetAbstract.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\AssetMgr.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\AssetMgr.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\File_Mgr.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\File_Mgr.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\InterAccess.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\Loader.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\Loader.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\Pool.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\Pool.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\Components\src\Storage.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\src\Storage.cpp">
-      <Filter>Source Files\AssetFaculties</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\BasicTypes.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\BasicTypes.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Font.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Font.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Graphic.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Graphic.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Mesh.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Mesh.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\SceneNodes.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\SceneNodes.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\Sprite.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\Sprite.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\TileSet.cpp">
+      <Filter>Source Files\AssetTypes</Filter>
     </ClCompile>
-    <ClCompile Include="C:\src\ToolBox\cheryl-engine\AssetFaculties\AssetTypes\src\TileSet.cpp">
-      <Filter>Source Files\AssetFaculties\AssetTypes</Filter>
+    <ClCompile Include="..\..\..\cheryl-engine\AssetFaculties\src\InterAccess.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
