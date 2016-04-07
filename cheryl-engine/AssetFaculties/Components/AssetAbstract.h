@@ -36,6 +36,7 @@ namespace GameAssets
 	*/
 	class GameAsset
 	{
+	public:
 		friend class Asset_Storage;
 		friend class Asset_Loader;
 	protected:
@@ -56,6 +57,7 @@ namespace GameAssets
 	protected:
 		struct
 		{
+		public:
 			GameAsset* allocation = nullptr;
 			unsigned int index = 0;
 			unsigned int length = 0;

@@ -1,5 +1,4 @@
-#ifndef _ASSETFACTORY_H
-#define _ASSETFACTORY_H
+#pragma once
 
 #include <tools_logger.h>
 
@@ -25,7 +24,8 @@ private:
 	}
 
 	logger::LogStream gLog( logger::LogLevel level ){
-		return m_Log->Line( level );
+		LogStream q( m_Log->Line( level ) );
+		return q;
 	}
 
 public:
@@ -94,4 +94,3 @@ public:
 	}
 };
 
-#endif

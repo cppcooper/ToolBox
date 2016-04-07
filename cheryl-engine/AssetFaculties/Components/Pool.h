@@ -1,5 +1,4 @@
-#ifndef _ASSETPOOL_H
-#define _ASSETPOOL_H
+#pragma once
 
 #include <tools_logger.h>
 
@@ -102,4 +101,3 @@ public:
 
 };
 
-#endif

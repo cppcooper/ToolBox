@@ -129,7 +129,7 @@ void Texture::Load( std::string file )
 		if ( fif == FIF_UNKNOWN )
 		{
 			///All attempts to determine format have failed
-			goto TEXTURE_ERROR;
+			assert( 0 );
 		}
 	}
 
@@ -140,13 +140,13 @@ void Texture::Load( std::string file )
 		if ( !FreeImage_texture_ptr )
 		{
 			///Couldn't load the image for unknown reason
-			goto TEXTURE_ERROR;
+			assert( 0 );
 		}
 	}
 	else
 	{
 		///We can't read the format so a major problem exists
-		goto TEXTURE_ERROR;
+		assert( 0 );
 	}
 
 	if ( FreeImage_GetBPP( FreeImage_texture_ptr ) != 32 )
@@ -165,7 +165,7 @@ void Texture::Load( std::string file )
 	if ( ( image_data == 0 ) || ( texture_width == 0 ) || ( texture_height == 0 ) )
 	{
 		///Something went horribly wrong
-		goto TEXTURE_ERROR;
+		assert( 0 );
 	}
 
 	///We need to create an OpenGL texture ID to associate our data to
@@ -223,9 +223,6 @@ void Texture::Load( std::string file )
 
 	glTexture_Unit = GL_TEXTURE0;
 	return void( 0 );
-
-TEXTURE_ERROR:
-	assert( 0 );
 }
 
 void Texture::Reset()
@@ -344,12 +341,12 @@ bool GLSLProgram::compileShaderFromFile( std::string file, GLSLShaderType type )
 		inFile.read( buffer, length );
 		if ( inFile.bad() )
 		{
-			delete buffer;
+			delete[] buffer;
 			log_info = "Unable to read file.";
 			return false;
 		}
 		std::string code( buffer );
-		delete buffer;
+		delete[] buffer;
 		return compileShaderFromString( code, type );
 	}
 

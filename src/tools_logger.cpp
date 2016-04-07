@@ -103,7 +103,7 @@ LogStream::LogStream( Policy* OutputPolicy )
 	m_OutputPolicy = OutputPolicy;
 }
 
-LogStream::LogStream( LogStream& obj )
+LogStream::LogStream( LogStream&& obj )
 {
 	if ( obj.m_OutputPolicy )
 	{
@@ -154,7 +154,7 @@ LogStream Log::Line( LogLevel level )
 			logStream.ShowCallStackTop();
 		}
 		logStream << " -  " << GetTimeNow() << " ~ - ~ " << GetLogLevel( level );
-		return  logStream;
+		return logStream;
 	}
 	return LogStream( nullptr );
 }

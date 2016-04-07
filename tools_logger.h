@@ -60,7 +60,7 @@ namespace logger
 		bool m_CallInfo = false;
 	public:
 		LogStream( Policy* OutputPolicy );
-		LogStream( LogStream& obj );
+		LogStream( LogStream&& obj );
 		~LogStream();
 		void ShowCallStackTop()
 		{

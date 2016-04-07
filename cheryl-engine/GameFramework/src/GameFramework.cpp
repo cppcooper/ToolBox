@@ -5,8 +5,6 @@ using namespace GameAssets;
 
 void Game::Init()
 {
-	SteamAPI_Init();
-
 	using namespace std::placeholders;
 	m_glEngine.set_Update_f( std::bind( &Game::Update, this, _1 ) );
 	m_glEngine.set_Draw_f( std::bind( &Game::Draw, this ) );
@@ -37,6 +35,7 @@ void Game::Init()
 	//Load
 	m_Faculties.LoadAssets();
 
+	SteamAPI_Init();
 	for ( auto m : m_Modules )
 	{
 		m->Init();
@@ -52,6 +51,7 @@ void Game::Init()
 //Performs any necessary end of game clean-up
 void Game::Deinit()
 {
+	SteamAPI_Shutdown();
 	for ( auto m : m_Modules )
 	{
 		m->Deinit();

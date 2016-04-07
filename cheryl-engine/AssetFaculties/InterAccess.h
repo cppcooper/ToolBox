@@ -1,10 +1,14 @@
-#ifndef _INTERACCESS_H
-#define _INTERACCESS_H
+#pragma once
 
 #include "STL.h"
 #include <tools_logger.h>
 
 class Asset_Storage;
+class Asset_Pool;
+template<class T>
+class Asset_Factory;
+class Asset_Loader;
+class Asset_Manager;
 namespace GameAssets{ class Factory; class GameAsset; }
 using namespace GameAssets;
 
@@ -48,4 +52,3 @@ public:
 	}
 };
 
-#endif
