@@ -1,0 +1,16 @@
+include ../recipes.mk
+
+RESULT             := util.a
+SOURCES_ALL         = $(SOURCES_PLATFORM) $(SOURCES_OS) $(SOURCES_MAIN)
+
+TARGET           := $(OUTPATH)/$(RESULT)
+OBJECTS           = $(foreach x,$(SOURCES_ALL:.cpp=.cpp.o),$(OUTPATH)/$x)
+DEPENDENCIES      = $(FILE_PCH:.pch=.d) $(foreach x,$(SOURCES_ALL:.cpp=.cpp.d),$(OUTPATH)/$x)
+
+include ../common.mk
+
+$(TARGET): $(OBJECTS)
+	@$(lib)
+	@echo "   * Built" $(TARGET)
+
+

@@ -1,0 +1,18 @@
+include ../recipes.mk
+
+RESULT           := test.elf
+SOURCE_LIBRARIES := AssetFaculties GameFramework GLEngine
+SOURCES_ALL       = $(SOURCES_PLATFORM) $(SOURCES_OS) $(SOURCES_MAIN)
+
+TARGET           := $(OUTPATH)/$(RESULT)
+LIBRARIES        := $(foreach x,$(SOURCE_LIBRARIES),$(DIR_OBJ)/$(BUILD_PROFILE)-$x/$x.a)
+OBJECTS          = $(foreach x,$(SOURCES_ALL:.cpp=.cpp.o),$(OUTPATH)/$x)
+DEPENDENCIES     = $(FILE_PCH:.pch=.d) $(foreach x,$(SOURCES_ALL:.cpp=.cpp.d),$(OUTPATH)/$x)
+
+include ../common.mk
+
+$(TARGET): $(LIBRARIES) $(OBJECTS)
+	@$(ld)
+	@echo "   * Built" $(TARGET)
+
+
