@@ -1,28 +1,29 @@
 #ifndef _TOOLS_LOGGER_H
 #define _TOOLS_LOGGER_H
-#pragma once
+//#pragma once
+
+#include "common.h"
 
 #ifdef _DEBUG
-#pragma comment (lib,"tools_logger_Debug.lib")
-
-#ifndef LOG_WRITE_LEVELS
-#define LOG_WRITE_LEVELS (logger::_FATAL + logger::_ERROR + logger::_WARNING + logger::_INFO + logger::_DEBUG1 + logger::_DEBUG2 + logger::_DEBUG3 + logger::_DEBUG4 )
-#endif
-
+#  if E_COMPILER==COMP_MSVC
+#     pragma comment (lib,"tools_logger_Debug.lib")
+#  endif
+#  ifndef LOG_WRITE_LEVELS
+#     define LOG_WRITE_LEVELS (logger::_FATAL + logger::_ERROR + logger::_WARNING + logger::_INFO + logger::_DEBUG1 + logger::_DEBUG2 + logger::_DEBUG3 + logger::_DEBUG4 )
+#  endif
 #else
-#pragma comment (lib,"tools_logger_Release.lib")
-
-#ifndef LOG_WRITE_LEVELS
-#define LOG_WRITE_LEVELS \
-(logger::_FATAL + logger::_ERROR + logger::_WARNING )
-
+#  pragma comment (lib,"tools_logger_Release.lib")
+#  ifndef LOG_WRITE_LEVELS
+#     define LOG_WRITE_LEVELS \
+      (logger::_FATAL + logger::_ERROR + logger::_WARNING )
+#  endif
 #endif
 
+#if E_OS == OS_WINDOWS
+#  include "stacktracer.h"
 #endif
 
-#include "stacktracer.h"
-
-#include <string>
+/*#include <string>
 #include <sstream>
 #include <fstream>
 #include <mutex>
@@ -30,9 +31,15 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+*/
 
 namespace logger
 {
+#  if E_COMPILER != COMP_MSVC
+      // this shim may need to be version-restricted also
+//      using std::size_t;
+#  endif
+
 	//Enums representing the different log levels
 	// Implemented as bits in a Byte as to facilitate turning specific levels on and off with a #define macro
 	enum LogLevel

@@ -1,7 +1,7 @@
 include ../recipes.mk
 
-RESULT             := util.a
-SOURCES_ALL         = $(SOURCES_PLATFORM) $(SOURCES_OS) $(SOURCES_MAIN)
+RESULT           := util.a
+SOURCES_ALL       = $(SOURCES_PLATFORM) $(SOURCES_OS) $(SOURCES_MAIN)
 
 TARGET           := $(OUTPATH)/$(RESULT)
 OBJECTS           = $(foreach x,$(SOURCES_ALL:.cpp=.cpp.o),$(OUTPATH)/$x)

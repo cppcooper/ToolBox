@@ -1,3 +1,4 @@
+#include "common.h"
 #include "../tools_logger.h"
 #include <cassert>
 #include <sstream>

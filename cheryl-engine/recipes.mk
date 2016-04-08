@@ -8,7 +8,7 @@ export STD_ARG_ERRS   := -Wno-missing-declarations
 export STD_ARG_MAKE    = --no-print-directory BUILD_PROJECT=$(BUILD_PROJECT)
 export STD_ARG_AR     := rcs
 export STD_ARG_ALL     = -Wall -fstack-protector-all -g -gdwarf-4 $(shell for i in $(DIR_HEAD_GLBL); do echo -I$(CWD_ROOT)/$$i; done) $(STD_ARG_ERRS)
-export STD_ARG_CLANG  := -fcolor-diagnostics -std=c++14
+export STD_ARG_CLANG  := -fcolor-diagnostics -std=c++1z
 export STD_ARG_GCC    := -std=c++11
 export STD_ARG_CC      =
 #export STD_ARG_CXX     = -fno-cxx-exceptions -fno-exceptions -fno-rtti -include-pch $(FILE_PCH)
@@ -184,7 +184,7 @@ define auto-target =
 	          -not -path "./os/*" \
 	       \) -iname "*.cpp" \
 		|  tee    target.mk.tmp \
-		|  sed -r "s/^\.\/(.+)$$/\$$(OUTPATH)\/\1.o: \1\n\t@\$$(cxx)\n\t@\$$(cxx-depend)/g" \
+		|  sed -r "s/^\.\/(.+)$$/\$$(OUTPATH)\/\1.o: \1\n\t\$$(cxx)\n\t@\$$(cxx-depend)/g" \
 		2> /dev/null \
 		>> targets.mk
 
