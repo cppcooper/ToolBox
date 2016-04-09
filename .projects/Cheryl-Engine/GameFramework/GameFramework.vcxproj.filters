@@ -48,6 +48,9 @@
     <ClInclude Include="..\..\..\cheryl-engine\GameFramework\GameModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\GameFramework\Input\InputState_KeyboardMouse.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputBinding.cpp">
@@ -70,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\cheryl-engine\GameFramework\src\GameFramework.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\cheryl-engine\GameFramework\Input\src\InputState_KeyboardMouse.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
