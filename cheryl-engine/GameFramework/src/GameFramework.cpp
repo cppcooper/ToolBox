@@ -35,7 +35,7 @@ void Game::Init()
 	//Load
 	m_Faculties.LoadAssets();
 
-	SteamAPI_Init();
+	//SteamAPI_Init();
 	for ( auto m : m_Modules )
 	{
 		m->Init();
@@ -51,7 +51,7 @@ void Game::Init()
 //Performs any necessary end of game clean-up
 void Game::Deinit()
 {
-	SteamAPI_Shutdown();
+	//SteamAPI_Shutdown();
 	for ( auto m : m_Modules )
 	{
 		m->Deinit();

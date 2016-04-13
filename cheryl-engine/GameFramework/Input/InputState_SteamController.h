@@ -1,6 +1,7 @@
 #pragma once
+/*
+#include "../../../3rdparty/Steamworks/public/steam/steam_api.h"
 #include "InputState.h"
-
 
 class InputStateDigital_SteamController : public InputStateDigital
 {
@@ -23,4 +24,4 @@ private:
 public:
 	InputStateAnalog_SteamController( ControllerHandle_t activeControllerHandle, std::string action );
 	void poll( double& x, double& y ) final override;
-};
+};*/

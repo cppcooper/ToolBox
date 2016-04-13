@@ -1,8 +1,8 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-#include "../../3rdparty/Steamworks/public/steam/steam_api.h"
-#pragma comment (lib, "3rdparty/Steamworks/steam_api.lib")
+//#include "../../3rdparty/Steamworks/public/steam/steam_api.h"
+//#pragma comment (lib, "3rdparty/Steamworks/steam_api.lib")
 
 #include "../GLEngine/GLEngine.h"
 #include "../AssetFaculties/AssetFaculties.h"

@@ -14,9 +14,7 @@ void InputSystem::Poll()
 
 void InputSystem::Init()
 {
-	m_ActiveControllers = SteamController()->GetConnectedControllers( m_SteamControllers );
-
-	//ControllerActionSetHandle_t ActionHandle = SteamController()->GetActionSetHandle("");
+	//m_ActiveControllers = SteamController()->GetConnectedControllers( m_SteamControllers );
 }
 
 void InputSystem::Process()

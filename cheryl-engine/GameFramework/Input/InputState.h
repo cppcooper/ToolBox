@@ -1,7 +1,5 @@
 #pragma once
-
 #include <string>
-#include "../../../3rdparty/Steamworks/public/steam/steam_api.h"
 
 class InputStateDigital
 {

@@ -1,6 +1,6 @@
 #include "../InputState_SteamController.h"
 #include <assert.h>
-
+/*
 InputStateDigital_SteamController::InputStateDigital_SteamController( ControllerHandle_t activeControllerHandle, std::string action )
 {
 	static auto SC = SteamController();
@@ -46,3 +46,4 @@ void InputStateAnalog_SteamController::poll( double & x, double & y )
 		}
 	}
 }
+*/
