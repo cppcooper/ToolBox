@@ -1,7 +1,7 @@
 #ifndef _WINFS_TOOLS_H_
 #define _WINFS_TOOLS_H_
 
-#include <3rdParty/dirent.h>
+#include "3rdParty/dirent.h"
 #include <assert.h>
 #include <string>
 #include <map>
