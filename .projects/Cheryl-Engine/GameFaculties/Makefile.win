@@ -1,0 +1,71 @@
+# Project: AssetFaculties
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ../../../cheryl-engine/AssetFaculties/AssetTypes/src/2dtools.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/BasicTypes.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Font.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Graphic.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Mesh.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/SceneNodes.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Sprite.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/TileSet.o ../../../cheryl-engine/AssetFaculties/Components/src/AssetAbstract.o ../../../cheryl-engine/AssetFaculties/Components/src/AssetMgr.o ../../../cheryl-engine/AssetFaculties/Components/src/File_Mgr.o ../../../cheryl-engine/AssetFaculties/Components/src/Loader.o ../../../cheryl-engine/AssetFaculties/Components/src/Pool.o ../../../cheryl-engine/AssetFaculties/Components/src/Storage.o ../../../cheryl-engine/AssetFaculties/src/InterAccess.o
+LINKOBJ  = ../../../cheryl-engine/AssetFaculties/AssetTypes/src/2dtools.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/BasicTypes.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Font.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Graphic.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Mesh.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/SceneNodes.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Sprite.o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/TileSet.o ../../../cheryl-engine/AssetFaculties/Components/src/AssetAbstract.o ../../../cheryl-engine/AssetFaculties/Components/src/AssetMgr.o ../../../cheryl-engine/AssetFaculties/Components/src/File_Mgr.o ../../../cheryl-engine/AssetFaculties/Components/src/Loader.o ../../../cheryl-engine/AssetFaculties/Components/src/Pool.o ../../../cheryl-engine/AssetFaculties/Components/src/Storage.o ../../../cheryl-engine/AssetFaculties/src/InterAccess.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = AssetFaculties.a
+CXXFLAGS = $(CXXINCS) -std=c++11
+CFLAGS   = $(INCS) -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	ar r $(BIN) $(LINKOBJ)
+	ranlib $(BIN)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/2dtools.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/2dtools.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/2dtools.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/2dtools.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/BasicTypes.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/BasicTypes.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/BasicTypes.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/BasicTypes.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/Font.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Font.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Font.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Font.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/Graphic.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Graphic.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Graphic.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Graphic.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/Mesh.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Mesh.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Mesh.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Mesh.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/SceneNodes.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/SceneNodes.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/SceneNodes.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/SceneNodes.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/Sprite.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Sprite.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Sprite.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/Sprite.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/AssetTypes/src/TileSet.o: ../../../cheryl-engine/AssetFaculties/AssetTypes/src/TileSet.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/AssetTypes/src/TileSet.cpp -o ../../../cheryl-engine/AssetFaculties/AssetTypes/src/TileSet.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/Components/src/AssetAbstract.o: ../../../cheryl-engine/AssetFaculties/Components/src/AssetAbstract.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/Components/src/AssetAbstract.cpp -o ../../../cheryl-engine/AssetFaculties/Components/src/AssetAbstract.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/Components/src/AssetMgr.o: ../../../cheryl-engine/AssetFaculties/Components/src/AssetMgr.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/Components/src/AssetMgr.cpp -o ../../../cheryl-engine/AssetFaculties/Components/src/AssetMgr.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/Components/src/File_Mgr.o: ../../../cheryl-engine/AssetFaculties/Components/src/File_Mgr.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/Components/src/File_Mgr.cpp -o ../../../cheryl-engine/AssetFaculties/Components/src/File_Mgr.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/Components/src/Loader.o: ../../../cheryl-engine/AssetFaculties/Components/src/Loader.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/Components/src/Loader.cpp -o ../../../cheryl-engine/AssetFaculties/Components/src/Loader.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/Components/src/Pool.o: ../../../cheryl-engine/AssetFaculties/Components/src/Pool.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/Components/src/Pool.cpp -o ../../../cheryl-engine/AssetFaculties/Components/src/Pool.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/Components/src/Storage.o: ../../../cheryl-engine/AssetFaculties/Components/src/Storage.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/Components/src/Storage.cpp -o ../../../cheryl-engine/AssetFaculties/Components/src/Storage.o $(CXXFLAGS)
+
+../../../cheryl-engine/AssetFaculties/src/InterAccess.o: ../../../cheryl-engine/AssetFaculties/src/InterAccess.cpp
+	$(CPP) -c ../../../cheryl-engine/AssetFaculties/src/InterAccess.cpp -o ../../../cheryl-engine/AssetFaculties/src/InterAccess.o $(CXXFLAGS)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Cheryl-Engine" Database="">
+  <Project Name="AssetFaculties" Path="GameFaculties/AssetFaculties.project" Active="Yes"/>
+  <Project Name="GameFramework" Path="GameFramework/GameFramework.project" Active="No"/>
+  <Project Name="GLEngine" Path="glEngine/GLEngine.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="AssetFaculties" ConfigName="Debug"/>
+      <Project Name="GameFramework" ConfigName="Debug"/>
+      <Project Name="GLEngine" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="AssetFaculties" ConfigName="Release"/>
+      <Project Name="GameFramework" ConfigName="Release"/>
+      <Project Name="GLEngine" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

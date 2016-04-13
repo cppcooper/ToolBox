@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLEngine", "glEngine\glEngine.vcxproj", "{67D579FB-B402-427B-8A73-4E5BDA1DEABE}"
 EndProject
@@ -59,8 +59,8 @@ Global
 		{04280AF5-0980-4910-AA13-5551A8584628}.Release|x64.ActiveCfg = Release|Win32
 		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Debug|Win32.ActiveCfg = Debug|Win32
 		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Debug|Win32.Build.0 = Debug|Win32
-		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Debug|x64.ActiveCfg = Debug|x64
-		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Debug|x64.Build.0 = Debug|x64
+		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Debug|x64.ActiveCfg = Debug|Win32
+		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Debug|x64.Build.0 = Debug|Win32
 		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Release|Win32.ActiveCfg = Release|Win32
 		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Release|Win32.Build.0 = Release|Win32
 		{F9B80FD0-A31F-443F-9FFF-85813D209141}.Release|x64.ActiveCfg = Release|x64
