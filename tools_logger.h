@@ -85,7 +85,6 @@ namespace logger
 	class FilePolicy : public Policy
 	{
 	private:
-		static std::set<std::string> m_LogFiles;
 		std::string m_FileName;
 		std::mutex m_FileLock;
 		std::ofstream m_File;

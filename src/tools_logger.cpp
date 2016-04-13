@@ -164,8 +164,6 @@ LogStream Log::Line( LogLevel level )
 
 #pragma region "FilePolicy"
 
-std::set<std::string> FilePolicy::m_LogFiles;
-
 FilePolicy::~FilePolicy()
 {
 	Close();
@@ -174,7 +172,7 @@ FilePolicy::~FilePolicy()
 bool FilePolicy::Open( std::string FileName, bool Append )
 {
 	m_FileLock.lock();
-	assert( !m_File.is_open() && m_LogFiles.emplace( FileName ).second );
+	assert( !m_File.is_open() );
 	m_File.open( FileName, Append ? std::fstream::out | std::fstream::app : std::fstream::out );
 	bool bOpen = m_File.is_open();
 	m_FileLock.unlock();
