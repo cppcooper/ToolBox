@@ -1,6 +1,10 @@
 *.obj
 *.tlog
 *.log
+*.opensdf
+*.sdf
+*.opendb
+*.VC.db
 *Blit3D*
 
 # Windows image file caches
