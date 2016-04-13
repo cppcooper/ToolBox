@@ -1,9 +1,8 @@
-#ifndef _ASSETSTORAGE_H
-#define _ASSETSTORAGE_H
+#pragma once
 
-#include "AssetAbstract.h"
+#include "../../../tools_logger.h"
 #include "../STL.h"
-#include <tools_logger.h>
+#include "AssetAbstract.h"
 using namespace GameAssets;
 using namespace logger;
 
@@ -28,13 +27,15 @@ public:
 		if ( N > 0 )
 		{
 			T* ptr = new T[N];
+			Storage_Data storage;
+			storage.allocation = ptr;
+			storage.length = N;
+			storage.bytes = N * sizeof( T );
 			for ( uint i = 0; i < N; ++i )
 			{
 				GameAsset* p = &ptr[i];
-				p->storage.allocation = ptr;
-				p->storage.length = N;
-				p->storage.index = i;
-				p->storage.bytes = N * sizeof( T );
+				storage.index = i;
+				p->SetStorageData( storage );
 			}
 			m_Log->Line( _DEBUG1 ) << "Memory Allocated"
 				<< newl << "Address:" << ptr
@@ -112,4 +113,3 @@ public:
 	}
 };
 
-#endif

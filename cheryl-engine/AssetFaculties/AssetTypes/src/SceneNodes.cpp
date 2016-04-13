@@ -209,7 +209,7 @@ void TranNode::Update_ModelMatrix()
 	m_ModelMatrix = m_ModelMatrix * m_TMatrix;
 }
 
-void TranNode::CheapMove( glm::vec3& displacement )
+void TranNode::CheapMove( const glm::vec3& displacement )
 {
 	m_TMatrix = glm::translate( m_TMatrix, displacement );
 }
@@ -229,13 +229,13 @@ void TranNode::Move( float& distance )
 	Cascade_Data();
 }
 
-void TranNode::Move( glm::vec3& displacement )
+void TranNode::Move( const glm::vec3& displacement )
 {
 	CheapMove( displacement );
 	Cascade_Data();
 }
 
-void TranNode::SetAxis( glm::vec3& axis )
+void TranNode::SetAxis( const glm::vec3& axis )
 {
 	m_Axis = axis;
 }
@@ -245,7 +245,7 @@ void TranNode::SetSpeed( float& speed )
 	m_Speed = speed;
 }
 
-void TranNode::SetVelocity( glm::vec3& velocity )
+void TranNode::SetVelocity( const glm::vec3& velocity )
 {
 	m_Speed = glm::length( velocity );
 	m_Axis = velocity / m_Speed;
@@ -268,27 +268,28 @@ void RotNode::Update_ModelMatrix()
 	m_ModelMatrix = m_ModelMatrix * m_RMatrix;
 }
 
-void RotNode::CheapRotate( glm::quat& rot )
+void RotNode::CheapRotate( const glm::quat& rot )
 {
 	m_RMatrix = glm::mat4_cast( glm::quat_cast( m_RMatrix )*rot );
 }
 
 void RotNode::Update( double& minutes )
 {
-	if ( m_RPM != glm::quat::tquat() )
+	static glm::quat EmptyQuat;
+	if ( m_RPM != EmptyQuat )
 	{
 		CheapRotate( (float)minutes * m_RPM );
 	}
 	SceneNode::Update( minutes );
 }
 
-void RotNode::Rotate( glm::quat& rot )
+void RotNode::Rotate( const glm::quat& rot )
 {
 	CheapRotate( rot );
 	Cascade_Data();
 }
 
-void RotNode::Rotate( glm::vec3& axis, float& rot )
+void RotNode::Rotate( const glm::vec3& axis, float& rot )
 {
 	glm::quat q;
 	float r = sin( rot / 2 );
@@ -300,12 +301,12 @@ void RotNode::Rotate( glm::vec3& axis, float& rot )
 	Cascade_Data();
 }
 
-void RotNode::SetRPM( glm::quat& rpm )
+void RotNode::SetRPM( const glm::quat& rpm )
 {
 	m_RPM = rpm;
 }
 
-void RotNode::SetRPM( glm::vec3& axis, float& rot )
+void RotNode::SetRPM( const glm::vec3& axis, float& rot )
 {
 	float r = sin( rot / 2 );
 	m_RPM.x = axis.x * r;
@@ -331,7 +332,7 @@ void ScalerNode::Update_ModelMatrix()
 	m_ModelMatrix = m_ModelMatrix * m_SMatrix;
 }
 
-void ScalerNode::CheapScale( glm::vec3& scale )
+void ScalerNode::CheapScale( const glm::vec3& scale )
 {
 	m_SMatrix = glm::scale( m_SMatrix, scale );
 }
@@ -345,13 +346,13 @@ void ScalerNode::Update( double& minutes )
 	SceneNode::Update( minutes );
 }
 
-void ScalerNode::Scale( glm::vec3& scale )
+void ScalerNode::Scale( const glm::vec3& scale )
 {
 	CheapScale( scale );
 	Cascade_Data();
 }
 
-void ScalerNode::SetSPM( glm::vec3& spm )
+void ScalerNode::SetSPM( const glm::vec3& spm )
 {
 	m_SPM = spm;
 }

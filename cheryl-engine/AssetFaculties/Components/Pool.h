@@ -1,13 +1,10 @@
 #pragma once
 
-#include <tools_logger.h>
-
+#include "../../../tools_logger.h"
 #include "../STL.h"
 #include "../InterAccess.h"
-
 #include "AssetAbstract.h"
 #include "Storage.h"
-#include "Factory.h"
 
 using namespace GameAssets;
 
@@ -33,7 +30,11 @@ public:
 	T* Get( uint N = 1 )
 	{
 		T* ptr = nullptr;
-		uint id = Asset_Factory<T>::Instance().Get_TypeID();
+		uint id = 0;
+		[&](){
+			T obj;
+			id = obj.TypeID();
+		}();
 		m_Log->Line( _INFO ) << "Pool::Get<T>()";
 
 		AssetPool::iterator pool_it = m_AssetPool.find( id );
@@ -53,7 +54,6 @@ public:
 		if ( it != objectPool.end() )
 		{
 			uint remainder = it->first - N;
-			assert( Asset_Factory<T>::Instance().IsFactoryType( it->second ) );
 			ptr = (T*)it->second;
 				
 			objectPool.erase( it );

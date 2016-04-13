@@ -1,10 +1,7 @@
-#ifndef _ASSETMANAGER_H
-#define _ASSETMANAGER_H
+#pragma once
 
-#include <tools_logger.h>
-
+#include "../../../tools_logger.h"
 #include "../STL.h"
-
 #include "AssetAbstract.h"
 
 using namespace GameAssets;
@@ -24,4 +21,3 @@ public:
 	GameAsset* GetAsset( std::string AssetName );
 };
 
-#endif

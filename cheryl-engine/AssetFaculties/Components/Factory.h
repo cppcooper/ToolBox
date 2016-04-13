@@ -1,11 +1,10 @@
 #pragma once
 
-#include <tools_logger.h>
-
+#include "../../../tools_logger.h"
 #include "../STL.h"
 #include "../InterAccess.h"
-
 #include "AssetAbstract.h"
+#include "AssetMgr.h"
 #include "Pool.h"
 
 using namespace GameAssets;

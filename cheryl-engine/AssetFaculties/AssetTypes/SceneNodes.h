@@ -9,7 +9,7 @@
 
 using namespace GameAssets;
 ///enum NODE_TYPE { SCENE, ROOT, TRAN, ROT, SCALE, TIMER, DYNA, STATIC, ANIM };
-
+class SceneNode;
 
 #pragma region "Base Node"
 class BaseNode
@@ -89,7 +89,7 @@ protected:
 
 protected:
 	void Update_ModelMatrix() override;
-	void CheapMove( glm::vec3& displacement );
+	void CheapMove( const glm::vec3& displacement );
 
 public:
 	TranNode(){}
@@ -98,10 +98,10 @@ public:
 	
 	void Update( double& minutes ) override;
 	void Move( float& distance );
-	void Move( glm::vec3& displacement );
-	void SetAxis( glm::vec3& axis );
+	void Move( const glm::vec3& displacement );
+	void SetAxis( const glm::vec3& axis );
 	void SetSpeed( float& speed );
-	void SetVelocity( glm::vec3& velocity );
+	void SetVelocity( const glm::vec3& velocity );
 };
 #pragma endregion
 
@@ -116,7 +116,7 @@ protected:
 
 protected:
 	void Update_ModelMatrix() override;
-	void CheapRotate( glm::quat& rot );
+	void CheapRotate( const glm::quat& rot );
 
 public:
 	RotNode(){}
@@ -124,10 +124,10 @@ public:
 	RotNode( BaseNode* parent, glm::quat& rpm );
 
 	void Update( double& minutes ) override;
-	void Rotate( glm::quat& rot );
-	void Rotate( glm::vec3& axis, float& rot );
-	void SetRPM( glm::quat& rpm );
-	void SetRPM( glm::vec3& axis, float& rpm );
+	void Rotate( const glm::quat& rot );
+	void Rotate( const glm::vec3& axis, float& rot );
+	void SetRPM( const glm::quat& rpm );
+	void SetRPM( const glm::vec3& axis, float& rpm );
 };
 #pragma endregion
 
@@ -142,7 +142,7 @@ protected:
 
 protected:
 	void Update_ModelMatrix() override;
-	void CheapScale( glm::vec3& scale );
+	void CheapScale( const glm::vec3& scale );
 
 public:
 	ScalerNode(){}
@@ -150,8 +150,8 @@ public:
 	ScalerNode( BaseNode* parent, glm::vec3& spm );
 
 	void Update( double& minutes ) override;
-	void Scale( glm::vec3& scale );
-	void SetSPM( glm::vec3& spm );
+	void Scale( const glm::vec3& scale );
+	void SetSPM( const glm::vec3& spm );
 };
 #pragma endregion
 

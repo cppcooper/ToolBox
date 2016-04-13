@@ -8,7 +8,7 @@ union InputContext
 	#ifdef _MSC_VER
 	struct{
 		std::bitset<32> mask;
-	}
+	};
 	#else
 	std::bitset<32> mask;
 	#endif

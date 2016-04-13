@@ -1,10 +1,7 @@
-#ifndef _ASSETLOADER_H
-#define _ASSETLOADER_H
+#pragma once
 
-#include <tools_logger.h>
-
+#include "../../../tools_logger.h"
 #include "../STL.h"
-
 #include "File_Mgr.h"
 
 namespace GameAssets{ class Factory; class GameAsset; }
@@ -31,4 +28,3 @@ public:
 	//void UnloadAssets();
 };
 
-#endif

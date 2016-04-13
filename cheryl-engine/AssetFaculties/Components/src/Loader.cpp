@@ -63,6 +63,7 @@ unsigned int Asset_Loader::CountAssets( Factory* F )
 	return Assets.size();
 }
 
+#include "../../AssetTypes/BasicTypes.h"
 void Asset_Loader::LoadMultiFileAssets( Factory* F )
 {
 	std::string Ext_List = F->TypeExtensions();
@@ -77,7 +78,8 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 	if ( N == 0 )
 		return;
 	GameAsset* p = F->Create( N );
-	Asset_Faculties::Instance().Pool->Return( p, p[0].storage.length );
+	assert( F->IsFactoryType( p ) );
+	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
 	while ( Cpos != std::string::npos )
@@ -139,7 +141,7 @@ void Asset_Loader::LoadSingleFileAssets( Factory* F )
 	if ( N == 0 )
 		return;
 	GameAsset* p = F->Create( N );
-	Asset_Faculties::Instance().Pool->Return( p, p[0].storage.length );
+	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
 	size_t final_pos = Ext_List.find_last_of( ';' );
