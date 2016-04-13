@@ -6,6 +6,7 @@
 *.opendb
 *.VC.db
 *.cpp.o*
+*.o
 *Blit3D*
 
 # Windows image file caches
