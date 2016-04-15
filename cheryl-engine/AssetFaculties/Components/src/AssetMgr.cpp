@@ -4,7 +4,7 @@ using namespace logger;
 
 Asset_Manager::Asset_Manager()
 {
-	m_Log = &Asset_Faculties::Instance().GetManagementLog();
+	m_Log = &Asset_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Manager Initialized";
 }
 

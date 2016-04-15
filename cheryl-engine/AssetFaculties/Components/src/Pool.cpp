@@ -2,7 +2,7 @@
 
 Asset_Pool::Asset_Pool()
 {
-	m_Log = &Asset_Faculties::Instance().GetManagementLog();
+	m_Log = &Asset_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Pool Initialized.";
 }
 

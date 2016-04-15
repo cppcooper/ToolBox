@@ -18,7 +18,7 @@ private:
 	Asset_Factory(){
 		Asset_Faculties::Instance().Factories.push_back( ( Factory* )this );
 		TID = Asset_Faculties::Instance().Factories.size();
-		m_Log = &Asset_Faculties::Instance().GetManagementLog();
+		m_Log = &Asset_Faculties::GetManagementLog();
 		m_Log->Line( _INFO ) << "Factory Initialized #" << TID;
 	}
 

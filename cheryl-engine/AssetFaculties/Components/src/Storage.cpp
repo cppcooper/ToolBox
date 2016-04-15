@@ -3,7 +3,7 @@
 
 Asset_Storage::Asset_Storage()
 {
-	m_Log = &Asset_Faculties::Instance().GetManagementLog();
+	m_Log = &Asset_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Storage Initialized.";
 }
 

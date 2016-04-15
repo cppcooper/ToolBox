@@ -9,7 +9,7 @@ using namespace GameAssets;
 
 Asset_Loader::Asset_Loader()
 {
-	m_Log = &Asset_Faculties::Instance().GetManagementLog();
+	m_Log = &Asset_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Loader Initialized.";
 }
 
