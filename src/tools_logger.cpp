@@ -9,10 +9,15 @@ namespace logger
 	inline std::string GetTimeNow()
 	{
 		static std::mutex time_mutex;
+		//This code is not thread safe - without this mutex lock that is.
 		time_mutex.lock();
+
+		//Caches the latest *new* time stamp (milliseconds excluded)
 		static std::string date_time;
+
+		//We need time_t to get localtime_s
 		static time_t last_raw_time = 0;
-		time_t raw_time = std::chrono::high_resolution_clock::to_time_t( std::chrono::high_resolution_clock::now() );
+		time_t raw_time = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
 
 		if ( raw_time != last_raw_time )
 		{
