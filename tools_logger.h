@@ -90,6 +90,7 @@ namespace logger
 		std::ofstream m_File;
 	public:
 		~FilePolicy();
+		bool isOpen() const;
 		bool Open( std::string FileName, bool Append );
 		bool Close() final override;
 		void lout( const std::string& LogLine ) final override;

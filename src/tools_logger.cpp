@@ -174,6 +174,11 @@ FilePolicy::~FilePolicy()
 	Close();
 }
 
+bool FilePolicy::isOpen() const
+{
+	return m_File.is_open();
+}
+
 bool FilePolicy::Open( std::string FileName, bool Append )
 {
 	m_FileLock.lock();
