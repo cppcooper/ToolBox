@@ -3,7 +3,7 @@
 #include "../../../tools_logger.h"
 #include "../STL.h"
 #include "../InterAccess.h"
-#include "AssetAbstract.h"
+#include "../AssetAbstract.h"
 #include "Storage.h"
 
 using namespace GameAssets;

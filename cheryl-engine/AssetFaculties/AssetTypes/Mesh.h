@@ -1,7 +1,7 @@
 #ifndef S3DMESH_H_
 #define S3DMESH_H_
 
-#include "../Components/AssetAbstract.h"
+#include "../Components/../AssetAbstract.h"
 
 #include "BasicTypes.h"
 

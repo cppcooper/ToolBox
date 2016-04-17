@@ -1,7 +1,7 @@
 #ifndef TILESET_H
 #define TILESET_H
 
-#include "../Components/AssetAbstract.h"
+#include "../Components/../AssetAbstract.h"
 
 #include "BasicTypes.h"
 

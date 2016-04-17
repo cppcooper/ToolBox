@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetAbstract.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetFaculties.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\BasicTypes.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Font.h" />
@@ -20,7 +21,6 @@
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\Sprite.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\src\2dtools.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetTypes\TileSet.h" />
-    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetAbstract.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetMgr.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\Factory.h" />
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\File_Mgr.h" />

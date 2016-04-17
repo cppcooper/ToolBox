@@ -1,4 +1,4 @@
-#include "../AssetAbstract.h"
+#include "../../AssetAbstract.h"
 
 namespace GameAssets
 {

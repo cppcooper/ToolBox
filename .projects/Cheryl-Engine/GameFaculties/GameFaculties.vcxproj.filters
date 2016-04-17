@@ -30,9 +30,6 @@
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetFaculties.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetAbstract.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\Components\AssetMgr.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -76,6 +73,9 @@
       <Filter>Source Files\AssetTypes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\InterAccess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\cheryl-engine\AssetFaculties\AssetAbstract.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

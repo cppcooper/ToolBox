@@ -1,7 +1,7 @@
 #ifndef GRAPHIC_H
 #define GRAPHIC_H
 
-#include "../Components/AssetAbstract.h"
+#include "../Components/../AssetAbstract.h"
 
 #include "BasicTypes.h"
 

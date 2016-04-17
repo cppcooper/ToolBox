@@ -1,7 +1,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "../Components/AssetAbstract.h"
+#include "../Components/../AssetAbstract.h"
 
 #include "BasicTypes.h"
 

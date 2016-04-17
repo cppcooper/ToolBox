@@ -1,7 +1,7 @@
 #ifndef _ASSETDEFS_H
 #define _ASSETDEFS_H
 
-/* AssetDefs.h and AssetAbstract.h had to be separated
+/* AssetDefs.h and ../AssetAbstract.h had to be separated
 this ensures Macros from OpenGL_Headers and dirent.h do not collide
 
 ***The Asset_Loader needs both the File_Mgr and an Asset interface***
@@ -11,7 +11,7 @@ Thus concrete Asset definitions must be seperated from the interface details
 
 #include "../../../3rdparty/OpenGL_Headers.h"
 #include "../STL.h"
-#include "../Components/AssetAbstract.h"
+#include "../Components/../AssetAbstract.h"
 
 #pragma comment (lib,"3rdparty/FreeImage/FreeImage.lib")
 

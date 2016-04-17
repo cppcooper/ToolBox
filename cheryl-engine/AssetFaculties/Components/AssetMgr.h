@@ -2,7 +2,7 @@
 
 #include "../../../tools_logger.h"
 #include "../STL.h"
-#include "AssetAbstract.h"
+#include "../AssetAbstract.h"
 
 using namespace GameAssets;
 
