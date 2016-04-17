@@ -25,7 +25,7 @@ using glm::mat4;
 
 namespace GameAssets
 {
-	/* Fundamental GameAsset Types can be found below
+	/* Fundamental GameObject Types can be found below
 	
 	Last Updated: 2015/10/28
 	
@@ -86,7 +86,7 @@ namespace GameAssets
 
 #pragma region "Texture"
 
-	class Texture : public GameAsset
+	class Texture : public GameObject
 	{
 	public:
 		static uint Texture_Count;
@@ -110,7 +110,7 @@ namespace GameAssets
 		TESS_CONTROL, TESS_EVALUATION
 	};
 
-	class GLSLProgram : public GameAsset
+	class GLSLProgram : public GameObject
 	{
 	private:
 		GLuint prog_ID;

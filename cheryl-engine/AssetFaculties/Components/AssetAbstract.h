@@ -8,7 +8,7 @@ class Asset_Loader;
 
 namespace GameAssets
 {
-	class GameAsset;
+	class GameObject;
 	extern logger::LogStream LogLine( logger::LogLevel level );
 
 	/* Asset Factory Base Class
@@ -21,17 +21,17 @@ namespace GameAssets
 		Factory(){}
 
 	public:
-		virtual GameAsset* Create( uint N = 1 ) = 0;
-		//TODO: virtual bool Destroy( GameAsset* p ) = 0;
+		virtual GameObject* Create( uint N = 1 ) = 0;
+		//TODO: virtual bool Destroy( GameObject* p ) = 0;
 		virtual uint Get_TypeID() = 0;
 		virtual std::string& TypeExtensions() = 0;
 		virtual std::string& RecordExtension() = 0;
-		virtual bool IsFactoryType( GameAsset* p ) = 0;
+		virtual bool IsFactoryType( GameObject* p ) = 0;
 	};
 	
 	struct Storage_Data
 	{
-		GameAsset* allocation = nullptr;
+		GameObject* allocation = nullptr;
 		unsigned int index = 0;
 		unsigned int length = 0;
 		unsigned int bytes = 0;
@@ -40,7 +40,7 @@ namespace GameAssets
 	/* Asset Base Class
 	Defines asset interface
 	*/
-	class GameAsset
+	class GameObject
 	{
 	protected:
 		using uint = unsigned int;
@@ -52,7 +52,7 @@ namespace GameAssets
 			}
 
 	public:
-		virtual ~GameAsset(){}
+		virtual ~GameObject(){}
 		virtual uint TypeID() = 0;
 		virtual void Load( std::string filename ) = 0;
 		virtual void Reset() = 0;

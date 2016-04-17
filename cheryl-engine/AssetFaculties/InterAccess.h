@@ -9,7 +9,7 @@ template<class T>
 class Asset_Factory;
 class Asset_Loader;
 class Asset_Manager;
-namespace GameAssets{ class Factory; class GameAsset; }
+namespace GameAssets{ class Factory; class GameObject; }
 using namespace GameAssets;
 
 class Asset_Faculties
@@ -35,7 +35,7 @@ public:
 	void Update( double& seconds );
 	void RegisterAssetPath( std::string path );
 	void LoadAssets();
-	GameAsset* LoadAsset( unsigned int type_ID, std::string FileName );
+	GameObject* LoadAsset( unsigned int type_ID, std::string FileName );
 	static logger::Log& GetManagementLog();
 
 	template<class T>

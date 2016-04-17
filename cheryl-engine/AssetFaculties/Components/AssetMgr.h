@@ -10,14 +10,14 @@ class Asset_Manager
 {
 private:
 	logger::Log* m_Log;
-	std::map<std::string, GameAsset*> Asset_Table;
+	std::map<std::string, GameObject*> Asset_Table;
 protected:
 public:
 	Asset_Manager();
 	~Asset_Manager();
-	bool RecordAsset( std::string AssetName, GameAsset* p );
+	bool RecordAsset( std::string AssetName, GameObject* p );
 	bool RemoveRecord( std::string AssetName );
-	//TODO: bool RemoveRecord( GameAsset* p );
-	GameAsset* GetAsset( std::string AssetName );
+	//TODO: bool RemoveRecord( GameObject* p );
+	GameObject* GetAsset( std::string AssetName );
 };
 

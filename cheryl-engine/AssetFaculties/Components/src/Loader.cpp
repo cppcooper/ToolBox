@@ -77,7 +77,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 	unsigned int N = this->CountAssets( F );
 	if ( N == 0 )
 		return;
-	GameAsset* p = F->Create( N );
+	GameObject* p = F->Create( N );
 	assert( F->IsFactoryType( p ) );
 	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
@@ -140,7 +140,7 @@ void Asset_Loader::LoadSingleFileAssets( Factory* F )
 	unsigned int N = this->CountAssets( F );
 	if ( N == 0 )
 		return;
-	GameAsset* p = F->Create( N );
+	GameObject* p = F->Create( N );
 	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
@@ -216,7 +216,7 @@ void Asset_Loader::LoadAssets()
 	}
 }
 
-GameAsset* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
+GameObject* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
 {
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadAsset()";
 	m_Log->Line( _DEBUG1 ) << "Manual Load Procedure"
@@ -230,7 +230,7 @@ GameAsset* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
 
 	if ( F->TypeExtensions().find( file_ext ) != std::string::npos )
 	{
-		GameAsset* p = nullptr;
+		GameObject* p = nullptr;
 		RecordName += !F->RecordExtension().empty() ? F->RecordExtension() : file_ext;
 		p = AssetMgr.GetAsset( RecordName );
 		if ( p == nullptr )

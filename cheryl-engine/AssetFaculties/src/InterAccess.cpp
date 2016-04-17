@@ -58,7 +58,7 @@ void Asset_Faculties::LoadAssets()
 	Loader->LoadAssets();
 }
 
-GameAsset* Asset_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
+GameObject* Asset_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
 {
 	GetLog().Line( _INFO ) << "Asset_Faculties - Manual Load Asset";
 	return Loader->LoadAsset( Factories[type_ID - 1], FileName );

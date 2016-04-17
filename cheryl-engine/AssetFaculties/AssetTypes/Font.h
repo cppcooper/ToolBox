@@ -7,7 +7,7 @@
 
 namespace GameAssets
 {
-	class Font : public GameAsset, public VO_Data
+	class Font : public GameObject, public VO_Data
 	{
 	protected:
 		int m_Widths[256];

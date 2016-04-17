@@ -33,7 +33,7 @@ namespace GameAssets
 		void Draw( const glm::mat4& matrix );
 	};
 
-	class Sprite : public GameAsset, public VO_Data, public Drawable
+	class Sprite : public GameObject, public VO_Data, public Drawable
 	{
 		using ushort = unsigned short;
 	protected:

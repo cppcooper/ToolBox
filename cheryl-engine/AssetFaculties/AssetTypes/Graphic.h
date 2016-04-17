@@ -7,7 +7,7 @@
 
 namespace GameAssets
 {
-	class Graphic : public GameAsset, public VO_Data, public Drawable
+	class Graphic : public GameObject, public VO_Data, public Drawable
 	{
 		using ushort = unsigned short;
 	protected:

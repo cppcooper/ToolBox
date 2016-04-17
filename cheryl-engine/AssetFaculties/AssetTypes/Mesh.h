@@ -10,7 +10,7 @@ using std::ifstream;
 
 namespace GameAssets
 {
-	class Mesh : public GameAsset, public VO_Data, public Drawable
+	class Mesh : public GameObject, public VO_Data, public Drawable
 	{
 	protected:
 		bool m_TriStrip = true;

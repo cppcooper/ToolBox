@@ -4,7 +4,7 @@
 #include "../STL.h"
 #include "File_Mgr.h"
 
-namespace GameAssets{ class Factory; class GameAsset; }
+namespace GameAssets{ class Factory; class GameObject; }
 using namespace GameAssets;
 
 class Asset_Loader
@@ -24,7 +24,7 @@ public:
 	~Asset_Loader();
 	void RegisterDirectory( std::string path );
 	void LoadAssets();
-	GameAsset* LoadAsset( Factory* F, std::string FileName );
+	GameObject* LoadAsset( Factory* F, std::string FileName );
 	//void UnloadAssets();
 };
 

@@ -12,13 +12,13 @@ using namespace GameAssets;
 class Asset_Pool
 {
 	using uint = unsigned int;
-	using ObjectPool = std::multimap < uint, GameAsset* >;
+	using ObjectPool = std::multimap < uint, GameObject* >;
 	using AssetPool = std::unordered_map < uint, ObjectPool > ;
 private:
 	logger::Log* m_Log;
 
 protected:
-	//std::unordered_map<uint, std::multimap<uint, GameAsset*>> m_AssetPool
+	//std::unordered_map<uint, std::multimap<uint, GameObject*>> m_AssetPool
 	AssetPool m_AssetPool;
 
 public:
@@ -44,7 +44,7 @@ public:
 				<< newl << "Type ID: " << id;
 
 			//Create an empty object pool for the array to be returned to later
-			std::multimap<uint, GameAsset*> Object_Pool;
+			std::multimap<uint, GameObject*> Object_Pool;
 			pool_it = m_AssetPool.emplace( id, Object_Pool ).first;
 		}
 
@@ -68,7 +68,7 @@ public:
 					<< newl << "Remainder: " << remainder
 					<< newl << "Byte Offset: " << sizeof( T ) * N
 					<< newl << "Remainder Address: " << &( (T*)ptr )[N];
-				objectPool.emplace( remainder, (GameAsset*)&( (T*)ptr )[N] );
+				objectPool.emplace( remainder, (GameObject*)&( (T*)ptr )[N] );
 			}
 			else
 			{
@@ -86,7 +86,7 @@ public:
 		return ptr;
 	}
 
-	void Return( GameAsset* ptr, uint N = 1 )
+	void Return( GameObject* ptr, uint N = 1 )
 	{
 		unsigned int id = ptr->TypeID();
 		m_Log->Line( _INFO ) << "Asset_Pool::Return()";

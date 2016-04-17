@@ -7,7 +7,7 @@
 
 namespace GameAssets
 {
-	class TileSet : public GameAsset, public VO_Data, public Drawable
+	class TileSet : public GameObject, public VO_Data, public Drawable
 	{
 		using ushort = unsigned short;
 	protected:

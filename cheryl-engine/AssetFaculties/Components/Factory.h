@@ -37,12 +37,12 @@ public:
 		return instance;
 	}
 
-	GameAsset* Create( uint N = 1 ) final override {
+	GameObject* Create( uint N = 1 ) final override {
 		gLog( _INFO ) << "Factory #" << TID << " Creating Array with " << N << " elements.";
-		return (GameAsset*)Asset_Faculties::Instance().Pool->Get<T>( N );
+		return (GameObject*)Asset_Faculties::Instance().Pool->Get<T>( N );
 	}
 
-	T* Cast( GameAsset* p ){
+	T* Cast( GameObject* p ){
 		if ( IsFactoryType( p ) ){
 			return (T*)p;
 		}
@@ -69,7 +69,7 @@ public:
 		return Instance().TID;
 	}
 
-	bool IsFactoryType( GameAsset* p ){
+	bool IsFactoryType( GameObject* p ){
 		assert( p != nullptr );
 		gLog( _DEBUG1 ) << "Factory ID: " << TID
 			<< newl << "p: " << p
@@ -79,13 +79,13 @@ public:
 
 	T* LoadAsset( std::string FileName ){
 		gLog( _INFO ) << "Factory #" << TID << " Loading Asset " << FileName.c_str();
-		GameAsset* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
+		GameObject* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 
 	T* GetAsset( std::string AssetName ){
 		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName.c_str();
-		GameAsset* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
+		GameObject* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
 		if ( p != nullptr && IsFactoryType( p ) ){
 			return (T*)p;
 		}
