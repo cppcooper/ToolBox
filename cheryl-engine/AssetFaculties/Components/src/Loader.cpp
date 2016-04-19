@@ -4,7 +4,6 @@
 #include "../../AssetAbstract.h"
 #include "../AssetMgr.h"
 #include "../Pool.h"
-using namespace GameAssets;
 
 
 Asset_Loader::Asset_Loader()
@@ -22,7 +21,7 @@ Asset_Loader::~Asset_Loader()
 //TODO: Check that loops exit when required
 
 //Counts how many Game Asset files exist for a given Asset Type (ie. Factory Type)
-unsigned int Asset_Loader::CountAssets( Factory* F )
+unsigned int Asset_Loader::CountAssets( GameAssets::Factory* F )
 {
 	std::set<std::string> Assets;
 	std::string Ext_List = F->TypeExtensions();
@@ -64,7 +63,7 @@ unsigned int Asset_Loader::CountAssets( Factory* F )
 }
 
 #include "../../AssetTypes/BasicTypes.h"
-void Asset_Loader::LoadMultiFileAssets( Factory* F )
+void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 {
 	std::string Ext_List = F->TypeExtensions();
 	std::string Record_Ext = F->RecordExtension();
@@ -77,7 +76,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 	unsigned int N = this->CountAssets( F );
 	if ( N == 0 )
 		return;
-	GameObject* p = F->Create( N );
+	GameAssets::GameObject* p = F->Create( N );
 	assert( F->IsFactoryType( p ) );
 	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
@@ -127,7 +126,7 @@ void Asset_Loader::LoadMultiFileAssets( Factory* F )
 }
 
 //TODO: add conditions for preventing duplicate records
-void Asset_Loader::LoadSingleFileAssets( Factory* F )
+void Asset_Loader::LoadSingleFileAssets( GameAssets::Factory* F )
 {
 	std::string Ext_List = F->TypeExtensions();
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadSingleFileAssets()";
@@ -140,7 +139,7 @@ void Asset_Loader::LoadSingleFileAssets( Factory* F )
 	unsigned int N = this->CountAssets( F );
 	if ( N == 0 )
 		return;
-	GameObject* p = F->Create( N );
+	GameAssets::GameObject* p = F->Create( N );
 	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
@@ -194,12 +193,12 @@ void Asset_Loader::RegisterDirectory( std::string path )
 void Asset_Loader::LoadAssets()
 {
 	m_Log->Line( _INFO ) << "Asset Loader::LoadAssets()";
-	const std::vector<Factory*>& FVector = Asset_Faculties::Instance().Factories;
+	const std::vector<GameAssets::Factory*>& FVector = Asset_Faculties::Instance().Factories;
 	uint Num_Factories = FVector.size();
 
 	for ( uint i = 0; i < Num_Factories; ++i )
 	{
-		Factory* F = FVector.at( i );
+		GameAssets::Factory* F = FVector.at( i );
 		m_Log->Line( _DEBUG1 ) << "Auto-Load Sequence"
 			<< newl << "Type ID:" << F->Get_TypeID();
 		assert( !F->TypeExtensions().empty() );
@@ -216,7 +215,7 @@ void Asset_Loader::LoadAssets()
 	}
 }
 
-GameObject* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
+GameAssets::GameObject* Asset_Loader::LoadAsset( GameAssets::Factory* F, std::string FileName )
 {
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadAsset()";
 	m_Log->Line( _DEBUG1 ) << "Manual Load Procedure"
@@ -230,7 +229,7 @@ GameObject* Asset_Loader::LoadAsset( Factory* F, std::string FileName )
 
 	if ( F->TypeExtensions().find( file_ext ) != std::string::npos )
 	{
-		GameObject* p = nullptr;
+		GameAssets::GameObject* p = nullptr;
 		RecordName += !F->RecordExtension().empty() ? F->RecordExtension() : file_ext;
 		p = AssetMgr.GetAsset( RecordName );
 		if ( p == nullptr )

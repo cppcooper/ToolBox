@@ -7,16 +7,14 @@
 #include "AssetMgr.h"
 #include "Pool.h"
 
-using namespace GameAssets;
-
 template<class T>
-class Asset_Factory : public Factory
+class Asset_Factory : public GameAssets::Factory
 {
 private:
 	logger::Log* m_Log;
 	uint TID = 0;
 	Asset_Factory(){
-		Asset_Faculties::Instance().Factories.push_back( ( Factory* )this );
+		Asset_Faculties::Instance().Factories.push_back( ( GameAssets::Factory* )this );
 		TID = Asset_Faculties::Instance().Factories.size();
 		m_Log = &Asset_Faculties::GetManagementLog();
 		m_Log->Line( _INFO ) << "Factory Initialized #" << TID;
@@ -37,12 +35,12 @@ public:
 		return instance;
 	}
 
-	GameObject* Create( uint N = 1 ) final override {
+	GameAssets::GameObject* Create( uint N = 1 ) final override {
 		gLog( _INFO ) << "Factory #" << TID << " Creating Array with " << N << " elements.";
-		return (GameObject*)Asset_Faculties::Instance().Pool->Get<T>( N );
+		return (GameAssets::GameObject*)Asset_Faculties::Instance().Pool->Get<T>( N );
 	}
 
-	T* Cast( GameObject* p ){
+	T* Cast( GameAssets::GameObject* p ){
 		if ( IsFactoryType( p ) ){
 			return (T*)p;
 		}
@@ -69,7 +67,7 @@ public:
 		return Instance().TID;
 	}
 
-	bool IsFactoryType( GameObject* p ){
+	bool IsFactoryType( GameAssets::GameObject* p ){
 		assert( p != nullptr );
 		gLog( _DEBUG1 ) << "Factory ID: " << TID
 			<< newl << "p: " << p
@@ -79,13 +77,13 @@ public:
 
 	T* LoadAsset( std::string FileName ){
 		gLog( _INFO ) << "Factory #" << TID << " Loading Asset " << FileName.c_str();
-		GameObject* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
+		GameAssets::GameObject* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 
 	T* GetAsset( std::string AssetName ){
 		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName.c_str();
-		GameObject* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
+		GameAssets::GameObject* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
 		if ( p != nullptr && IsFactoryType( p ) ){
 			return (T*)p;
 		}

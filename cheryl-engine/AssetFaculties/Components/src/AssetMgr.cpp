@@ -19,7 +19,7 @@ Asset_Manager::~Asset_Manager()
 }
 
 //Returns success - ie. returns false if AssetName was recorded previously
-bool Asset_Manager::RecordAsset( std::string AssetName, GameObject* p )
+bool Asset_Manager::RecordAsset( std::string AssetName, GameAssets::GameObject* p )
 {
 	m_Log->Line( _INFO ) << "Asset_Manager::RecordAsset()";
 	m_Log->Line( _DEBUG1 ) << "Recording Asset"
@@ -39,7 +39,7 @@ bool Asset_Manager::RemoveRecord( std::string AssetName )
 	return false;
 }
 
-GameObject* Asset_Manager::GetAsset( std::string AssetName )
+GameAssets::GameObject* Asset_Manager::GetAsset( std::string AssetName )
 {
 	m_Log->Line( _INFO ) << "Asset_Manager::GetAsset()";
 	m_Log->Line( _DEBUG1 ) << "Getting Asset"

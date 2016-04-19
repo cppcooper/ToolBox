@@ -6,13 +6,11 @@
 #include "../AssetAbstract.h"
 #include "Storage.h"
 
-using namespace GameAssets;
-
 //TODO: implement minimum pool size
 class Asset_Pool
 {
 	using uint = unsigned int;
-	using ObjectPool = std::multimap < uint, GameObject* >;
+	using ObjectPool = std::multimap < uint, GameAssets::GameObject* >;
 	using AssetPool = std::unordered_map < uint, ObjectPool > ;
 private:
 	logger::Log* m_Log;
@@ -44,7 +42,7 @@ public:
 				<< newl << "Type ID: " << id;
 
 			//Create an empty object pool for the array to be returned to later
-			std::multimap<uint, GameObject*> Object_Pool;
+			std::multimap<uint, GameAssets::GameObject*> Object_Pool;
 			pool_it = m_AssetPool.emplace( id, Object_Pool ).first;
 		}
 
@@ -68,7 +66,7 @@ public:
 					<< newl << "Remainder: " << remainder
 					<< newl << "Byte Offset: " << sizeof( T ) * N
 					<< newl << "Remainder Address: " << &( (T*)ptr )[N];
-				objectPool.emplace( remainder, (GameObject*)&( (T*)ptr )[N] );
+				objectPool.emplace( remainder, (GameAssets::GameObject*)&( (T*)ptr )[N] );
 			}
 			else
 			{
@@ -86,7 +84,7 @@ public:
 		return ptr;
 	}
 
-	void Return( GameObject* ptr, uint N = 1 )
+	void Return( GameAssets::GameObject* ptr, uint N = 1 )
 	{
 		unsigned int id = ptr->TypeID();
 		m_Log->Line( _INFO ) << "Asset_Pool::Return()";

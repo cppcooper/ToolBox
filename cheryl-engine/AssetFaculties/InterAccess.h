@@ -10,7 +10,6 @@ class Asset_Factory;
 class Asset_Loader;
 class Asset_Manager;
 namespace GameAssets{ class Factory; class GameObject; }
-using namespace GameAssets;
 
 class Asset_Faculties
 {
@@ -22,7 +21,7 @@ class Asset_Faculties
 private:
 	Asset_Manager* Manager = nullptr;
 	Asset_Loader* Loader = nullptr;
-	std::vector<Factory*> Factories;
+	std::vector<GameAssets::Factory*> Factories;
 	Asset_Pool* Pool = nullptr;
 	Asset_Storage* Allocator = nullptr;
 
@@ -35,7 +34,7 @@ public:
 	void Update( double& seconds );
 	void RegisterAssetPath( std::string path );
 	void LoadAssets();
-	GameObject* LoadAsset( unsigned int type_ID, std::string FileName );
+	GameAssets::GameObject* LoadAsset( unsigned int type_ID, std::string FileName );
 	static logger::Log& GetManagementLog();
 
 	template<class T>

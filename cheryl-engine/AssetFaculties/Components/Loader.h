@@ -5,7 +5,6 @@
 #include "File_Mgr.h"
 
 namespace GameAssets{ class Factory; class GameObject; }
-using namespace GameAssets;
 
 class Asset_Loader
 {
@@ -15,16 +14,16 @@ private:
 	File_Manager file_mgr = File_Manager::Instance();
 
 protected:
-	uint CountAssets( Factory* F );
-	void LoadMultiFileAssets( Factory* F );
-	void LoadSingleFileAssets( Factory* F );
+	uint CountAssets( GameAssets::Factory* F );
+	void LoadMultiFileAssets( GameAssets::Factory* F );
+	void LoadSingleFileAssets( GameAssets::Factory* F );
 
 public:
 	Asset_Loader();
 	~Asset_Loader();
 	void RegisterDirectory( std::string path );
 	void LoadAssets();
-	GameObject* LoadAsset( Factory* F, std::string FileName );
+	GameAssets::GameObject* LoadAsset( GameAssets::Factory* F, std::string FileName );
 	//void UnloadAssets();
 };
 

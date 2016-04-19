@@ -3,7 +3,6 @@
 #include "../../../tools_logger.h"
 #include "../STL.h"
 #include "../AssetAbstract.h"
-using namespace GameAssets;
 using namespace logger;
 
 class Asset_Storage
@@ -13,7 +12,7 @@ private:
 	logger::Log* m_Log;
 
 protected:
-	std::set<GameObject*> Address_Table;
+	std::set<GameAssets::GameObject*> Address_Table;
 
 public:
 	Asset_Storage();
@@ -33,7 +32,7 @@ public:
 			storage.bytes = N * sizeof( T );
 			for ( uint i = 0; i < N; ++i )
 			{
-				GameObject* p = &ptr[i];
+				GameAssets::GameObject* p = &ptr[i];
 				storage.index = i;
 				p->SetStorageData( storage );
 			}
@@ -41,7 +40,7 @@ public:
 				<< newl << "Address:" << ptr
 				<< newl << "Elements: " << N
 				<< newl << "Size: " << sizeof( T ) * N << " Bytes";
-			Address_Table.emplace( (GameObject*)ptr );
+			Address_Table.emplace( (GameAssets::GameObject*)ptr );
 			return ptr;
 		}
 		m_Log->Line( _ERROR ) << "ALLOCATION FAILED - Returns nullptr";
@@ -53,7 +52,7 @@ public:
 	void Deallocate( T* ptr )
 	{
 		m_Log->Line( _INFO ) << "Asset_Storage::Deallocate()";
-		std::set<GameObject*>::iterator it = Address_Table.find( (GameObject*)ptr );
+		std::set<GameAssets::GameObject*>::iterator it = Address_Table.find( (GameAssets::GameObject*)ptr );
 		if ( it != Address_Table.end() && *it == ptr )
 		{
 			delete ptr;
@@ -82,8 +81,8 @@ public:
 		Additionally it may be an address in the middle of an array we allocated
 		*/
 
-		GameObject* p = ptr->storage.allocation;
-		std::set<GameObject*>::iterator it = Address_Table.lower_bound( (GameObject*)ptr );
+		GameAssets::GameObject* p = ptr->storage.allocation;
+		std::set<GameAssets::GameObject*>::iterator it = Address_Table.lower_bound( (GameAssets::GameObject*)ptr );
 		if ( it == Address_Table.end() )
 		{
 			it = std::prev( it );
