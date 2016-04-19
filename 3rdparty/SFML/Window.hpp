@@ -29,19 +29,19 @@
 // Headers
 ////////////////////////////////////////////////////////////
 
-#include <SFML/System.hpp>
-#include <SFML/Window/Context.hpp>
-#include <SFML/Window/ContextSettings.hpp>
-#include <SFML/Window/Event.hpp>
-#include <SFML/Window/Joystick.hpp>
-#include <SFML/Window/Keyboard.hpp>
-#include <SFML/Window/Mouse.hpp>
-#include <SFML/Window/Sensor.hpp>
-#include <SFML/Window/Touch.hpp>
-#include <SFML/Window/VideoMode.hpp>
-#include <SFML/Window/Window.hpp>
-#include <SFML/Window/WindowHandle.hpp>
-#include <SFML/Window/WindowStyle.hpp>
+#include <3rdparty/SFML/System.hpp>
+#include <3rdparty/SFML/Window/Context.hpp>
+#include <3rdparty/SFML/Window/ContextSettings.hpp>
+#include <3rdparty/SFML/Window/Event.hpp>
+#include <3rdparty/SFML/Window/Joystick.hpp>
+#include <3rdparty/SFML/Window/Keyboard.hpp>
+#include <3rdparty/SFML/Window/Mouse.hpp>
+#include <3rdparty/SFML/Window/Sensor.hpp>
+#include <3rdparty/SFML/Window/Touch.hpp>
+#include <3rdparty/SFML/Window/VideoMode.hpp>
+#include <3rdparty/SFML/Window/Window.hpp>
+#include <3rdparty/SFML/Window/WindowHandle.hpp>
+#include <3rdparty/SFML/Window/WindowStyle.hpp>
 
 
 

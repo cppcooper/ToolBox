@@ -29,32 +29,32 @@
 // Headers
 ////////////////////////////////////////////////////////////
 
-#include <SFML/Window.hpp>
-#include <SFML/Graphics/BlendMode.hpp>
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/ConvexShape.hpp>
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Font.hpp>
-#include <SFML/Graphics/Glyph.hpp>
-#include <SFML/Graphics/Image.hpp>
-#include <SFML/Graphics/PrimitiveType.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/Graphics/RenderTexture.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/Shader.hpp>
-#include <SFML/Graphics/Shape.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Transform.hpp>
-#include <SFML/Graphics/Transformable.hpp>
-#include <SFML/Graphics/Vertex.hpp>
-#include <SFML/Graphics/VertexArray.hpp>
-#include <SFML/Graphics/View.hpp>
+#include <3rdparty/SFML/Window.hpp>
+#include <3rdparty/SFML/Graphics/BlendMode.hpp>
+#include <3rdparty/SFML/Graphics/CircleShape.hpp>
+#include <3rdparty/SFML/Graphics/Color.hpp>
+#include <3rdparty/SFML/Graphics/ConvexShape.hpp>
+#include <3rdparty/SFML/Graphics/Drawable.hpp>
+#include <3rdparty/SFML/Graphics/Font.hpp>
+#include <3rdparty/SFML/Graphics/Glyph.hpp>
+#include <3rdparty/SFML/Graphics/Image.hpp>
+#include <3rdparty/SFML/Graphics/PrimitiveType.hpp>
+#include <3rdparty/SFML/Graphics/Rect.hpp>
+#include <3rdparty/SFML/Graphics/RectangleShape.hpp>
+#include <3rdparty/SFML/Graphics/RenderStates.hpp>
+#include <3rdparty/SFML/Graphics/RenderTarget.hpp>
+#include <3rdparty/SFML/Graphics/RenderTexture.hpp>
+#include <3rdparty/SFML/Graphics/RenderWindow.hpp>
+#include <3rdparty/SFML/Graphics/Shader.hpp>
+#include <3rdparty/SFML/Graphics/Shape.hpp>
+#include <3rdparty/SFML/Graphics/Sprite.hpp>
+#include <3rdparty/SFML/Graphics/Text.hpp>
+#include <3rdparty/SFML/Graphics/Texture.hpp>
+#include <3rdparty/SFML/Graphics/Transform.hpp>
+#include <3rdparty/SFML/Graphics/Transformable.hpp>
+#include <3rdparty/SFML/Graphics/Vertex.hpp>
+#include <3rdparty/SFML/Graphics/VertexArray.hpp>
+#include <3rdparty/SFML/Graphics/View.hpp>
 
 
 #endif // SFML_GRAPHICS_HPP

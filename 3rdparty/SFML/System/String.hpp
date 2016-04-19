@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
-#include <SFML/System/Utf.hpp>
+#include <3rdparty/SFML/System/Export.hpp>
+#include <3rdparty/SFML/System/Utf.hpp>
 #include <locale>
 #include <string>
 
@@ -610,7 +610,7 @@ SFML_SYSTEM_API bool operator >=(const String& left, const String& right);
 ////////////////////////////////////////////////////////////
 SFML_SYSTEM_API String operator +(const String& left, const String& right);
 
-#include <SFML/System/String.inl>
+#include <3rdparty/SFML/System/String.inl>
 
 } // namespace sf
 

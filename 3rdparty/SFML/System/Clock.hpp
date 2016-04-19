@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/Export.hpp>
-#include <SFML/System/Time.hpp>
+#include <3rdparty/SFML/System/Export.hpp>
+#include <3rdparty/SFML/System/Time.hpp>
 
 
 namespace sf

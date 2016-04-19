@@ -28,10 +28,10 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/Transform.hpp>
-#include <SFML/System/Vector2.hpp>
+#include <3rdparty/SFML/Graphics/Export.hpp>
+#include <3rdparty/SFML/Graphics/Rect.hpp>
+#include <3rdparty/SFML/Graphics/Transform.hpp>
+#include <3rdparty/SFML/System/Vector2.hpp>
 
 
 namespace sf

@@ -28,7 +28,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/System/ThreadLocal.hpp>
+#include <3rdparty/SFML/System/ThreadLocal.hpp>
 
 
 namespace sf
@@ -104,7 +104,7 @@ public:
 
 } // namespace sf
 
-#include <SFML/System/ThreadLocalPtr.inl>
+#include <3rdparty/SFML/System/ThreadLocalPtr.inl>
 
 
 #endif // SFML_THREADLOCALPTR_HPP

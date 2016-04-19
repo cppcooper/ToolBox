@@ -28,11 +28,11 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Network/Export.hpp>
-#include <SFML/Network/IpAddress.hpp>
-#include <SFML/Network/TcpSocket.hpp>
-#include <SFML/System/NonCopyable.hpp>
-#include <SFML/System/Time.hpp>
+#include <3rdparty/SFML/Network/Export.hpp>
+#include <3rdparty/SFML/Network/IpAddress.hpp>
+#include <3rdparty/SFML/Network/TcpSocket.hpp>
+#include <3rdparty/SFML/System/NonCopyable.hpp>
+#include <3rdparty/SFML/System/Time.hpp>
 #include <map>
 #include <string>
 

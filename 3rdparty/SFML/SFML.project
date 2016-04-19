@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="SFML" InternalType="">
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="MinGW ( TDM-GCC-32 )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g -Wall" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O0" Required="yes">
+        <LibraryPath Value="."/>
+        <LibraryPath Value="Debug"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="./Debug" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Workspace Settings&gt;" DbgSetName="&lt;Use Global Settings&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="Audio">
+    <File Name="Audio/AlResource.hpp"/>
+    <File Name="Audio/Export.hpp"/>
+    <File Name="Audio/InputSoundFile.hpp"/>
+    <File Name="Audio/Listener.hpp"/>
+    <File Name="Audio/Music.hpp"/>
+    <File Name="Audio/OutputSoundFile.hpp"/>
+    <File Name="Audio/Sound.hpp"/>
+    <File Name="Audio/SoundBuffer.hpp"/>
+    <File Name="Audio/SoundBufferRecorder.hpp"/>
+    <File Name="Audio/SoundFileFactory.hpp"/>
+    <File Name="Audio/SoundFileReader.hpp"/>
+    <File Name="Audio/SoundFileWriter.hpp"/>
+    <File Name="Audio/SoundRecorder.hpp"/>
+    <File Name="Audio/SoundSource.hpp"/>
+    <File Name="Audio/SoundStream.hpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Graphics">
+    <File Name="Graphics/BlendMode.hpp"/>
+    <File Name="Graphics/CircleShape.hpp"/>
+    <File Name="Graphics/Color.hpp"/>
+    <File Name="Graphics/ConvexShape.hpp"/>
+    <File Name="Graphics/Drawable.hpp"/>
+    <File Name="Graphics/Export.hpp"/>
+    <File Name="Graphics/Font.hpp"/>
+    <File Name="Graphics/Glyph.hpp"/>
+    <File Name="Graphics/Image.hpp"/>
+    <File Name="Graphics/PrimitiveType.hpp"/>
+    <File Name="Graphics/Rect.hpp"/>
+    <File Name="Graphics/RectangleShape.hpp"/>
+    <File Name="Graphics/RenderStates.hpp"/>
+    <File Name="Graphics/RenderTarget.hpp"/>
+    <File Name="Graphics/RenderTexture.hpp"/>
+    <File Name="Graphics/RenderWindow.hpp"/>
+    <File Name="Graphics/Shader.hpp"/>
+    <File Name="Graphics/Shape.hpp"/>
+    <File Name="Graphics/Sprite.hpp"/>
+    <File Name="Graphics/Text.hpp"/>
+    <File Name="Graphics/Texture.hpp"/>
+    <File Name="Graphics/Transform.hpp"/>
+    <File Name="Graphics/Transformable.hpp"/>
+    <File Name="Graphics/Vertex.hpp"/>
+    <File Name="Graphics/VertexArray.hpp"/>
+    <File Name="Graphics/View.hpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Network">
+    <File Name="Network/Export.hpp"/>
+    <File Name="Network/Ftp.hpp"/>
+    <File Name="Network/Http.hpp"/>
+    <File Name="Network/IpAddress.hpp"/>
+    <File Name="Network/Packet.hpp"/>
+    <File Name="Network/Socket.hpp"/>
+    <File Name="Network/SocketHandle.hpp"/>
+    <File Name="Network/SocketSelector.hpp"/>
+    <File Name="Network/TcpListener.hpp"/>
+    <File Name="Network/TcpSocket.hpp"/>
+    <File Name="Network/UdpSocket.hpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="System">
+    <File Name="System/Clock.hpp"/>
+    <File Name="System/Err.hpp"/>
+    <File Name="System/Export.hpp"/>
+    <File Name="System/FileInputStream.hpp"/>
+    <File Name="System/InputStream.hpp"/>
+    <File Name="System/Lock.hpp"/>
+    <File Name="System/MemoryInputStream.hpp"/>
+    <File Name="System/Mutex.hpp"/>
+    <File Name="System/NonCopyable.hpp"/>
+    <File Name="System/Sleep.hpp"/>
+    <File Name="System/String.hpp"/>
+    <File Name="System/Thread.hpp"/>
+    <File Name="System/ThreadLocal.hpp"/>
+    <File Name="System/ThreadLocalPtr.hpp"/>
+    <File Name="System/Time.hpp"/>
+    <File Name="System/Utf.hpp"/>
+    <File Name="System/Vector2.hpp"/>
+    <File Name="System/Vector3.hpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Window">
+    <File Name="Window/Context.hpp"/>
+    <File Name="Window/ContextSettings.hpp"/>
+    <File Name="Window/Event.hpp"/>
+    <File Name="Window/Export.hpp"/>
+    <File Name="Window/GlResource.hpp"/>
+    <File Name="Window/Joystick.hpp"/>
+    <File Name="Window/Keyboard.hpp"/>
+    <File Name="Window/Mouse.hpp"/>
+    <File Name="Window/Sensor.hpp"/>
+    <File Name="Window/Touch.hpp"/>
+    <File Name="Window/VideoMode.hpp"/>
+    <File Name="Window/Window.hpp"/>
+    <File Name="Window/WindowHandle.hpp"/>
+    <File Name="Window/WindowStyle.hpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="SFML">
+    <File Name="Audio.hpp"/>
+    <File Name="Config.hpp"/>
+    <File Name="Graphics.hpp"/>
+    <File Name="Main.hpp"/>
+    <File Name="Network.hpp"/>
+    <File Name="OpenGL.hpp"/>
+    <File Name="System.hpp"/>
+    <File Name="Window.hpp"/>
+  </VirtualDirectory>
+</CodeLite_Project>
