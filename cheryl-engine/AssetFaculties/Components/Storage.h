@@ -26,7 +26,7 @@ public:
 		if ( N > 0 )
 		{
 			T* ptr = new T[N];
-			Storage_Data storage;
+			GameAssets::Storage_Data storage;
 			storage.allocation = ptr;
 			storage.length = N;
 			storage.bytes = N * sizeof( T );
