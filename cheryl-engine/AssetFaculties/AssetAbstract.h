@@ -45,11 +45,9 @@ namespace GameAssets
 	protected:
 		using uint = unsigned int;
 		
-#define TYPE_ID_IMPL(TYPE)																				\
-	unsigned int TYPE::TypeID()	{																		\
-		static unsigned int id = Asset_Factory<TYPE>::Instance().Get_TypeID();	\
-		return id;																										\
-			}
+#define TYPE_ID_IMPL(TYPE) unsigned int TYPE::TypeID() { static unsigned int id = Asset_Factory<TYPE>::Instance().Get_TypeID(); return id; }
+
+#define TYPE_ID_IMPL_INLINE(TYPE) unsigned int TypeID() { static unsigned int id = Asset_Factory<TYPE>::Instance().Get_TypeID(); return id; }
 
 	public:
 		virtual ~GameObject(){}
