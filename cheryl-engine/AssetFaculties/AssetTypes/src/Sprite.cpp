@@ -8,8 +8,7 @@ using namespace GameAssets;
 
 using uint = unsigned int;
 
-SpriteFrame::SpriteFrame( GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha, 
-						  uint frame, uint width, uint height, uint x_offset, uint y_offset, float scale, float alpha ) :
+SpriteFrame::SpriteFrame( GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha, uint frame, uint width, uint height, uint x_offset, uint y_offset, float scale, float alpha ) :
 m_Shader( glslp ),
 m_Tex( tex ),
 m_VAO( vao ),
@@ -51,7 +50,7 @@ void Sprite::Load( std::string file )
 		ushort Sections = 0;
 		ushort TexLength = 0;
 
-		Data >> Sections;
+		Data >> Sections; //Total Sections of Frames
 		Data >> TexLength;
 		char* TexFile = new char[TexLength + 1];
 		memset( TexFile, 0, TexLength + 1 );
@@ -83,13 +82,15 @@ void Sprite::Load( std::string file )
 		m_FrameIndex = 0;
 		for ( int i = 0; i < Sections; ++i )
 		{
-			Data >> Frames;
-			Data >> width;
-			Data >> height;
+			//Data per Section
+			Data >> Frames; //Total Frames
+			Data >> width; //Frame Width of current section
+			Data >> height; //Frame Height of current section
 			Data >> scale;
 			Data >> alpha;
-			Data >> x_offset;
-			Data >> y_offset;
+
+			Data >> x_offset; //Frame X Offset
+			Data >> y_offset; //Frame Y Offset
 			for ( int f = 0; f < Frames; ++f )
 			{
 				ushort x, y;

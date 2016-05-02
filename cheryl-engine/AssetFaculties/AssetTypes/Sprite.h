@@ -18,13 +18,13 @@ namespace GameAssets
 		Texture* &m_Tex;
 		uint m_Width;
 		uint m_Height;
-		const float& p_Scale;
-		const float& p_Alpha;
+		const float& p_Scale; //ref of Sprite::m_Scale (p_ for parent)
+		const float& p_Alpha; //ref of Sprite::m_Alpha (p_ for parent)
 
 	public:
 		float m_Scale = 1.0f;
 		float m_Alpha = 1.0f;
-		glm::vec3 m_Offset;
+		glm::vec3 m_Offset; //Used to center the frames of a sprite
 
 		SpriteFrame( GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha,
 					 uint frame, uint width, uint height, uint x_offset = 0, uint y_offset = 0, float scale = 1.0f, float alpha = 1.0f );
