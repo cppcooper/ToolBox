@@ -9,10 +9,10 @@ public:
 
 	virtual void Process() {}
 	virtual void Update(double& seconds) {}
-	virtual void PostProcess() {}
-	
 	virtual void Buffer() {}
-	virtual void Draw() {}
+
+	virtual void Draw() {} //Todo: Replace with below method
+	virtual void Output() {}
 };
 
 #endif

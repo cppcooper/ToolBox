@@ -97,7 +97,7 @@ void Game::Update( double& seconds )
 
 	for ( auto m : m_Modules )
 	{
-		m->PostProcess();
+		m->Buffer();
 	}
 }
 
@@ -105,12 +105,8 @@ void Game::Draw()
 {
 	for ( auto m : m_Modules )
 	{
-		m->Buffer();
-	}
-
-	for ( auto m : m_Modules )
-	{
 		m->Draw();
+		m->Output();
 	}
 }
 
