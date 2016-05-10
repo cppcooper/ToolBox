@@ -1,13 +1,13 @@
 #include "../Storage.h"
 #include "../../InterAccess.h"
 
-Asset_Storage::Asset_Storage()
+Object_Storage::Object_Storage()
 {
 	m_Log = &Asset_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Storage Initialized.";
 }
 
-Asset_Storage::~Asset_Storage()
+Object_Storage::~Object_Storage()
 {
 	for ( auto ptr : Address_Table )
 	{
@@ -18,7 +18,7 @@ Asset_Storage::~Asset_Storage()
 	m_Log->Line( _INFO ) << "Asset Storage Deinitialized.";
 }
 
-void Asset_Storage::Update()
+void Object_Storage::Update()
 {
 
 }

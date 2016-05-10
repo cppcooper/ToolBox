@@ -18,8 +18,6 @@ Asset_Loader::~Asset_Loader()
 }
 
 
-//TODO: Check that loops exit when required
-
 //Counts how many Game Asset files exist for a given Asset Type (ie. Factory Type)
 unsigned int Asset_Loader::CountAssets( GameAssets::Factory* F )
 {
@@ -63,21 +61,28 @@ unsigned int Asset_Loader::CountAssets( GameAssets::Factory* F )
 }
 
 #include "../../AssetTypes/BasicTypes.h"
+using GameAssets::AssetObject;
+
 void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 {
+	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 	std::string Ext_List = F->TypeExtensions();
 	std::string Record_Ext = F->RecordExtension();
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadMultiFileAssets()";
 	size_t Cpos = 0;
 	size_t Lpos = 0;
 
+
 	//Counts how many assets are needed and get an array big enough for that number of the given type
-	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 	unsigned int N = this->CountAssets( F );
 	if ( N == 0 )
 		return;
-	GameAssets::GameObject* p = F->Create( N );
+
+	//Get Asset Pool - Then check for nullptr and makes sure it is the right type OR terminate
+	AssetObject* p = dynamic_cast<AssetObject*>(F->Create( N ));
 	assert( F->IsFactoryType( p ) );
+
+	//Return the pool so we don't need to keep track of where we are in the array
 	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
@@ -105,8 +110,11 @@ void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 			p = AssetMgr.GetAsset( AssetRecordName );
 			if ( p == nullptr )
 			{
-				p = F->Create(); //Guarantees (p != nullptr)
+				//Replace nullptr with valid address
+				p = (AssetObject*)F->Create();
 				m_Log->Line( _INFO ) << "New Record";
+
+				//Record the Asset or Terminate
 				assert( AssetMgr.RecordAsset( AssetRecordName, p ) );
 			}
 			else
@@ -114,6 +122,7 @@ void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 				m_Log->Line( _INFO ) << "Existing Record";
 			}
 
+			//Load a/the file
 			m_Log->Line( _DEBUG1 ) << "Loading File"
 				<< newl << "Record: " << AssetRecordName
 				<< newl << "Address: " << p
@@ -121,6 +130,7 @@ void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 			p->Load( it->second + it->first );
 			it = std::next( it );
 		}
+		//Extension list positions
 		Lpos = Cpos + 1;
 	}
 }
@@ -128,25 +138,30 @@ void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 //TODO: add conditions for preventing duplicate records
 void Asset_Loader::LoadSingleFileAssets( GameAssets::Factory* F )
 {
+	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 	std::string Ext_List = F->TypeExtensions();
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadSingleFileAssets()";
 	size_t Cpos = 0;
 	size_t Lpos = 0;
 
-	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 	
 	//Counts how many assets are needed and get an array big enough for that number of the given type
 	unsigned int N = this->CountAssets( F );
 	if ( N == 0 )
 		return;
-	GameAssets::GameObject* p = F->Create( N );
+
+	//Get Asset Pool - Then check for nullptr and makes sure it is the right type OR terminate
+	AssetObject* p = dynamic_cast<AssetObject*>(F->Create( N ));
+	assert( F->IsFactoryType( p ) );
+
+	//Return the pool so we don't need to keep track of where we are in the array
 	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
 	size_t final_pos = Ext_List.find_last_of( ';' );
 	while ( Cpos < final_pos )
 	{
-		Cpos = Ext_List.find_first_of( ',', Lpos );
+		Cpos = Ext_List.find_first_of( ';', Lpos );
 
 		std::string Current_Ext = Ext_List.substr( Lpos, Cpos - Lpos );
 		m_Log->Line( _DEBUG3 ) << "Extension Reading Data"
@@ -166,11 +181,16 @@ void Asset_Loader::LoadSingleFileAssets( GameAssets::Factory* F )
 			p = AssetMgr.GetAsset( it->first );
 			if ( p == nullptr )
 			{
-				p = F->Create();
+				//Replace nullptr with valid address
+				p = (AssetObject*)F->Create();
+
+				//Load a/the file
 				p->Load( it->second + it->first );
 				m_Log->Line(_DEBUG2) << "Successful Asset Load"
 					<< newl << "Asset: " << it->first 
 					<< newl << "Address: " << p;
+
+				//Record the Asset or Terminate
 				assert( AssetMgr.RecordAsset( it->first, p ) );
 			}
 			else
@@ -181,6 +201,7 @@ void Asset_Loader::LoadSingleFileAssets( GameAssets::Factory* F )
 			}
 			it = std::next( it );
 		}
+		//Extension list positions
 		Lpos = Cpos + 1;
 	}
 }
@@ -215,8 +236,9 @@ void Asset_Loader::LoadAssets()
 	}
 }
 
-GameAssets::GameObject* Asset_Loader::LoadAsset( GameAssets::Factory* F, std::string FileName )
+GameAssets::AssetObject* Asset_Loader::LoadAsset( GameAssets::Factory* F, std::string FileName )
 {
+	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadAsset()";
 	m_Log->Line( _DEBUG1 ) << "Manual Load Procedure"
 		<< newl << "File: " << FileName
@@ -225,19 +247,21 @@ GameAssets::GameObject* Asset_Loader::LoadAsset( GameAssets::Factory* F, std::st
 	
 	std::string file_ext = FileName.substr( FileName.find_last_of( '.' ), FileName.npos );
 	std::string RecordName = FileName.substr( 0, FileName.find_last_of( '.' ) );
-	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
 
 	if ( F->TypeExtensions().find( file_ext ) != std::string::npos )
 	{
-		GameAssets::GameObject* p = nullptr;
+		GameAssets::AssetObject* p = nullptr;
 		RecordName += !F->RecordExtension().empty() ? F->RecordExtension() : file_ext;
 		p = AssetMgr.GetAsset( RecordName );
 		if ( p == nullptr )
 		{
-			p = F->Create();
+			//Replace nullptr with valid address
+			p = (AssetObject*)F->Create();
 			m_Log->Line( _DEBUG1 ) << "New Asset"
 				<< newl << "Record: " << RecordName
 				<< newl << "Address: " << p;
+
+			//Record the Asset or Terminate
 			assert( AssetMgr.RecordAsset( RecordName, p ) );
 		}
 		else
@@ -246,6 +270,7 @@ GameAssets::GameObject* Asset_Loader::LoadAsset( GameAssets::Factory* F, std::st
 				<< newl << "Record: " << RecordName
 				<< newl << "Address: " << p;
 		}
+		//Load a/the file
 		p->Load( FileName + file_ext );
 		return p;
 	}

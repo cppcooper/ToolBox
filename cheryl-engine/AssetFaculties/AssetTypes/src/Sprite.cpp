@@ -6,9 +6,7 @@
 #include "2dtools.h"
 using namespace GameAssets;
 
-using uint = unsigned int;
-
-SpriteFrame::SpriteFrame( GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha, uint frame, uint width, uint height, uint x_offset, uint y_offset, float scale, float alpha ) :
+SpriteFrame::SpriteFrame( GLSLProgram* &glslp, Texture* &tex, GLuint &vao, GLuint &vbo, float& global_scale, float& global_alpha, uint32_t frame, uint32_t width, uint32_t height, uint32_t x_offset, uint32_t y_offset, float scale, float alpha ) :
 m_Shader( glslp ),
 m_Tex( tex ),
 m_VAO( vao ),
@@ -47,8 +45,8 @@ void Sprite::Load( std::string file )
 	Data.open( file );
 	if ( Data.is_open() )
 	{
-		ushort Sections = 0;
-		ushort TexLength = 0;
+		uint16_t Sections = 0;
+		uint16_t TexLength = 0;
 
 		Data >> Sections; //Total Sections of Frames
 		Data >> TexLength;
@@ -56,25 +54,25 @@ void Sprite::Load( std::string file )
 		memset( TexFile, 0, TexLength + 1 );
 		Data.read( TexFile, 1 );
 		Data.read( TexFile, TexLength );
-		m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexFile );
+		m_Tex = Object_Factory<Texture>::Instance().GetAsset( TexFile );
 		delete[] TexFile;
-		m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
+		m_Shader = Object_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 		assert( m_Tex != nullptr );
 		assert( m_Shader != nullptr );
 
 
-		uint& Tex_width = m_Tex->width;
-		uint& Tex_height = m_Tex->height;
-		ushort Frames = 0, width = 0, height = 0, x_offset = 0, y_offset = 0;
+		uint32_t& Tex_width = m_Tex->width;
+		uint32_t& Tex_height = m_Tex->height;
+		uint16_t Frames = 0, width = 0, height = 0, x_offset = 0, y_offset = 0;
 		float scale = 0.0f, alpha = 0.0f;
 		struct frame_data
 		{
-			ushort width;
-			ushort height;
-			ushort start_x;
-			ushort start_y;
+			uint16_t width;
+			uint16_t height;
+			uint16_t start_x;
+			uint16_t start_y;
 			frame_data(){}
-			frame_data( ushort a, ushort b, ushort c, ushort d ) :
+			frame_data( uint16_t a, uint16_t b, uint16_t c, uint16_t d ) :
 				width( a ), height( b ), start_x( c ), start_y( d ){}
 		};
 		std::vector<frame_data> frameData;
@@ -93,7 +91,7 @@ void Sprite::Load( std::string file )
 			Data >> y_offset; //Frame Y Offset
 			for ( int f = 0; f < Frames; ++f )
 			{
-				ushort x, y;
+				uint16_t x, y;
 				Data >> x;
 				Data >> y;
 				frameData.emplace_back( width, height, x, y );
@@ -113,7 +111,7 @@ void Sprite::Load( std::string file )
 		m_vStride = 5 * sizeof( float );
 		m_Vertices = new float[m_vCount * 5];
 		memset( m_Vertices, 0, m_vCount * m_vStride );
-		for ( uint f = 0; f < m_Frames.size(); ++f )
+		for ( uint32_t f = 0; f < m_Frames.size(); ++f )
 		{
 			frame_data& ref = frameData.at( f );
 
@@ -140,7 +138,7 @@ void Sprite::Reset()
 	Deinit();
 }
 
-SpriteFrame& Sprite::operator[]( ushort frame )
+SpriteFrame& Sprite::operator[]( uint16_t frame )
 {
 	m_FrameIndex = frame % m_Frames.size();
 	return m_Frames.at( m_FrameIndex );

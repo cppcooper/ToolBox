@@ -20,8 +20,8 @@ inline logger::Log& GetLog()
 
 Asset_Faculties::Asset_Faculties()
 {
-	Allocator = new Asset_Storage;
-	Pool = new Asset_Pool;
+	Allocator = new Object_Storage;
+	Pool = new Object_Pool;
 	Loader = new Asset_Loader;
 	Manager = new Asset_Manager;
 	GetLog().Line( _INFO ) << "Asset Faculties Initialized";
@@ -58,7 +58,7 @@ void Asset_Faculties::LoadAssets()
 	Loader->LoadAssets();
 }
 
-GameAssets::GameObject* Asset_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
+GameAssets::ManagedObject* Asset_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
 {
 	GetLog().Line( _INFO ) << "Asset_Faculties - Manual Load Asset";
 	return Loader->LoadAsset( Factories[type_ID - 1], FileName );

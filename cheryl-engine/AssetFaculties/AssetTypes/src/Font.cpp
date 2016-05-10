@@ -13,7 +13,7 @@ void Font::Load( std::string file )
 
 	std::string TexName = file.substr( file.find_last_of( '/' ) + 1, file.find_last_of( '.' ) );// +".png";
 	TexName = TexName.substr( TexName.find_last_of( '\\' ) + 1, TexName.find_last_of( '.' ) ) +".png";
-	m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexName );
+	m_Tex = Object_Factory<Texture>::Instance().GetAsset( TexName );
 	assert( m_Tex != nullptr );
 
 	std::ifstream Data;
@@ -33,11 +33,11 @@ void Font::Load( std::string file )
 		m_Widths[i] = (int)buffer[i];
 	}
 
-	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "font_default.glslp" );
+	m_Shader = Object_Factory<GLSLProgram>::Instance().GetAsset( "font_default.glslp" );
 	assert( m_Shader != nullptr );
 
-	uint& Tex_width = m_Tex->width;
-	uint& Tex_height = m_Tex->height;
+	uint32_t& Tex_width = m_Tex->width;
+	uint32_t& Tex_height = m_Tex->height;
 
 	m_vStride = 5 * sizeof( float );
 	m_vCount = 4 * 256;
@@ -127,8 +127,8 @@ void Font::Print( std::string text )
 
 
 	float scale = m_FontSize / 128;
-	uint length = (uint)text.size();
-	for ( uint i = 0, letter = 0; i < length; ++i )
+	uint32_t length = (uint32_t)text.size();
+	for ( uint32_t i = 0, letter = 0; i < length; ++i )
 	{
 		m_Shader->SetUniform( "modelMatrix", m_ModelMatrix );
 		letter = m_AltFont ? text[i] - 32 + 128 : text[i] - 32;

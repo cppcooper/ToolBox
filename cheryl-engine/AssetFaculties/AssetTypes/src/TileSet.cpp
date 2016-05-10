@@ -14,30 +14,30 @@ void TileSet::Load( std::string file )
 	Data.open( file );
 	if ( Data.is_open() )
 	{
-		ushort TexLength = 0;
+		uint16_t TexLength = 0;
 		Data >> TexLength;
 
 		char* TexFile = new char[TexLength + 1];
 		memset( TexFile, 0, TexLength + 1 );
 		Data.read( TexFile, 1 );
 		Data.read( TexFile, TexLength );
-		m_Tex = Asset_Factory<Texture>::Instance().GetAsset( TexFile );
+		m_Tex = Object_Factory<Texture>::Instance().GetAsset( TexFile );
 		delete[] TexFile;
-		m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
+		m_Shader = Object_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 		assert( m_Tex != nullptr );
 		assert( m_Shader != nullptr );
 
-		uint& TextureWidth = m_Tex->width;
-		uint& TextureHeight = m_Tex->height;
+		uint32_t& TextureWidth = m_Tex->width;
+		uint32_t& TextureHeight = m_Tex->height;
 
-		ushort Columns = 0, Rows = 0;
+		uint16_t Columns = 0, Rows = 0;
 		Data >> Columns;
 		Data >> Rows;
 		Data >> m_Width;
 		Data >> m_Height;
 
-		assert( TextureWidth >= (uint)( Columns * m_Width ) );
-		assert( TextureHeight >= (uint)( Rows * m_Height ) );
+		assert( TextureWidth >= (uint32_t)( Columns * m_Width ) );
+		assert( TextureHeight >= (uint32_t)( Rows * m_Height ) );
 
 		m_TileCount = Columns * Rows;
 		m_vCount = 4 * m_TileCount;
@@ -45,9 +45,9 @@ void TileSet::Load( std::string file )
 		m_Vertices = new float[5 * m_vCount];
 		memset( m_Vertices, 0, m_vCount * m_vStride );
 
-		for ( uint row = 0; row < Rows; ++row )
+		for ( uint32_t row = 0; row < Rows; ++row )
 		{
-			for ( uint col = 0; col < Columns; ++col )
+			for ( uint32_t col = 0; col < Columns; ++col )
 			{
 				AnchorBottomLeft( &m_Vertices[m_FrameIndex++ * 20], TextureWidth, TextureHeight, m_Width, m_Height, col * m_Width, row * m_Height );
 			}
@@ -76,7 +76,7 @@ void TileSet::Reset()
 	Deinit();
 }
 
-TileSet& TileSet::operator[]( ushort frame )
+TileSet& TileSet::operator[]( uint16_t frame )
 {
 	m_FrameIndex = frame % m_TileCount;
 	return *this;

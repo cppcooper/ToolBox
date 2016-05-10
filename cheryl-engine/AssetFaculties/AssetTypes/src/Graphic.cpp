@@ -7,7 +7,7 @@ using namespace GameAssets;
 
 Graphic::Graphic()
 {
-	m_Shader = Asset_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
+	m_Shader = Object_Factory<GLSLProgram>::Instance().GetAsset( "2d_default.glslp" );
 	assert( m_Shader != nullptr );
 }
 
@@ -15,7 +15,7 @@ TYPE_ID_IMPL( Graphic )
 void Graphic::Load( std::string file )
 {
 	assert( !m_Initialized );
-	m_Tex = Asset_Factory<Texture>::Instance().GetAsset( file );
+	m_Tex = Object_Factory<Texture>::Instance().GetAsset( file );
 	ushort width = m_Tex->width;
 	ushort height = m_Tex->height;
 	m_vCount = 4;
