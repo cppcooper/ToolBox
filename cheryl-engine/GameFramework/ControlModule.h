@@ -12,7 +12,7 @@
 //This class SETS the association between controls and game actions
 class ControlModule : public GameModule
 {
-private:
+protected:
 	bool m_MouseEnabled;
 	struct MState
 	{
@@ -45,13 +45,6 @@ public:
 	void QueueKey( int key );
 
 	void Process() override;
-
-	void Init() final override {}
-	void Draw() final override {}
-	void Deinit() final override {}
-	void Buffer() final override {}
-	void PostProcess() final override {}
-	void Update( double& seconds ) final override {}
 };
 
 #endif
