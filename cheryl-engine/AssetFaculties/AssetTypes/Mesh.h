@@ -10,13 +10,13 @@ using std::ifstream;
 
 namespace GameAssets
 {
-	class Mesh : public GameObject, public VO_Data, public Drawable
+	class Mesh : public ManagedObject, public VO_Data, public Drawable
 	{
 	protected:
 		bool m_TriStrip = true;
 
 	public:
-		uint TypeID();
+		uint32_t TypeID();
 		void Load( std::string file );
 		void Reset();
 

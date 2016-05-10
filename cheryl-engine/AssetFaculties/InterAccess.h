@@ -3,27 +3,27 @@
 #include "STL.h"
 #include "../../tools_logger.h"
 
-class Asset_Storage;
-class Asset_Pool;
+class Object_Storage;
+class Object_Pool;
 template<class T>
-class Asset_Factory;
+class Object_Factory;
 class Asset_Loader;
 class Asset_Manager;
-namespace GameAssets{ class Factory; class GameObject; }
+namespace GameAssets{ class Factory; class ManagedObject; }
 
 class Asset_Faculties
 {
-	friend class Asset_Pool;
+	friend class Object_Pool;
 	template<class T>
-	friend class Asset_Factory;
+	friend class Object_Factory;
 	friend class Asset_Loader;
 	friend class Asset_Manager;
 private:
 	Asset_Manager* Manager = nullptr;
 	Asset_Loader* Loader = nullptr;
 	std::vector<GameAssets::Factory*> Factories;
-	Asset_Pool* Pool = nullptr;
-	Asset_Storage* Allocator = nullptr;
+	Object_Pool* Pool = nullptr;
+	Object_Storage* Allocator = nullptr;
 
 	Asset_Faculties();
 	~Asset_Faculties();
@@ -34,18 +34,18 @@ public:
 	void Update( double& seconds );
 	void RegisterAssetPath( std::string path );
 	void LoadAssets();
-	GameAssets::GameObject* LoadAsset( unsigned int type_ID, std::string FileName );
+	GameAssets::ManagedObject* LoadAsset( unsigned int type_ID, std::string FileName );
 	static logger::Log& GetManagementLog();
 
 	template<class T>
 	T* LoadAsset( std::string FileName )
 	{
-		return Asset_Factory<T>::Instance().LoadAsset( FileName );
+		return Object_Factory<T>::Instance().LoadAsset( FileName );
 	}
 	template<class T>
 	T* GetAsset( std::string AssetName )
 	{
-		return Asset_Factory<T>::Instance().GetAsset( AssetName );
+		return Object_Factory<T>::Instance().GetAsset( AssetName );
 	}
 };
 

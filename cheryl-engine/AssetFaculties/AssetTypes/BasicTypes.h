@@ -25,7 +25,7 @@ using glm::mat4;
 
 namespace GameAssets
 {
-	/* Fundamental GameObject Types can be found below
+	/* Fundamental ManagedObject Types can be found below
 	
 	Last Updated: 2015/10/28
 	
@@ -86,15 +86,15 @@ namespace GameAssets
 
 #pragma region "Texture"
 
-	class Texture : public GameObject
+	class Texture : public ManagedObject
 	{
 	public:
-		static uint Texture_Count;
+		static uint32_t Texture_Count;
 		GLuint glTexture_ID;
 		GLuint glTexture_Unit; // 0 - 31
 		unsigned int width, height;
 
-		uint TypeID();
+		uint32_t TypeID();
 		void Load( std::string file );
 		void Reset();
 		void Bind();
@@ -110,7 +110,7 @@ namespace GameAssets
 		TESS_CONTROL, TESS_EVALUATION
 	};
 
-	class GLSLProgram : public GameObject
+	class GLSLProgram : public ManagedObject
 	{
 	private:
 		GLuint prog_ID;
@@ -130,7 +130,7 @@ namespace GameAssets
 		GLSLProgram();
 		~GLSLProgram();
 
-		uint TypeID();
+		uint32_t TypeID();
 		void Load( std::string file );
 		void Reset();
 

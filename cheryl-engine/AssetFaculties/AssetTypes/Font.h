@@ -7,7 +7,7 @@
 
 namespace GameAssets
 {
-	class Font : public GameObject, public VO_Data
+	class Font : public ManagedObject, public VO_Data
 	{
 	protected:
 		int m_Widths[256];
@@ -21,7 +21,7 @@ namespace GameAssets
 		bool m_AltFont;
 
 		Font();
-		uint TypeID();
+		uint32_t TypeID();
 		void Load( std::string file );
 		void Reset();
 

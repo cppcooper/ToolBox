@@ -7,29 +7,28 @@
 
 namespace GameAssets
 {
-	class TileSet : public GameObject, public VO_Data, public Drawable
+	class TileSet : public ManagedObject, public VO_Data, public Drawable
 	{
-		using ushort = unsigned short;
 	protected:
-		ushort m_TileCount = 0;
-		ushort m_FrameIndex = 0;
-		ushort m_Width = 0;
-		ushort m_Height = 0;
+		uint16_t m_TileCount = 0;
+		uint16_t m_FrameIndex = 0;
+		uint16_t m_Width = 0;
+		uint16_t m_Height = 0;
 		float m_Scale = 1.0f;
 		float m_Alpha = 1.0f;
 
 	public:
-		uint TypeID();
+		uint32_t TypeID();
 		void Load( std::string file );
 		void Reset();
 
-		TileSet& operator[]( ushort frame );
+		TileSet& operator[]( uint16_t frame );
 		void Draw( const glm::mat4& matrix );
 		void Scale( float scale );
 		void SetAlpha( float alpha );
 
-		ushort Width() const { return m_Width; }
-		ushort Height() const { return m_Height; }
+		uint16_t Width() const { return m_Width; }
+		uint16_t Height() const { return m_Height; }
 	};
 }
 
