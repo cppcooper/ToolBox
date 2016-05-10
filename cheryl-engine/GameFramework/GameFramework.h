@@ -22,7 +22,7 @@
 class Game
 {
 private:
-	Asset_Faculties& m_Faculties = Asset_Faculties::Instance();
+	Object_Faculties& m_Faculties = Object_Faculties::Instance();
 	ControlModule& Controls = ControlModule::Instance();
 	glEngine& m_glEngine = glEngine::Instance();
 

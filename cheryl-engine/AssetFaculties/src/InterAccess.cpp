@@ -18,7 +18,7 @@ inline logger::Log& GetLog()
 	return log;
 }
 
-Asset_Faculties::Asset_Faculties()
+Object_Faculties::Object_Faculties()
 {
 	Allocator = new Object_Storage;
 	Pool = new Object_Pool;
@@ -27,7 +27,7 @@ Asset_Faculties::Asset_Faculties()
 	GetLog().Line( _INFO ) << "Asset Faculties Initialized";
 }
 
-Asset_Faculties::~Asset_Faculties()
+Object_Faculties::~Object_Faculties()
 {
 	delete Manager;
 	delete Loader;
@@ -36,35 +36,40 @@ Asset_Faculties::~Asset_Faculties()
 	GetLog().Line( _INFO ) << "Asset Faculties Deinitialized";
 }
 
-Asset_Faculties& Asset_Faculties::Instance()
+Object_Faculties& Object_Faculties::Instance()
 {
-	static Asset_Faculties instance;
+	static Object_Faculties instance;
 	return instance;
 }
 
-void Asset_Faculties::Update( double& seconds )
+void Object_Faculties::Update( double& seconds )
 {
 }
 
-void Asset_Faculties::RegisterAssetPath( std::string path )
+void Object_Faculties::RegisterAssetPath( std::string path )
 {
-	GetLog().Line( _INFO ) << "Asset_Faculties - Asset Path Registration";
+	GetLog().Line( _INFO ) << "Object_Faculties - Asset Path Registration";
 	Loader->RegisterDirectory( path );
 }
 
-void Asset_Faculties::LoadAssets()
+void Object_Faculties::ReturnPoolObject( GameAssets::ManagedObject* ptr )
 {
-	GetLog().Line( _INFO ) << "Asset_Faculties - Auto Load Assets";
+	Pool->Return( ptr );
+}
+
+void Object_Faculties::LoadAssets()
+{
+	GetLog().Line( _INFO ) << "Object_Faculties - Auto Load Assets";
 	Loader->LoadAssets();
 }
 
-GameAssets::ManagedObject* Asset_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
+GameAssets::ManagedObject* Object_Faculties::LoadAsset( unsigned int type_ID, std::string FileName )
 {
-	GetLog().Line( _INFO ) << "Asset_Faculties - Manual Load Asset";
+	GetLog().Line( _INFO ) << "Object_Faculties - Manual Load Asset";
 	return Loader->LoadAsset( Factories[type_ID - 1], FileName );
 }
 
-logger::Log& Asset_Faculties::GetManagementLog()
+logger::Log& Object_Faculties::GetManagementLog()
 {
 	//TODO: Add log line with call stack trace
 	return GetLog();

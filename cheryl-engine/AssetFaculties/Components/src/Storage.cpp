@@ -3,7 +3,7 @@
 
 Object_Storage::Object_Storage()
 {
-	m_Log = &Asset_Faculties::GetManagementLog();
+	m_Log = &Object_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Storage Initialized.";
 }
 

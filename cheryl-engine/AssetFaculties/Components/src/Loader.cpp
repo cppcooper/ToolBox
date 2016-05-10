@@ -8,7 +8,7 @@
 
 Asset_Loader::Asset_Loader()
 {
-	m_Log = &Asset_Faculties::GetManagementLog();
+	m_Log = &Object_Faculties::GetManagementLog();
 	m_Log->Line( _INFO ) << "Asset Loader Initialized.";
 }
 
@@ -65,7 +65,7 @@ using GameAssets::AssetObject;
 
 void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 {
-	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
+	Asset_Manager& AssetMgr = *Object_Faculties::Instance().Manager;
 	std::string Ext_List = F->TypeExtensions();
 	std::string Record_Ext = F->RecordExtension();
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadMultiFileAssets()";
@@ -83,7 +83,7 @@ void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 	assert( F->IsFactoryType( p ) );
 
 	//Return the pool so we don't need to keep track of where we are in the array
-	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
+	Object_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
 	while ( Cpos != std::string::npos )
@@ -138,7 +138,7 @@ void Asset_Loader::LoadMultiFileAssets( GameAssets::Factory* F )
 //TODO: add conditions for preventing duplicate records
 void Asset_Loader::LoadSingleFileAssets( GameAssets::Factory* F )
 {
-	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
+	Asset_Manager& AssetMgr = *Object_Faculties::Instance().Manager;
 	std::string Ext_List = F->TypeExtensions();
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadSingleFileAssets()";
 	size_t Cpos = 0;
@@ -155,7 +155,7 @@ void Asset_Loader::LoadSingleFileAssets( GameAssets::Factory* F )
 	assert( F->IsFactoryType( p ) );
 
 	//Return the pool so we don't need to keep track of where we are in the array
-	Asset_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
+	Object_Faculties::Instance().Pool->Return( p, p[0].GetStorageData().length );
 
 	//Loading Assets one File at a time doing so one Extension Type at a time
 	size_t final_pos = Ext_List.find_last_of( ';' );
@@ -214,7 +214,7 @@ void Asset_Loader::RegisterDirectory( std::string path )
 void Asset_Loader::LoadAssets()
 {
 	m_Log->Line( _INFO ) << "Asset Loader::LoadAssets()";
-	const std::vector<GameAssets::Factory*>& FVector = Asset_Faculties::Instance().Factories;
+	const std::vector<GameAssets::Factory*>& FVector = Object_Faculties::Instance().Factories;
 	uint Num_Factories = FVector.size();
 
 	for ( uint i = 0; i < Num_Factories; ++i )
@@ -238,7 +238,7 @@ void Asset_Loader::LoadAssets()
 
 GameAssets::AssetObject* Asset_Loader::LoadAsset( GameAssets::Factory* F, std::string FileName )
 {
-	Asset_Manager& AssetMgr = *Asset_Faculties::Instance().Manager;
+	Asset_Manager& AssetMgr = *Object_Faculties::Instance().Manager;
 	m_Log->Line( _INFO ) << "Asset_Loader::LoadAsset()";
 	m_Log->Line( _DEBUG1 ) << "Manual Load Procedure"
 		<< newl << "File: " << FileName

@@ -11,7 +11,7 @@ class Asset_Loader;
 class Asset_Manager;
 namespace GameAssets{ class Factory; class ManagedObject; }
 
-class Asset_Faculties
+class Object_Faculties
 {
 	friend class Object_Pool;
 	template<class T>
@@ -25,14 +25,15 @@ private:
 	Object_Pool* Pool = nullptr;
 	Object_Storage* Allocator = nullptr;
 
-	Asset_Faculties();
-	~Asset_Faculties();
+	Object_Faculties();
+	~Object_Faculties();
 
 public:
-	static Asset_Faculties& Instance();
+	static Object_Faculties& Instance();
 	
 	void Update( double& seconds );
 	void RegisterAssetPath( std::string path );
+	void ReturnPoolObject( GameAssets::ManagedObject* ptr );
 	void LoadAssets();
 	GameAssets::ManagedObject* LoadAsset( unsigned int type_ID, std::string FileName );
 	static logger::Log& GetManagementLog();

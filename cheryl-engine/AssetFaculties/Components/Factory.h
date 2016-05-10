@@ -14,9 +14,9 @@ private:
 	logger::Log* m_Log;
 	uint32_t TID = 0;
 	Object_Factory(){
-		Asset_Faculties::Instance().Factories.push_back( ( GameAssets::Factory* )this );
-		TID = Asset_Faculties::Instance().Factories.size();
-		m_Log = &Asset_Faculties::GetManagementLog();
+		Object_Faculties::Instance().Factories.push_back( ( GameAssets::Factory* )this );
+		TID = Object_Faculties::Instance().Factories.size();
+		m_Log = &Object_Faculties::GetManagementLog();
 		m_Log->Line( _INFO ) << "Factory Initialized #" << TID;
 	}
 
@@ -37,7 +37,7 @@ public:
 
 	GameAssets::ManagedObject* Create( uint32_t N = 1 ) final override {
 		gLog( _INFO ) << "Factory #" << TID << " Creating Array with " << N << " elements.";
-		return (GameAssets::ManagedObject*)Asset_Faculties::Instance().Pool->Get<T>( N );
+		return (GameAssets::ManagedObject*)Object_Faculties::Instance().Pool->Get<T>( N );
 	}
 
 	T* Cast( GameAssets::ManagedObject* p ){
@@ -77,13 +77,13 @@ public:
 
 	T* LoadAsset( std::string FileName ){
 		gLog( _INFO ) << "Factory #" << TID << " Loading Asset " << FileName.c_str();
-		GameAssets::ManagedObject* p = Asset_Faculties::Instance().LoadAsset( TID, FileName );
+		GameAssets::ManagedObject* p = Object_Faculties::Instance().LoadAsset( TID, FileName );
 		return IsFactoryType( p ) ? (T*)p : nullptr;
 	}
 
 	T* GetAsset( std::string AssetName ){
 		gLog( _INFO ) << "Factory #" << TID << " Retrieving Asset " << AssetName.c_str();
-		GameAssets::ManagedObject* p = Asset_Faculties::Instance().Manager->GetAsset( AssetName );
+		GameAssets::ManagedObject* p = Object_Faculties::Instance().Manager->GetAsset( AssetName );
 		if ( p != nullptr && IsFactoryType( p ) ){
 			return (T*)p;
 		}

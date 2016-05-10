@@ -4,7 +4,7 @@ using namespace logger;
 
 File_Manager::File_Manager()
 {
-	m_Log = &Asset_Faculties::GetManagementLog();
+	m_Log = &Object_Faculties::GetManagementLog();
 	//m_Log->Line( _INFO ) << "File Manager Initialized.";
 }
 

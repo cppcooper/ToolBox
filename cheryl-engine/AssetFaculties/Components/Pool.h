@@ -79,23 +79,12 @@ public:
 		else
 		{
 			m_Log->Line( _WARNING ) << "Array Not Found";
-			ptr = Asset_Faculties::Instance().Allocator->Allocate<T>( N );
+			ptr = Object_Faculties::Instance().Allocator->Allocate<T>( N );
 		}
 		return ptr;
 	}
 
-	void Return( GameAssets::ManagedObject* ptr, uint N = 1 )
-	{
-		unsigned int id = ptr->TypeID();
-		m_Log->Line( _INFO ) << "Object_Pool::Return()";
-		m_Log->Line( _DEBUG1 ) << "Returning Object(s)"
-			<< newl << "Type ID:" << id
-			<< newl << "Address: " << ptr
-			<< newl << "Array Elements: " << N;
-		AssetPool::iterator TPool_it = m_AssetPool.find( id );
-		assert( TPool_it != m_AssetPool.end() );
-		TPool_it->second.emplace( N, ptr );
-	}
+	void Return( GameAssets::ManagedObject* ptr, uint N = 1 );
 
 };
 
