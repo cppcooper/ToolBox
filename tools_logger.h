@@ -3,14 +3,14 @@
 #pragma once
 
 #ifdef _DEBUG
-#pragma comment (lib,"tools_logger_Debug.lib")
+#pragma comment (lib,"Win32\\tools_logger_Debug.lib")
 
 #ifndef LOG_WRITE_LEVELS
 #define LOG_WRITE_LEVELS (logger::_FATAL + logger::_ERROR + logger::_WARNING + logger::_INFO + logger::_DEBUG1 + logger::_DEBUG2 + logger::_DEBUG3 + logger::_DEBUG4 )
 #endif
 
 #else
-#pragma comment (lib,"tools_logger_Release.lib")
+#pragma comment (lib,"Win32\\tools_logger_Release.lib")
 
 #ifndef LOG_WRITE_LEVELS
 #define LOG_WRITE_LEVELS \
@@ -20,7 +20,8 @@
 
 #endif
 
-#include "stacktracer.h"
+#define _TOOLS_LIB
+#include "tools_stacktracer.h"
 
 #include <string>
 #include <sstream>
